@@ -1,0 +1,199 @@
+# PROMPT REPLIT - LANDING IA MOTORSHUB
+
+Crear la landing page más impactante de Argentina para IA MOTORSHUB. Un sitio que combine experiencia cinematográfica con tecnología de vanguardia y genere conversiones masivas.
+
+## EMPRESA
+- **Nombre:** IA MOTORSHUB
+- **CEO:** Franco Larrarte (Director de Cine + Empresario IA)
+- **Ubicación:** Bahía Blanca, Buenos Aires, Argentina
+- **Teléfono:** +54 9 291 520-6692
+- **Email:** contacto@iamotorshub.com
+- **Web actual:** www.iamotorshub.com
+
+## HERO SECTION
+**HEADLINE PRINCIPAL:**
+"EL ÚNICO DIRECTOR DE CINE QUE REVOLUCIONA EMPRESAS CON IA"
+
+**SUBHEADLINE:**
+"Franco Larrarte pasó de dirigir actores a entrenar IA que vende mejor que humanos. 4 plataformas tecnológicas propias. +50 empresas automatizadas. Resultados comprobados: +300% crecimiento promedio."
+
+**BOTONES CTA:**
+- [VER ECOSISTEMA COMPLETO EN VIVO] (botón primario dorado)
+- [AGENDAR CONSULTA ESTRATÉGICA] (botón secundario)
+
+## PRUEBA SOCIAL INMEDIATA
+```
+✅ +50 EMPRESAS automatizadas exitosamente
+✅ +1,000 AGENTES IA creados y funcionando
+✅ +10,000 STORYBOARDS profesionales generados
+✅ ÚNICO con 4 plataformas tecnológicas propias
+✅ ARSENAL TÉCNICO valorado en +$500K USD
+```
+
+## 4 SERVICIOS PRINCIPALES
+
+### SERVICIO 1: AUTOMATIZACIÓN COMERCIAL
+**Para:** Concesionarios | Inmobiliarias | Contables | Clínicas
+**Problema:** "Pierdes 70% de leads por atención manual deficiente"
+**Solución:** "IA conversacional que atiende como humano 24/7"
+- WhatsApp inteligente sector-específico
+- Agendamiento automático perfecto
+- CRM que nunca olvida un seguimiento
+- Pipeline que se gestiona solo
+**Resultado:** "+300% leads | -60% trabajo manual"
+**Testimonial:** "De 25 consultas/mes a 80 consultas/mes automáticamente" - Roberto Martínez, Ford Bahía Blanca
+**CTA:** [VER DEMO AUTOMATIZACIÓN]
+
+### SERVICIO 2: PRODUCCIÓN AUDIOVISUAL IA
+**Para:** Agencias | Productoras | Creadores de Contenido
+**Problema:** "Producción audiovisual cuesta $50K+ y demora meses"
+**Solución:** "Storyboards 8K + Personajes consistentes en días"
+- Character Studio: 3 imágenes → personaje perfecto
+- Art Department IA: locaciones + props automáticos
+- Storyboards cinematográficos profesionales
+- 1,000+ imágenes diarias GRATIS
+**Resultado:** "90% menos costo | 10x más velocidad"
+**Testimonial:** "Lo que costaba $80K en 2 meses, ahora 1 semana" - Diego Fernández, Productora CABA
+**CTA:** [PROBAR STORYBOARD STUDIO]
+
+### SERVICIO 3: AGENTES TELEFÓNICOS IA
+**Para:** Call Centers | Empresas de Ventas
+**Problema:** "Agentes humanos caros, inconsistentes, se cansan"
+**Solución:** "IA clonada de tus mejores vendedores"
+- Voz y personalidad idéntica a tu top seller
+- Nunca se cansa, enferma o renuncia
+- Scripts perfectos siempre
+- Métricas y optimización continua
+**Resultado:** "50% menos costo | 200% más conversión"
+**Testimonial:** "IA convierte 40% vs 15% promedio humano" - Call Center Seguros
+**CTA:** [CREAR MI AGENTE IA]
+
+### SERVICIO 4: ESCALAMIENTO DIGITAL
+**Para:** Emprendedores | Consultores | CEO's
+**Problema:** "No sé cómo escalar mi negocio con IA real"
+**Solución:** "Consultoría + implementación completa"
+- Audit de automatización personalizado
+- Estrategia de IA sector-específica
+- Implementación hands-on completa
+- Optimización continua resultados
+**Resultado:** "De manual a automatizado en 30 días"
+**Testimonial:** "Escaló de $50K/mes a $200K/mes automatizado" - Consultor Marketing
+**CTA:** [CONSULTA ESTRATÉGICA]
+
+## DIFERENCIADORES ÚNICOS
+
+### EXPERIENCIA CINEMATOGRÁFICA REAL
+"No somos programadores que aprendieron de cine. Somos cineastas que dominamos IA."
+- Producciones cinematográficas reales
+- Conocimiento técnico profesional
+- Estándares de calidad Hollywood
+- Aplicado a automatización empresarial
+
+### ARSENAL TECNOLÓGICO PROPIO
+"Mientras otros prometen 'próximamente', nosotros demostramos con tecnología funcionando."
+- Storyboard Studio Pro: OPERATIVO
+- AI Agent Hub: FUNCIONAL
+- Sistema rotación automática: ACTIVO
+- Generación ilimitada: REAL
+
+### RESULTADOS COMPROBABLES
+"Cada cliente puede verificar resultados específicos y cuantificables."
+- Métricas transparentes tiempo real
+- ROI garantizado documentado
+- Casos de estudio detallados
+- Before/After verificables
+
+## CASOS DE ÉXITO COMPLETOS
+
+### CONCESIONARIO FORD BAHÍA BLANCA
+**ANTES:** 25 consultas/mes | Atención manual | Leads perdidos
+**DESPUÉS:** 80 consultas/mes | IA 24/7 | +220% conversión
+**TESTIMONIAL:** "Franco implementó un asistente IA que responde sobre modelos, agenda test drives automáticamente, y hace seguimiento perfecto. Ahorramos 5 horas diarias y triplicamos ventas." - Roberto Martínez, Gerente General
+
+### INMOBILIARIA CENTRO BAHÍA BLANCA
+**ANTES:** Leads perdidos de noche | Agenda manual | Consultas básicas
+**DESPUÉS:** IA responde al instante | Visitas automáticas | +300% consultas
+**TESTIMONIAL:** "Antes perdíamos leads por no contestar fuera de horario. Ahora la IA responde inmediatamente, agenda visitas sola, y califica leads perfectamente. Cambió nuestro negocio." - María González, Directora Comercial
+
+### PRODUCTORA AUDIOVISUAL CABA
+**ANTES:** $80K y 2 meses por proyecto | Storyboards manuales
+**DESPUÉS:** 1 semana automatizado | Personajes consistentes perfectos
+**TESTIMONIAL:** "Storyboard Studio revolucionó nuestra productividad. Personajes perfectos, locaciones realistas, todo automático. Lo que costaba fortunas ahora es instantáneo." - Diego Fernández, Director Creativo
+
+## URGENCIA Y ESCASEZ
+
+### EXCLUSIVIDAD COMPETITIVA
+"Solo trabajamos con 1 empresa por sector en cada ciudad para garantizar ventaja competitiva total."
+
+**BAHÍA BLANCA - SLOTS DISPONIBLES:**
+- Concesionarios: 1 slot disponible
+- Inmobiliarias: 2 slots disponibles
+- Clínicas: 1 slot disponible
+- Contables: 2 slots disponibles
+- Call Centers: COMPLETO (lista espera)
+
+### OFERTA IRRESISTIBLE
+**PARA LAS PRIMERAS 3 EMPRESAS ESTA SEMANA:**
+- Consulta estratégica 2 horas (valor $50,000) → GRATIS
+- Audit completo automatización → GRATIS
+- Preview personalizado funcionando → GRATIS
+- 30 días implementación supervisada → GRATIS
+
+## CALL TO ACTION FINAL
+"¿LISTO PARA SER LA EMPRESA LÍDER DE TU SECTOR EN ARGENTINA?"
+
+Franco Larrarte ya automatizó +50 empresas exitosamente. Tu competencia ya está preguntando cómo implementar IA. La diferencia entre líder y seguidor se decide HOY.
+
+**BOTONES FINALES:**
+- [AGENDAR CONSULTA ESTRATÉGICA AHORA]
+- [WHATSAPP DIRECTO: +54 9 291 520-6692]
+
+**FRASE CIERRE:** "No vendemos herramientas. Creamos ecosistemas que transforman industrias."
+
+## ESPECIFICACIONES TÉCNICAS
+
+### DISEÑO CINEMATOGRÁFICO
+- **Colores principales:** Negro (#000000), Dorado (#FFD700), Blanco (#FFFFFF)
+- **Gradientes:** Gold-to-black cinematográficos
+- **Fuentes:** Montserrat Black (títulos), Inter (texto)
+- **Elementos visuales:** Film strips, ángulos de cámara, iconografía IA
+
+### FUNCIONALIDADES PREMIUM
+- Video hero con autoplay (muted)
+- Parallax scrolling suave
+- Contadores en tiempo real actualizándose
+- Hover effects en servicios
+- Modal con demos interactivos
+- Integración calendario directo
+- WhatsApp floating button permanente
+
+### OPTIMIZACIÓN
+- Mobile-first responsive design
+- Velocidad de carga <3 segundos
+- CTAs above fold <2 segundos
+- SEO optimizado para "automatización IA Argentina"
+- Google Analytics 4 + Facebook Pixel
+
+### INTEGRACIONES
+- Calendly para agendamiento
+- Make.com webhook para leads
+- WhatsApp Business API
+- Video hosting optimizado
+
+## CONTADORES TIEMPO REAL
+- [EMPRESAS AUTOMATIZADAS: 52] (actualizar cada 6 horas)
+- [AGENTES IA ACTIVOS: 1,247] (actualizar cada hora)
+- [STORYBOARDS GENERADOS HOY: 89] (actualizar cada 30 min)
+
+## ELEMENTOS ÚNICOS OBLIGATORIOS
+1. Hero video cinematográfico con Franco
+2. Demo modal interactivo
+3. Testimonials video rotando
+4. Arsenal showcase expandible
+5. Contador regresivo oferta limitada
+6. Calendario embebido seamless
+7. WhatsApp direct integration
+
+**OBJETIVO:** Landing que posicione a Franco Larrarte como líder indiscutible IA empresarial Argentina. Conversión objetivo: 20-30% visitantes → consulta agendada.
+
+**¿CREAR ESTA LANDING AHORA?**
