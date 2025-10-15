@@ -36,17 +36,16 @@ export default function HeroSection() {
         
         {/* Main Headline with Gradient Text */}
         <h1 className="text-5xl md:text-7xl font-serif font-black mb-6 leading-tight text-white animate-slide-up" data-testid="text-headline">
-          EL ÚNICO DIRECTOR DE CINE<br />
-          QUE <span className="bg-gradient-to-r from-[hsl(210,100%,55%)] to-[hsl(210,100%,70%)] bg-clip-text text-transparent">REVOLUCIONA EMPRESAS</span><br />
-          CON IA
+          SOLUCIONES DE IA<br />
+          PARA <span className="bg-gradient-to-r from-[hsl(210,100%,55%)] to-[hsl(210,100%,70%)] bg-clip-text text-transparent">TODO TIPO DE NEGOCIO</span>
         </h1>
         
         {/* Subheadline */}
         <p className="text-xl md:text-2xl font-sans mb-8 max-w-4xl mx-auto leading-relaxed text-[hsl(220,15%,92%)] animate-slide-up" style={{ animationDelay: '0.2s' }} data-testid="text-subheadline">
-          Franco Larrarte pasó de dirigir actores a entrenar IA que vende mejor que humanos.<br />
-          <span className="text-[hsl(210,100%,55%)] font-semibold">4 plataformas tecnológicas propias</span> • 
-          <span className="text-[hsl(210,100%,55%)] font-semibold">+50 empresas automatizadas</span> • 
-          <span className="text-[hsl(210,100%,55%)] font-semibold">+300% crecimiento promedio</span>
+          Desde bares y restaurantes hasta e-commerce y empresas corporativas.<br />
+          <span className="text-[hsl(210,100%,55%)] font-semibold">Posicionamiento digital</span> • 
+          <span className="text-[hsl(210,100%,55%)] font-semibold">Automatización inteligente</span> • 
+          <span className="text-[hsl(210,100%,55%)] font-semibold">Soluciones personalizadas</span>
         </p>
         
         {/* CTAs with Modern Design */}
@@ -58,7 +57,7 @@ export default function HeroSection() {
             onClick={() => console.log('Ver Ecosistema clicked')}
           >
             <Play className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-            VER ECOSISTEMA COMPLETO EN VIVO
+            DESCUBRE NUESTRAS SOLUCIONES
           </Button>
           <Button 
             size="lg" 
@@ -68,7 +67,7 @@ export default function HeroSection() {
             onClick={() => console.log('Agendar Consulta clicked')}
           >
             <ChevronRight className="mr-2 h-5 w-5" />
-            AGENDAR CONSULTA ESTRATÉGICA
+            CONSULTA GRATUITA
           </Button>
         </div>
         
@@ -77,37 +76,37 @@ export default function HeroSection() {
           <div className="bg-white/5 backdrop-blur-md border border-[hsl(210,100%,55%)]/30 rounded-lg p-4 hover:bg-white/10 hover:border-[hsl(210,100%,55%)]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[hsl(210,100%,55%)]/20">
             <div className="text-[hsl(210,100%,55%)] text-2xl font-bold mb-1 flex items-center justify-center gap-1" data-testid="text-companies">
               <Sparkles className="h-5 w-5" />
-              +50
+              BARES Y RESTAURANTES
             </div>
-            <div className="text-sm text-[hsl(220,15%,92%)]">EMPRESAS automatizadas exitosamente</div>
+            <div className="text-sm text-[hsl(220,15%,92%)]">Automatización y reservas inteligentes</div>
           </div>
           <div className="bg-white/5 backdrop-blur-md border border-[hsl(210,100%,55%)]/30 rounded-lg p-4 hover:bg-white/10 hover:border-[hsl(210,100%,55%)]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[hsl(210,100%,55%)]/20">
             <div className="text-[hsl(210,100%,55%)] text-2xl font-bold mb-1 flex items-center justify-center gap-1" data-testid="text-agents">
               <Sparkles className="h-5 w-5" />
-              +1,000
+              LOCALES DE ROPA
             </div>
-            <div className="text-sm text-[hsl(220,15%,92%)]">AGENTES IA creados y funcionando</div>
+            <div className="text-sm text-[hsl(220,15%,92%)]">Asistentes virtuales y ventas online</div>
           </div>
           <div className="bg-white/5 backdrop-blur-md border border-[hsl(210,100%,55%)]/30 rounded-lg p-4 hover:bg-white/10 hover:border-[hsl(210,100%,55%)]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[hsl(210,100%,55%)]/20">
             <div className="text-[hsl(210,100%,55%)] text-2xl font-bold mb-1 flex items-center justify-center gap-1" data-testid="text-storyboards">
               <Sparkles className="h-5 w-5" />
-              +10,000
+              E-COMMERCE
             </div>
-            <div className="text-sm text-[hsl(220,15%,92%)]">STORYBOARDS profesionales generados</div>
+            <div className="text-sm text-[hsl(220,15%,92%)]">Optimización y conversión con IA</div>
           </div>
           <div className="bg-white/5 backdrop-blur-md border border-[hsl(210,100%,55%)]/30 rounded-lg p-4 hover:bg-white/10 hover:border-[hsl(210,100%,55%)]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[hsl(210,100%,55%)]/20">
             <div className="text-[hsl(210,100%,55%)] text-2xl font-bold mb-1 flex items-center justify-center gap-1" data-testid="text-platforms">
               <Sparkles className="h-5 w-5" />
-              4
+              POSICIONAMIENTO
             </div>
-            <div className="text-sm text-[hsl(220,15%,92%)]">PLATAFORMAS tecnológicas propias</div>
+            <div className="text-sm text-[hsl(220,15%,92%)]">SEO y marketing digital con IA</div>
           </div>
           <div className="bg-white/5 backdrop-blur-md border border-[hsl(210,100%,55%)]/30 rounded-lg p-4 hover:bg-white/10 hover:border-[hsl(210,100%,55%)]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[hsl(210,100%,55%)]/20">
             <div className="text-[hsl(210,100%,55%)] text-2xl font-bold mb-1 flex items-center justify-center gap-1" data-testid="text-arsenal">
               <Sparkles className="h-5 w-5" />
-              +$500K
+              EMPRESAS
             </div>
-            <div className="text-sm text-[hsl(220,15%,92%)]">ARSENAL TÉCNICO valorado en USD</div>
+            <div className="text-sm text-[hsl(220,15%,92%)]">Soluciones complejas personalizadas</div>
           </div>
         </div>
       </div>
