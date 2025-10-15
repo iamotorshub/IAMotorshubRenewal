@@ -7,18 +7,20 @@
 
 ### A. Color Palette
 **Primary Colors:**
-- Black: 0 0% 0% (primary background, text)
-- Gold: 45 100% 50% (primary CTAs, accents) 
-- White: 0 0% 100% (text on dark, secondary CTAs)
+- Deep Blue: 220 70% 25% (primary brand color, CTAs)
+- Electric Blue: 210 100% 55% (accents, highlights, interactive elements)
+- Platinum Gray: 220 15% 92% (light backgrounds, text on dark)
 
 **Supporting Colors:**
-- Dark Gray: 0 0% 15% (secondary backgrounds)
-- Light Gray: 0 0% 85% (subtle text, borders)
+- Dark Slate: 220 20% 15% (primary dark background)
+- Medium Gray: 220 10% 45% (secondary text, borders)
+- Light Gray: 220 5% 65% (tertiary text)
 
 **Gradients:**
-- Hero section: Radial gradient from gold to black for dramatic cinematic effect
-- Service cards: Subtle black to dark gray gradients
-- CTA buttons: Gold gradient (45 100% 60% to 45 100% 40%) for premium feel
+- Hero section: Linear gradient from Deep Blue to Dark Slate for modern tech aesthetic
+- Service cards: Platinum Gray to white gradients with subtle blue tints
+- CTA buttons: Electric Blue gradient (210 100% 60% to 210 100% 50%) for modern appeal
+- Card overlays: Dark Slate with opacity for depth
 
 ### B. Typography
 **Fonts via Google Fonts:**
@@ -98,16 +100,45 @@
 - Grid overlays for technical aesthetic
 - Minimal use to maintain focus on content
 
-### E. Animations
-**Minimal Implementation:**
-- Smooth scroll behavior for navigation
-- Subtle fade-in for sections on scroll
+### E. Animations & Interactivity
+**Card Animations:**
+- Hover: Lift effect with subtle shadow increase and blue glow
+- Scale: Slight scale (1.02) on hover for depth
+- Border: Animated electric blue border on interaction
+- Content reveal: Smooth opacity transitions for additional content
+
+**Scroll Animations:**
+- Fade-in with slide-up for sections entering viewport
+- Stagger animations for card grids (delay cascade)
 - Counter animations for real-time metrics
-- Hover states for interactive elements only
+- Progress bars with smooth fill animations
+
+**Micro-interactions:**
+- Button ripple effects on click
+- Icon rotation/bounce on hover
+- Image zoom on hover within containers
+- Smooth color transitions (200ms ease)
 
 **Avoid:**
 - Complex parallax effects
 - Distracting motion graphics
-- Auto-playing content beyond hero video
+- Auto-playing content beyond hero
 
-This design system creates a premium, cinematographic experience that builds trust while maintaining high conversion focus through clear hierarchy, strategic use of gold accents, and professional video testimonials.
+### F. Interactive Cards Design
+**Structure:**
+- Glass-morphism effect with backdrop blur
+- Platinum gray background with subtle blue tint
+- Electric blue accent line on left/top border
+- Icon or image at top with overlay hover effect
+
+**States:**
+- Default: Platinum gray with subtle shadow
+- Hover: Elevated with electric blue glow, scale 1.02
+- Active: Pressed state with deeper blue accent
+
+**Content Pattern:**
+- Visual (icon/image) → Title → Description → CTA
+- Progressive disclosure: Show more details on hover/click
+- Flip cards for before/after or problem/solution views
+
+This design system creates a modern, tech-forward experience with platinum grays and electric blues, emphasizing interactivity and visual polish while maintaining high conversion focus.
