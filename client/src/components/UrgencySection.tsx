@@ -15,7 +15,7 @@ function SlotCard({ sector, available, total, status }: SlotProps) {
   const getStatusColor = () => {
     switch (status) {
       case 'available': return 'bg-green-500';
-      case 'limited': return 'bg-yellow-500';
+      case 'limited': return 'bg-[hsl(210,100%,55%)]';
       case 'full': return 'bg-red-500';
     }
   };
@@ -29,10 +29,10 @@ function SlotCard({ sector, available, total, status }: SlotProps) {
   };
 
   return (
-    <Card className="bg-gradient-to-br from-gray-900/80 to-black/80 border-yellow-400/20 hover-elevate transition-all duration-300">
+    <Card className="bg-gradient-to-br from-white to-[hsl(220,15%,92%)] border-[hsl(210,100%,55%)]/30 hover-elevate transition-all duration-300 hover:border-[hsl(210,100%,55%)]/50 hover:scale-105">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-white font-serif text-lg">{sector}</CardTitle>
+          <CardTitle className="text-[hsl(220,70%,25%)] font-serif text-base">{sector}</CardTitle>
           <Badge className={`${getStatusColor()} text-white font-bold`}>
             {getStatusText()}
           </Badge>
@@ -40,10 +40,10 @@ function SlotCard({ sector, available, total, status }: SlotProps) {
       </CardHeader>
       <CardContent>
         <div className="text-center">
-          <div className="text-3xl font-bold text-yellow-400 mb-2">
+          <div className="text-3xl font-bold text-[hsl(210,100%,55%)] mb-2">
             {available}/{total}
           </div>
-          <p className="text-gray-300 text-sm">
+          <p className="text-[hsl(220,10%,45%)] text-sm">
             {status === 'full' ? 'Lista de espera' : 'Slots disponibles'}
           </p>
         </div>
@@ -81,21 +81,21 @@ function CountdownTimer() {
 
   return (
     <div className="grid grid-cols-4 gap-4 max-w-md mx-auto">
-      <div className="bg-yellow-400/20 rounded-lg p-3 text-center">
-        <div className="text-2xl font-bold text-yellow-400" data-testid="countdown-days">{timeLeft.days}</div>
-        <div className="text-xs text-gray-300">DÍAS</div>
+      <div className="bg-[hsl(210,100%,55%)]/20 border-2 border-[hsl(210,100%,55%)]/30 rounded-lg p-3 text-center">
+        <div className="text-2xl font-bold text-[hsl(210,100%,55%)]" data-testid="countdown-days">{timeLeft.days}</div>
+        <div className="text-xs text-[hsl(220,10%,45%)]">DÍAS</div>
       </div>
-      <div className="bg-yellow-400/20 rounded-lg p-3 text-center">
-        <div className="text-2xl font-bold text-yellow-400" data-testid="countdown-hours">{timeLeft.hours}</div>
-        <div className="text-xs text-gray-300">HORAS</div>
+      <div className="bg-[hsl(210,100%,55%)]/20 border-2 border-[hsl(210,100%,55%)]/30 rounded-lg p-3 text-center">
+        <div className="text-2xl font-bold text-[hsl(210,100%,55%)]" data-testid="countdown-hours">{timeLeft.hours}</div>
+        <div className="text-xs text-[hsl(220,10%,45%)]">HORAS</div>
       </div>
-      <div className="bg-yellow-400/20 rounded-lg p-3 text-center">
-        <div className="text-2xl font-bold text-yellow-400" data-testid="countdown-minutes">{timeLeft.minutes}</div>
-        <div className="text-xs text-gray-300">MIN</div>
+      <div className="bg-[hsl(210,100%,55%)]/20 border-2 border-[hsl(210,100%,55%)]/30 rounded-lg p-3 text-center">
+        <div className="text-2xl font-bold text-[hsl(210,100%,55%)]" data-testid="countdown-minutes">{timeLeft.minutes}</div>
+        <div className="text-xs text-[hsl(220,10%,45%)]">MIN</div>
       </div>
-      <div className="bg-yellow-400/20 rounded-lg p-3 text-center">
-        <div className="text-2xl font-bold text-yellow-400" data-testid="countdown-seconds">{timeLeft.seconds}</div>
-        <div className="text-xs text-gray-300">SEG</div>
+      <div className="bg-[hsl(210,100%,55%)]/20 border-2 border-[hsl(210,100%,55%)]/30 rounded-lg p-3 text-center">
+        <div className="text-2xl font-bold text-[hsl(210,100%,55%)]" data-testid="countdown-seconds">{timeLeft.seconds}</div>
+        <div className="text-xs text-[hsl(220,10%,45%)]">SEG</div>
       </div>
     </div>
   );
@@ -118,26 +118,26 @@ export default function UrgencySection() {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-red-900/20 via-black to-yellow-900/20">
+    <section className="py-24 bg-gradient-to-b from-[hsl(220,15%,97%)] via-white to-[hsl(220,15%,97%)]">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-slide-up">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <AlertTriangle className="h-8 w-8 text-red-400" />
-            <h2 className="text-4xl md:text-6xl font-serif font-black text-white" data-testid="text-urgency-title">
-              URGENCIA Y <span className="text-red-400">ESCASEZ</span>
+            <AlertTriangle className="h-8 w-8 text-red-500" />
+            <h2 className="text-4xl md:text-6xl font-serif font-black text-[hsl(220,70%,25%)]" data-testid="text-urgency-title">
+              URGENCIA Y <span className="text-red-500">ESCASEZ</span>
             </h2>
-            <AlertTriangle className="h-8 w-8 text-red-400" />
+            <AlertTriangle className="h-8 w-8 text-red-500" />
           </div>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-[hsl(220,10%,45%)] max-w-3xl mx-auto">
             Solo trabajamos con 1 empresa por sector en cada ciudad para garantizar ventaja competitiva total
           </p>
         </div>
 
         {/* Exclusivity Section */}
-        <div className="bg-gradient-to-r from-black/80 via-gray-900/80 to-black/80 rounded-2xl border border-yellow-400/30 p-8 mb-12">
+        <div className="bg-gradient-to-r from-[hsl(220,15%,92%)] via-white to-[hsl(220,15%,92%)] rounded-2xl border-2 border-[hsl(210,100%,55%)]/30 p-8 mb-12 shadow-xl animate-slide-up" style={{ animationDelay: '0.2s' }}>
           <div className="flex items-center gap-3 mb-6">
-            <MapPin className="h-6 w-6 text-yellow-400" />
-            <h3 className="text-2xl font-serif font-bold text-white">
+            <MapPin className="h-6 w-6 text-[hsl(210,100%,55%)]" />
+            <h3 className="text-2xl font-serif font-bold text-[hsl(220,70%,25%)]">
               BAHÍA BLANCA - SLOTS DISPONIBLES
             </h3>
           </div>
@@ -150,15 +150,15 @@ export default function UrgencySection() {
         </div>
 
         {/* Limited Time Offer */}
-        <div className="bg-gradient-to-r from-yellow-400/10 via-yellow-400/5 to-yellow-400/10 rounded-2xl border border-yellow-400/50 p-8 mb-12">
+        <div className="bg-gradient-to-r from-[hsl(210,100%,55%)]/10 via-[hsl(210,100%,55%)]/5 to-[hsl(210,100%,55%)]/10 rounded-2xl border-2 border-[hsl(210,100%,55%)]/50 p-8 mb-12 shadow-xl animate-slide-up" style={{ animationDelay: '0.4s' }}>
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <Clock className="h-6 w-6 text-yellow-400" />
-              <h3 className="text-3xl font-serif font-bold text-white">
+              <Clock className="h-6 w-6 text-[hsl(210,100%,55%)]" />
+              <h3 className="text-3xl font-serif font-bold text-[hsl(220,70%,25%)]">
                 OFERTA IRRESISTIBLE
               </h3>
             </div>
-            <p className="text-xl text-yellow-400 font-bold mb-6">
+            <p className="text-xl text-[hsl(210,100%,55%)] font-bold mb-6">
               PARA LAS PRIMERAS 3 EMPRESAS ESTA SEMANA:
             </p>
             
@@ -167,11 +167,11 @@ export default function UrgencySection() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {offers.map((offer, index) => (
-              <div key={index} className="flex items-center gap-4 bg-black/30 rounded-lg p-4">
-                <offer.icon className="h-6 w-6 text-green-400 flex-shrink-0" />
+              <div key={index} className="flex items-center gap-4 bg-white/70 rounded-lg p-4 border border-[hsl(210,100%,55%)]/20">
+                <offer.icon className="h-6 w-6 text-green-500 flex-shrink-0" />
                 <div className="flex-1">
-                  <p className="text-white font-medium">{offer.text}</p>
-                  <p className="text-gray-400 text-sm">(valor {offer.value})</p>
+                  <p className="text-[hsl(220,70%,25%)] font-medium">{offer.text}</p>
+                  <p className="text-[hsl(220,10%,45%)] text-sm">(valor {offer.value})</p>
                 </div>
                 <Badge className="bg-green-500 text-white font-bold">
                   {offer.status}
@@ -182,21 +182,21 @@ export default function UrgencySection() {
         </div>
 
         {/* Final CTA */}
-        <div className="text-center">
-          <h3 className="text-3xl md:text-5xl font-serif font-black text-white mb-6" data-testid="text-final-question">
+        <div className="text-center animate-slide-up" style={{ animationDelay: '0.6s' }}>
+          <h3 className="text-3xl md:text-5xl font-serif font-black text-[hsl(220,70%,25%)] mb-6" data-testid="text-final-question">
             ¿LISTO PARA SER LA EMPRESA LÍDER<br />
-            <span className="text-yellow-400">DE TU SECTOR EN ARGENTINA?</span>
+            <span className="bg-gradient-to-r from-[hsl(210,100%,55%)] to-[hsl(210,100%,70%)] bg-clip-text text-transparent">DE TU SECTOR EN ARGENTINA?</span>
           </h3>
           
-          <p className="text-xl text-gray-300 mb-8 max-w-4xl mx-auto">
+          <p className="text-xl text-[hsl(220,10%,45%)] mb-8 max-w-4xl mx-auto">
             Franco Larrarte ya automatizó +50 empresas exitosamente. Tu competencia ya está preguntando 
-            cómo implementar IA. <span className="text-yellow-400 font-bold">La diferencia entre líder y seguidor se decide HOY.</span>
+            cómo implementar IA. <span className="text-[hsl(210,100%,55%)] font-bold">La diferencia entre líder y seguidor se decide HOY.</span>
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg" 
-              className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold px-8 py-4 text-lg"
+              className="bg-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,50%)] text-white font-bold px-8 py-6 text-lg transition-all duration-300 hover:shadow-xl hover:shadow-[hsl(210,100%,55%)]/40 hover:scale-105"
               data-testid="button-final-consultation"
               onClick={() => console.log('Agendar Consulta Estratégica clicked')}
             >
@@ -205,7 +205,7 @@ export default function UrgencySection() {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-green-400 text-green-400 hover:bg-green-400 hover:text-black font-bold px-8 py-4 text-lg"
+              className="border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white font-bold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
               data-testid="button-whatsapp"
               onClick={() => console.log('WhatsApp directo clicked')}
             >
@@ -213,11 +213,29 @@ export default function UrgencySection() {
             </Button>
           </div>
           
-          <p className="text-yellow-400 font-bold text-xl mt-8" data-testid="text-closing">
+          <p className="text-[hsl(210,100%,55%)] font-bold text-xl mt-8" data-testid="text-closing">
             "No vendemos herramientas. Creamos ecosistemas que transforman industrias."
           </p>
         </div>
       </div>
+      
+      {/* Animation Styles */}
+      <style>{`
+        @keyframes slide-up {
+          from { 
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to { 
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-slide-up {
+          animation: slide-up 0.8s ease-out;
+          animation-fill-mode: both;
+        }
+      `}</style>
     </section>
   );
 }
