@@ -18,7 +18,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form endpoint
   app.post("/api/contact", async (req, res) => {
     try {
-      const { nombre, dni, email, webInstagram, descripcion } = req.body;
+      const { nombre, email, webInstagram, descripcion } = req.body;
 
       // Enviar email al administrador
       await transporter.sendMail({
@@ -28,7 +28,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
         html: `
           <h2>Nueva Consulta de Demo</h2>
           <p><strong>Nombre:</strong> ${nombre}</p>
-          <p><strong>DNI:</strong> ${dni}</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Web/Instagram:</strong> ${webInstagram || 'No proporcionado'}</p>
           <p><strong>Descripción del Negocio:</strong></p>

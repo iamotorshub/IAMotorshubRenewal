@@ -10,7 +10,6 @@ import { MessageSquare, CheckCircle } from "lucide-react";
 export default function AssistantSection() {
   const [formData, setFormData] = useState({
     nombre: "",
-    dni: "",
     email: "",
     webInstagram: "",
     descripcion: ""
@@ -96,22 +95,6 @@ export default function AssistantSection() {
                       value={formData.nombre}
                       onChange={handleChange}
                       placeholder="Juan Pérez"
-                      className="border-[hsl(210,100%,55%)]/30 focus:border-[hsl(210,100%,55%)]"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="dni" className="text-[hsl(220,70%,25%)] font-semibold">
-                      DNI *
-                    </Label>
-                    <Input
-                      id="dni"
-                      name="dni"
-                      type="text"
-                      required
-                      value={formData.dni}
-                      onChange={handleChange}
-                      placeholder="12345678"
                       className="border-[hsl(210,100%,55%)]/30 focus:border-[hsl(210,100%,55%)]"
                     />
                   </div>
