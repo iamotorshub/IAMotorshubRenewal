@@ -3,6 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Clock, MapPin, CheckCircle, AlertTriangle } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 interface SlotProps {
   sector: string;
@@ -19,7 +24,7 @@ function SlotCard({ sector, available, total, status }: SlotProps) {
       case 'full': return 'bg-red-500';
     }
   };
-  
+
   const getStatusText = () => {
     switch (status) {
       case 'available': return 'DISPONIBLE';
@@ -101,7 +106,121 @@ function CountdownTimer() {
   );
 }
 
+function ScheduleModal({ open, onOpenChange }: { open: boolean, onOpenChange: (open: boolean) => void }) {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedTime, setSelectedTime] = useState<Date | null>(null);
+
+  const availableTimes = () => {
+    const times = [];
+    let currentTime = new Date();
+    currentTime.setHours(11, 0, 0); // Start at 11:00 AM
+
+    while (currentTime.getHours() < 20) {
+      times.push(new Date(currentTime));
+      currentTime.setMinutes(currentTime.getMinutes() + 30);
+    }
+    return times;
+  };
+
+  const handleSchedule = () => {
+    // TODO: Implement actual scheduling logic (send email, save to DB, etc.)
+    console.log('Scheduling:', { name, email, selectedDate, selectedTime });
+    alert('¡Consulta agendada! Pronto recibirás una confirmación por email.');
+    onOpenChange(false);
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Agendar Consulta Estratégica</DialogTitle>
+        </DialogHeader>
+        <div className="grid gap-4 py-4">
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="name" className="text-right">
+              Nombre
+            </Label>
+            <Input
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="col-span-3"
+            />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="email" className="text-right">
+              Email
+            </Label>
+            <Input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="col-span-3"
+            />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="date" className="text-right">
+              Fecha
+            </Label>
+            <DatePicker
+              id="date"
+              selected={selectedDate}
+              onChange={(date) => setSelectedDate(date)}
+              dateFormat="dd/MM/yyyy"
+              minDate={new Date()} // Cannot select previous dates
+              className="col-span-3 p-2 border rounded-md"
+              placeholderText="Selecciona una fecha"
+            />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="time" className="text-right">
+              Horario
+            </Label>
+            <DatePicker
+              id="time"
+              selected={selectedTime}
+              onChange={(time) => setSelectedTime(time)}
+              showTimeSelect
+              showTimeSelectOnly
+              timeIntervals={30}
+              timeCaption="Horario"
+              dateFormat="h:mm aa"
+              filterTime={({getHours, getMinutes}) => {
+                const currentHour = getHours();
+                const currentMinute = getMinutes();
+                const startTime = 11; // 11 AM
+                const endTime = 20; // 8 PM
+
+                if (currentHour < startTime || currentHour >= endTime) {
+                  return false;
+                }
+                if (currentHour === endTime && currentMinute > 0) {
+                  return false;
+                }
+                return true;
+              }}
+              className="col-span-3 p-2 border rounded-md"
+              placeholderText="Selecciona un horario"
+            />
+          </div>
+        </div>
+        <DialogTrigger asChild>
+          <Button onClick={handleSchedule} className="w-full">
+            Confirmar Cita
+          </Button>
+        </DialogTrigger>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+
 export default function UrgencySection() {
+  const [showScheduleModal, setShowScheduleModal] = useState(false);
+
   const slots = [
     { sector: 'Concesionarios', available: 1, total: 1, status: 'limited' as const },
     { sector: 'Inmobiliarias', available: 2, total: 3, status: 'available' as const },
@@ -141,7 +260,7 @@ export default function UrgencySection() {
               BAHÍA BLANCA - SLOTS DISPONIBLES
             </h3>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {slots.map((slot, index) => (
               <SlotCard key={index} {...slot} />
@@ -161,10 +280,10 @@ export default function UrgencySection() {
             <p className="text-xl text-[hsl(210,100%,55%)] font-bold mb-6">
               PARA LAS PRIMERAS 3 EMPRESAS ESTA SEMANA:
             </p>
-            
+
             <CountdownTimer />
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {offers.map((offer, index) => (
               <div key={index} className="flex items-center gap-4 bg-white/70 rounded-lg p-4 border border-[hsl(210,100%,55%)]/20">
@@ -187,38 +306,38 @@ export default function UrgencySection() {
             ¿LISTO PARA SER LA EMPRESA LÍDER<br />
             <span className="bg-gradient-to-r from-[hsl(210,100%,55%)] to-[hsl(210,100%,70%)] bg-clip-text text-transparent">DE TU SECTOR EN ARGENTINA?</span>
           </h3>
-          
+
           <p className="text-xl text-[hsl(220,10%,45%)] mb-8 max-w-4xl mx-auto">
             Ya automatizamos +50 empresas exitosamente. Tu competencia ya está preguntando 
             cómo implementar IA. <span className="text-[hsl(210,100%,55%)] font-bold">La diferencia entre líder y seguidor se decide HOY.</span>
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg" 
               className="bg-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,50%)] text-white font-bold px-8 py-6 text-lg transition-all duration-300 hover:shadow-xl hover:shadow-[hsl(210,100%,55%)]/40 hover:scale-105"
               data-testid="button-final-consultation"
-              onClick={() => console.log('Agendar Consulta Estratégica clicked')}
+              onClick={() => setShowScheduleModal(true)}
             >
               AGENDAR CONSULTA ESTRATÉGICA AHORA
             </Button>
             <Button 
               size="lg" 
-              variant="outline" 
+              variant="outline"
               className="border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white font-bold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
               data-testid="button-whatsapp"
-              onClick={() => console.log('WhatsApp directo clicked')}
+              onClick={() => window.open('https://wa.me/5492915206692', '_blank')}
             >
               WHATSAPP DIRECTO: +54 9 291 520-6692
             </Button>
           </div>
-          
+
           <p className="text-[hsl(210,100%,55%)] font-bold text-xl mt-8" data-testid="text-closing">
             "No vendemos herramientas. Creamos ecosistemas que transforman industrias."
           </p>
         </div>
       </div>
-      
+
       {/* Animation Styles */}
       <style>{`
         @keyframes slide-up {
