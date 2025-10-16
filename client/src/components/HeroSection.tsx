@@ -27,9 +27,9 @@ export default function HeroSection() {
         {/* Logo with Animation */}
         <div className="mb-8 animate-fade-in">
           <img 
-            src={logoPath} 
+            src="/logo-white.png" 
             alt="IA MOTORSHUB" 
-            className="h-20 mx-auto mb-6 transition-transform hover:scale-105 duration-300"
+            className="h-32 md:h-40 mx-auto mb-6 transition-transform hover:scale-105 duration-300"
             data-testid="img-logo"
           />
         </div>

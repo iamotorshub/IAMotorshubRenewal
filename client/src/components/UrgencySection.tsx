@@ -189,7 +189,7 @@ export default function UrgencySection() {
           </h3>
           
           <p className="text-xl text-[hsl(220,10%,45%)] mb-8 max-w-4xl mx-auto">
-            Franco Larrarte ya automatizó +50 empresas exitosamente. Tu competencia ya está preguntando 
+            Ya automatizamos +50 empresas exitosamente. Tu competencia ya está preguntando 
             cómo implementar IA. <span className="text-[hsl(210,100%,55%)] font-bold">La diferencia entre líder y seguidor se decide HOY.</span>
           </p>
           

@@ -164,8 +164,62 @@ export default function ServicesSection() {
     {
       icon: MessageSquare,
       image: automationImage,
+      title: "RENTALS AI - INMOBILIARIAS",
+      subtitle: "Para: Inmobiliarias | Propietarios | Administradores de Propiedades",
+      problem: "Pierdes inquilinos por atención lenta y falta de seguimiento",
+      solution: "IA que gestiona consultas, visitas y contratos automáticamente",
+      features: [
+        "Atención 24/7 a consultas de propiedades",
+        "Agendamiento automático de visitas",
+        "Calificación inteligente de potenciales inquilinos",
+        "Seguimiento automatizado del proceso de alquiler"
+      ],
+      result: "+200% consultas atendidas | -70% tiempo administrativo",
+      testimonial: "Cerramos 3x más contratos con la mitad del esfuerzo",
+      author: "Inmobiliaria Premium, CABA",
+      ctaText: "VER DEMO RENTALS AI"
+    },
+    {
+      icon: Film,
+      image: videoImage,
+      title: "PROBADOR VIRTUAL",
+      subtitle: "Para: Locales de Ropa | Showrooms | Emprendedores de Moda",
+      problem: "Clientes no compran sin probarse la ropa físicamente",
+      solution: "IA que permite probar ropa virtualmente desde cualquier lugar",
+      features: [
+        "Prueba virtual de prendas en tiempo real",
+        "Recomendaciones de talla personalizadas",
+        "Visualización 3D de combinaciones de outfits",
+        "Incremento de conversión online significativo"
+      ],
+      result: "+150% conversión online | -40% devoluciones",
+      testimonial: "Las ventas online superaron las ventas en tienda",
+      author: "Boutique Fashion, Palermo",
+      ctaText: "PROBAR PROBADOR VIRTUAL"
+    },
+    {
+      icon: Phone,
+      image: phoneImage,
+      title: "MENÚ EN VIVO - BARES Y RESTAURANTES",
+      subtitle: "Para: Bares | Restaurantes | Cafeterías",
+      problem: "Menús desactualizados, clientes no saben qué hay disponible hoy",
+      solution: "Menú digital actualizado en tiempo real con IA",
+      features: [
+        "Actualización instantánea de disponibilidad",
+        "Fotos profesionales generadas por IA",
+        "Recomendaciones personalizadas según preferencias",
+        "Pedidos y reservas integrados"
+      ],
+      result: "+80% pedidos digitales | -50% errores en pedidos",
+      testimonial: "Nuestros clientes ahora ordenan antes de llegar",
+      author: "Restaurante El Buen Sabor, Bahía Blanca",
+      ctaText: "VER MENÚ EN VIVO"
+    },
+    {
+      icon: MessageSquare,
+      image: automationImage,
       title: "AUTOMATIZACIÓN COMERCIAL",
-      subtitle: "Para: Concesionarios | Inmobiliarias | Contables | Clínicas",
+      subtitle: "Para: Concesionarios | Contables | Clínicas | Servicios",
       problem: "Pierdes 70% de leads por atención manual deficiente",
       solution: "IA conversacional que atiende como humano 24/7",
       features: [
@@ -240,7 +294,7 @@ export default function ServicesSection() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-4xl md:text-6xl font-serif font-black text-[hsl(220,70%,25%)] mb-6" data-testid="text-services-title">
-            4 SERVICIOS <span className="bg-gradient-to-r from-[hsl(210,100%,55%)] to-[hsl(210,100%,70%)] bg-clip-text text-transparent">PRINCIPALES</span>
+            SERVICIOS <span className="bg-gradient-to-r from-[hsl(210,100%,55%)] to-[hsl(210,100%,70%)] bg-clip-text text-transparent">PRINCIPALES</span>
           </h2>
           <p className="text-xl text-[hsl(220,10%,45%)] max-w-3xl mx-auto">
             Ecosistema completo de automatización con IA que transforma industrias
