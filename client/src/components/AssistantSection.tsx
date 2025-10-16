@@ -17,10 +17,30 @@ export default function AssistantSection() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
+    
+    try {
+      // Enviar formulario por email
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          to: 'contacto@iamotorshub.com'
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        console.error('Error sending form');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -171,6 +191,28 @@ export default function AssistantSection() {
             </CardContent>
           </Card>
         </div>
+      </div>
+
+      {/* Chatbot Integration */}
+      <div className="mt-12 max-w-4xl mx-auto">
+        <Card className="bg-gradient-to-br from-white to-[hsl(220,15%,92%)] border-[hsl(210,100%,55%)]/30 shadow-2xl overflow-hidden">
+          <CardHeader className="text-center bg-[hsl(220,70%,25%)] text-white">
+            <CardTitle className="text-2xl font-serif font-bold">
+              Chatea con Nuestro Asistente IA
+            </CardTitle>
+            <CardDescription className="text-[hsl(210,100%,55%)]">
+              Obtén respuestas inmediatas a tus consultas
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="p-0">
+            <iframe
+              src="https://auditoria.base44.app/"
+              className="w-full h-[600px] border-0"
+              title="Chatbot IA MOTORSHUB"
+              allow="microphone"
+            />
+          </CardContent>
+        </Card>
       </div>
 
       {/* Animation Styles */}

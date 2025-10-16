@@ -2,10 +2,14 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MessageSquare, Film, Phone, TrendingUp, ArrowRight, CheckCircle, RotateCcw } from "lucide-react";
-import automationImage from "@assets/stock_images/business_automation__3dd54533.jpg";
-import videoImage from "@assets/stock_images/video_production_stu_94b3e9d0.jpg";
-import phoneImage from "@assets/stock_images/customer_service_cal_e6f7035d.jpg";
-import scalingImage from "@assets/stock_images/digital_marketing_gr_d641b0a4.jpg";
+// Imágenes actualizadas para servicios
+const rentalsImage = "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop";
+const probadorImage = "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop";
+const menuImage = "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop";
+const automationImage = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop";
+const videoImage = "https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=800&h=600&fit=crop";
+const phoneImage = "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop";
+const scalingImage = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop";
 
 interface ServiceProps {
   icon: React.ComponentType<{ className?: string }>;
@@ -163,7 +167,7 @@ export default function ServicesSection() {
   const services = [
     {
       icon: MessageSquare,
-      image: automationImage,
+      image: rentalsImage,
       title: "RENTALS AI - INMOBILIARIAS",
       subtitle: "Para: Inmobiliarias | Propietarios | Administradores de Propiedades",
       problem: "Pierdes inquilinos por atención lenta y falta de seguimiento",
@@ -181,7 +185,7 @@ export default function ServicesSection() {
     },
     {
       icon: Film,
-      image: videoImage,
+      image: probadorImage,
       title: "PROBADOR VIRTUAL",
       subtitle: "Para: Locales de Ropa | Showrooms | Emprendedores de Moda",
       problem: "Clientes no compran sin probarse la ropa físicamente",
@@ -199,7 +203,7 @@ export default function ServicesSection() {
     },
     {
       icon: Phone,
-      image: phoneImage,
+      image: menuImage,
       title: "MENÚ EN VIVO - BARES Y RESTAURANTES",
       subtitle: "Para: Bares | Restaurantes | Cafeterías",
       problem: "Menús desactualizados, clientes no saben qué hay disponible hoy",
