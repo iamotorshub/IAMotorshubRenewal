@@ -3,12 +3,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { MessageSquare, Film, Phone, TrendingUp, ArrowRight, CheckCircle, RotateCcw } from "lucide-react";
 // Imágenes actualizadas para servicios
-const rentalsImage = "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop";
-const probadorImage = "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop";
-const menuImage = "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop";
-const automationImage = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop";
-const videoImage = "https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=800&h=600&fit=crop";
-const phoneImage = "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop";
+import rentalsImage from "@assets/hero-rentals-ai_1760656167854.png";
+import probadorImage from "@assets/hero-Probador -virtual_1760656167864.jpg";
+import menuImage from "@assets/hero-menu-vivo_1760656167856.jpg";
+import automationImage from "@assets/hero-automatizacion-comercial_1760656167856.png";
+import videoImage from "@assets/hero-storyboard-pro_1760656167864.jpg";
+import phoneImage from "@assets/hero-agentes-telefonicos_1760656167864.jpg";
 const scalingImage = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop";
 
 interface ServiceProps {
@@ -40,7 +40,7 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
               <img 
                 src={image} 
                 alt={title} 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[hsl(220,70%,25%)]/90 to-transparent"></div>
               <div className="absolute top-4 left-4 w-14 h-14 bg-[hsl(210,100%,55%)] rounded-full flex items-center justify-center shadow-lg">
