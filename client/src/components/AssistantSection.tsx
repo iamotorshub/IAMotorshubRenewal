@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,7 +17,7 @@ export default function AssistantSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       // Enviar formulario por email
       const response = await fetch('/api/contact', {
@@ -50,7 +49,7 @@ export default function AssistantSection() {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-b from-[hsl(220,15%,97%)] via-white to-[hsl(220,15%,97%)]">
+    <section id="assistant-section" className="py-24 bg-gradient-to-b from-[hsl(220,15%,97%)] via-white to-[hsl(220,15%,97%)]">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
@@ -79,7 +78,7 @@ export default function AssistantSection() {
                 Completa tus datos y nos pondremos en contacto contigo
               </CardDescription>
             </CardHeader>
-            
+
             <CardContent>
               {!submitted ? (
                 <form onSubmit={handleSubmit} className="space-y-6">

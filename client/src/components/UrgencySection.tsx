@@ -196,14 +196,17 @@ export default function UrgencySection() {
             cómo implementar IA. <span className="text-[hsl(210,100%,55%)] font-bold">La diferencia entre líder y seguidor se decide HOY.</span>
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button 
               size="lg" 
               className="bg-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,50%)] text-white font-bold px-8 py-6 text-lg transition-all duration-300 hover:shadow-xl hover:shadow-[hsl(210,100%,55%)]/40 hover:scale-105"
-              data-testid="button-final-consultation"
-              onClick={() => setShowScheduleModal(true)}
+              data-testid="button-free-demo"
+              onClick={() => {
+                const assistantSection = document.getElementById('assistant-section');
+                assistantSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
             >
-              AGENDAR CONSULTA ESTRATÉGICA AHORA
+              SOLICITAR DEMO GRATUITA
             </Button>
             <Button 
               size="lg" 

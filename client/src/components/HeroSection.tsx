@@ -64,10 +64,13 @@ export default function HeroSection() {
             variant="outline" 
             className="border-2 border-[hsl(210,100%,55%)] text-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,55%)] hover:text-white font-bold px-8 py-6 text-lg backdrop-blur-sm bg-white/5 transition-all duration-300 hover:scale-105"
             data-testid="button-consultation"
-            onClick={() => console.log('Agendar Consulta clicked')}
+            onClick={() => {
+              const assistantSection = document.getElementById('assistant-section');
+              assistantSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
           >
             <ChevronRight className="mr-2 h-5 w-5" />
-            CONSULTA GRATUITA
+            SOLICITAR DEMO GRATUITA
           </Button>
         </div>
         
