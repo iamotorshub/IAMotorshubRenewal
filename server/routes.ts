@@ -4,14 +4,22 @@ import { storage } from "./storage";
 import nodemailer from "nodemailer";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Configurar transporte de email (usar variables de entorno en producción)
+  // Configurar transporte de email
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || "smtp.gmail.com",
-    port: parseInt(process.env.SMTP_PORT || "587"),
-    secure: false,
+    service: "gmail",
     auth: {
-      user: process.env.SMTP_USER || "contacto@iamotorshub.com",
-      pass: process.env.SMTP_PASS || ""
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS
+    }
+  });
+
+  // Verificar conexión SMTP al iniciar
+  transporter.verify((error, success) => {
+    if (error) {
+      console.error("❌ Error de conexión SMTP:", error);
+      console.log("Verifica tus Secrets: SMTP_USER y SMTP_PASS");
+    } else {
+      console.log("✅ Servidor SMTP listo para enviar emails");
     }
   });
 
@@ -20,9 +28,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { nombre, email, webInstagram, descripcion } = req.body;
 
+      console.log("📧 Enviando emails para:", nombre, email);
+
       // Enviar email al administrador
-      await transporter.sendMail({
-        from: '"IA MOTORSHUB" <contacto@iamotorshub.com>',
+      const adminEmail = await transporter.sendMail({
+        from: process.env.SMTP_USER,
         to: "contacto@iamotorshub.com",
         subject: `Nueva consulta de ${nombre}`,
         html: `
@@ -34,10 +44,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
           <p>${descripcion}</p>
         `
       });
+      console.log("✅ Email enviado al admin:", adminEmail.messageId);
 
       // Enviar email de confirmación al usuario
-      await transporter.sendMail({
-        from: '"IA MOTORSHUB" <contacto@iamotorshub.com>',
+      const userEmail = await transporter.sendMail({
+        from: process.env.SMTP_USER,
         to: email,
         subject: "Confirmación de Solicitud - IA MOTORSHUB",
         html: `
@@ -60,11 +71,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
           </div>
         `
       });
+      console.log("✅ Email enviado al cliente:", userEmail.messageId);
 
       res.json({ success: true, message: "Formulario enviado correctamente" });
     } catch (error) {
-      console.error("Error processing contact form:", error);
-      res.status(500).json({ success: false, message: "Error al enviar el formulario" });
+      console.error("❌ Error processing contact form:", error);
+      res.status(500).json({ success: false, message: "Error al enviar el formulario. Verifica la configuración de email." });
     }
   });
 
@@ -73,9 +85,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { nombre, email, webInstagram, descripcion, fecha, hora } = req.body;
 
-      // Enviar email de confirmación de cita
-      await transporter.sendMail({
-        from: '"IA MOTORSHUB" <contacto@iamotorshub.com>',
+      console.log("📅 Agendando cita para:", nombre, fecha, hora);
+
+      // Enviar email al administrador
+      const adminEmail = await transporter.sendMail({
+        from: process.env.SMTP_USER,
         to: "contacto@iamotorshub.com",
         subject: `Nueva Cita Agendada - ${nombre}`,
         html: `
@@ -88,9 +102,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
           <p><strong>Descripción:</strong> ${descripcion}</p>
         `
       });
+      console.log("✅ Email de cita enviado al admin:", adminEmail.messageId);
 
-      await transporter.sendMail({
-        from: '"IA MOTORSHUB" <contacto@iamotorshub.com>',
+      // Enviar email de confirmación al cliente
+      const userEmail = await transporter.sendMail({
+        from: process.env.SMTP_USER,
         to: email,
         subject: "Confirmación de Consulta Estratégica - IA MOTORSHUB",
         html: `
@@ -109,11 +125,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
           </div>
         `
       });
+      console.log("✅ Email de confirmación enviado al cliente:", userEmail.messageId);
 
       res.json({ success: true, message: "Cita agendada correctamente" });
     } catch (error) {
-      console.error("Error scheduling appointment:", error);
-      res.status(500).json({ success: false, message: "Error al agendar la cita" });
+      console.error("❌ Error scheduling appointment:", error);
+      res.status(500).json({ success: false, message: "Error al agendar la cita. Verifica la configuración de email." });
     }
   });
 
