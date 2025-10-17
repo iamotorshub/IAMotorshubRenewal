@@ -165,7 +165,11 @@ export default function ScheduleModal({ open, onOpenChange }: ScheduleModalProps
                     mode="single"
                     selected={selectedDate}
                     onSelect={setSelectedDate}
-                    disabled={(date) => date < new Date() || date.getDay() === 0 || date.getDay() === 6}
+                    disabled={(date) => {
+                      const today = new Date();
+                      today.setHours(0, 0, 0, 0);
+                      return date < today || date.getDay() === 0 || date.getDay() === 6;
+                    }}
                     className="rounded-md border border-[hsl(210,100%,55%)]/30"
                   />
                 </div>

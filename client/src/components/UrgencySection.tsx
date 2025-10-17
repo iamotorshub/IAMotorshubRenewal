@@ -3,11 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Clock, MapPin, CheckCircle, AlertTriangle } from "lucide-react";
 import { useState, useEffect } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import ScheduleModal from "./ScheduleModal";
 
 interface SlotProps {
   sector: string;
@@ -105,118 +101,6 @@ function CountdownTimer() {
     </div>
   );
 }
-
-function ScheduleModal({ open, onOpenChange }: { open: boolean, onOpenChange: (open: boolean) => void }) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [selectedTime, setSelectedTime] = useState<Date | null>(null);
-
-  const availableTimes = () => {
-    const times = [];
-    let currentTime = new Date();
-    currentTime.setHours(11, 0, 0); // Start at 11:00 AM
-
-    while (currentTime.getHours() < 20) {
-      times.push(new Date(currentTime));
-      currentTime.setMinutes(currentTime.getMinutes() + 30);
-    }
-    return times;
-  };
-
-  const handleSchedule = () => {
-    // TODO: Implement actual scheduling logic (send email, save to DB, etc.)
-    console.log('Scheduling:', { name, email, selectedDate, selectedTime });
-    alert('¡Consulta agendada! Pronto recibirás una confirmación por email.');
-    onOpenChange(false);
-  };
-
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Agendar Consulta Estratégica</DialogTitle>
-        </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Nombre
-            </Label>
-            <Input
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="col-span-3"
-            />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="email" className="text-right">
-              Email
-            </Label>
-            <Input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="col-span-3"
-            />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="date" className="text-right">
-              Fecha
-            </Label>
-            <DatePicker
-              id="date"
-              selected={selectedDate}
-              onChange={(date) => setSelectedDate(date)}
-              dateFormat="dd/MM/yyyy"
-              minDate={new Date()} // Cannot select previous dates
-              className="col-span-3 p-2 border rounded-md"
-              placeholderText="Selecciona una fecha"
-            />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="time" className="text-right">
-              Horario
-            </Label>
-            <DatePicker
-              id="time"
-              selected={selectedTime}
-              onChange={(time) => setSelectedTime(time)}
-              showTimeSelect
-              showTimeSelectOnly
-              timeIntervals={30}
-              timeCaption="Horario"
-              dateFormat="h:mm aa"
-              filterTime={({getHours, getMinutes}) => {
-                const currentHour = getHours();
-                const currentMinute = getMinutes();
-                const startTime = 11; // 11 AM
-                const endTime = 20; // 8 PM
-
-                if (currentHour < startTime || currentHour >= endTime) {
-                  return false;
-                }
-                if (currentHour === endTime && currentMinute > 0) {
-                  return false;
-                }
-                return true;
-              }}
-              className="col-span-3 p-2 border rounded-md"
-              placeholderText="Selecciona un horario"
-            />
-          </div>
-        </div>
-        <DialogTrigger asChild>
-          <Button onClick={handleSchedule} className="w-full">
-            Confirmar Cita
-          </Button>
-        </DialogTrigger>
-      </DialogContent>
-    </Dialog>
-  );
-}
-
 
 export default function UrgencySection() {
   const [showScheduleModal, setShowScheduleModal] = useState(false);
@@ -337,6 +221,9 @@ export default function UrgencySection() {
           </p>
         </div>
       </div>
+
+      {/* Modal de Agendamiento */}
+      <ScheduleModal open={showScheduleModal} onOpenChange={setShowScheduleModal} />
 
       {/* Animation Styles */}
       <style>{`
