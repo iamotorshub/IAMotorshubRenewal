@@ -105,6 +105,10 @@ function CountdownTimer() {
 export default function UrgencySection() {
   const [showScheduleModal, setShowScheduleModal] = useState(false);
 
+  const handleScheduleClick = () => {
+    setShowScheduleModal(true);
+  };
+
   const slots = [
     { sector: 'Concesionarios', available: 1, total: 1, status: 'limited' as const },
     { sector: 'Inmobiliarias', available: 2, total: 3, status: 'available' as const },
@@ -200,13 +204,10 @@ export default function UrgencySection() {
             <Button 
               size="lg" 
               className="bg-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,50%)] text-white font-bold px-8 py-6 text-lg transition-all duration-300 hover:shadow-xl hover:shadow-[hsl(210,100%,55%)]/40 hover:scale-105"
-              data-testid="button-free-demo"
-              onClick={() => {
-                const assistantSection = document.getElementById('assistant-section');
-                assistantSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }}
+              data-testid="button-schedule"
+              onClick={handleScheduleClick}
             >
-              SOLICITAR DEMO GRATUITA
+              AGENDAR CONSULTA ESTRATÉGICA AHORA
             </Button>
             <Button 
               size="lg" 

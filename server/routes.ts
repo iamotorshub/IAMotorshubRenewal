@@ -28,7 +28,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { nombre, email, webInstagram, descripcion } = req.body;
 
-      console.log("📧 Enviando emails para:", nombre, email);
+      console.log("📧 Procesando solicitud de:", nombre, email);
+
+      if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+        console.error("❌ Faltan credenciales SMTP en Secrets");
+        return res.status(500).json({ 
+          success: false, 
+          message: "Error de configuración del servidor. Contacta al administrador." 
+        });
+      }
 
       // Enviar email al administrador
       const adminEmail = await transporter.sendMail({
@@ -74,9 +82,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.log("✅ Email enviado al cliente:", userEmail.messageId);
 
       res.json({ success: true, message: "Formulario enviado correctamente" });
-    } catch (error) {
-      console.error("❌ Error processing contact form:", error);
-      res.status(500).json({ success: false, message: "Error al enviar el formulario. Verifica la configuración de email." });
+    } catch (error: any) {
+      console.error("❌ Error enviando formulario:", error);
+      
+      let errorMessage = "Error al enviar el formulario.";
+      if (error.code === 'EAUTH') {
+        errorMessage = "Error de autenticación SMTP. Verifica que SMTP_PASS no tenga espacios.";
+      }
+      
+      res.status(500).json({ success: false, message: errorMessage });
     }
   });
 
@@ -85,7 +99,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { nombre, email, webInstagram, descripcion, fecha, hora } = req.body;
 
-      console.log("📅 Agendando cita para:", nombre, fecha, hora);
+      console.log("📅 Procesando agendamiento para:", nombre, fecha, hora);
+
+      if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+        console.error("❌ Faltan credenciales SMTP en Secrets");
+        return res.status(500).json({ 
+          success: false, 
+          message: "Error de configuración del servidor. Contacta al administrador." 
+        });
+      }
 
       // Enviar email al administrador
       const adminEmail = await transporter.sendMail({
@@ -128,9 +150,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.log("✅ Email de confirmación enviado al cliente:", userEmail.messageId);
 
       res.json({ success: true, message: "Cita agendada correctamente" });
-    } catch (error) {
-      console.error("❌ Error scheduling appointment:", error);
-      res.status(500).json({ success: false, message: "Error al agendar la cita. Verifica la configuración de email." });
+    } catch (error: any) {
+      console.error("❌ Error agendando cita:", error);
+      
+      let errorMessage = "Error al agendar la cita.";
+      if (error.code === 'EAUTH') {
+        errorMessage = "Error de autenticación SMTP. Verifica que SMTP_PASS no tenga espacios.";
+      }
+      
+      res.status(500).json({ success: false, message: errorMessage });
     }
   });
 
