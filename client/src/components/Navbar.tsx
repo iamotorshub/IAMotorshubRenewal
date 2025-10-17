@@ -24,7 +24,7 @@ export default function Navbar() {
             <img 
               src={logoPath}
               alt="IA MOTORSHUB" 
-              className="h-16 w-auto brightness-0 invert"
+              className="h-20 w-auto brightness-0 invert"
               style={{ filter: 'brightness(0) invert(1)' }}
             />
           </div>

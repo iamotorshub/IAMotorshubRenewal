@@ -1,19 +1,57 @@
 import { Button } from "@/components/ui/button";
 import { Play, ChevronRight, Sparkles } from "lucide-react";
 import logoPath from "@assets/IA MOTORSHUB LOGO_1758912846792.png";
-import heroImage from "@assets/stock_images/modern_business_tech_0d6cf402.jpg";
+import { useState, useEffect } from "react";
+
+// Import hero carousel images
+import heroAgentes from "@assets/hero-agentes-telefonicos.jpg";
+import heroMenu from "@assets/hero-menu-vivo.jpg";
+import heroRealEstate from "@assets/hero-real-estate-ai.jpg";
+import heroRentals from "@assets/hero-rentals-ai.jpg";
+import heroStoryboard from "@assets/hero-storyboard-pro.jpg";
+import heroAutomatizacion from "@assets/hero-automatizacion-comercial.png";
+
+const carouselImages = [
+  heroAgentes,
+  heroMenu,
+  heroRealEstate,
+  heroRentals,
+  heroStoryboard,
+  heroAutomatizacion
+];
 
 export default function HeroSection() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        (prevIndex + 1) % carouselImages.length
+      );
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+      {/* Background Image Carousel with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={heroImage} 
-          alt="Modern Technology" 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,70%,25%)] via-[hsl(220,20%,15%)]/95 to-[hsl(220,20%,15%)]"></div>
+        {carouselImages.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <img 
+              src={image} 
+              alt={`Hero ${index + 1}`} 
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,70%,25%)]/90 via-[hsl(220,20%,15%)]/95 to-[hsl(220,20%,15%)]/90"></div>
       </div>
       
       {/* Animated Blue Accents */}
@@ -24,12 +62,13 @@ export default function HeroSection() {
       
       {/* Content */}
       <div className="relative z-20 container mx-auto px-6 text-center">
-        {/* Logo with Animation */}
+        {/* Logo with Animation - ENLARGED */}
         <div className="mb-8 animate-fade-in">
           <img 
-            src="/logo-white.png" 
+            src={logoPath}
             alt="IA MOTORSHUB" 
-            className="h-32 md:h-40 mx-auto mb-6 transition-transform hover:scale-105 duration-300"
+            className="h-48 md:h-64 mx-auto mb-6 transition-transform hover:scale-105 duration-300 brightness-0 invert"
+            style={{ filter: 'brightness(0) invert(1)' }}
             data-testid="img-logo"
           />
         </div>
@@ -54,7 +93,10 @@ export default function HeroSection() {
             size="lg" 
             className="bg-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,50%)] text-white font-bold px-8 py-6 text-lg group transition-all duration-300 hover:shadow-lg hover:shadow-[hsl(210,100%,55%)]/50 hover:scale-105"
             data-testid="button-ecosystem"
-            onClick={() => console.log('Ver Ecosistema clicked')}
+            onClick={() => {
+              const serviciosSection = document.getElementById('servicios');
+              serviciosSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
           >
             <Play className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
             DESCUBRE NUESTRAS SOLUCIONES
@@ -65,7 +107,7 @@ export default function HeroSection() {
             className="border-2 border-[hsl(210,100%,55%)] text-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,55%)] hover:text-white font-bold px-8 py-6 text-lg backdrop-blur-sm bg-white/5 transition-all duration-300 hover:scale-105"
             data-testid="button-consultation"
             onClick={() => {
-              const assistantSection = document.getElementById('assistant-section');
+              const assistantSection = document.getElementById('asistente');
               assistantSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }}
           >
@@ -141,3 +183,4 @@ export default function HeroSection() {
     </section>
   );
 }
+
