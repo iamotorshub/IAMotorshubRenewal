@@ -43,4 +43,15 @@
     "nanoid": "^4.0.2",
     "nodemailer": "^6.9.4",
     "react": "^18.2.0",
-    "react
+    "react-dom": "^18.2.0",
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.0",
+    "@types/react": "^18.2.19",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.4.19"
+  }
+}
