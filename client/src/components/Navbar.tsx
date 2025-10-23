@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,13 +17,13 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md border-b border-[hsl(210,100%,55%)]/20">
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <div className="flex-shrink-0 py-2">
             <img 
               src={logoPath}
               alt="IA MOTORSHUB" 
-              className="h-20 w-auto brightness-0 invert"
+              className="h-24 w-auto brightness-0 invert"
               style={{ filter: 'brightness(0) invert(1)' }}
             />
           </div>
