@@ -1,4 +1,5 @@
-// client/src/components/Navbar.tsx
+
+
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,47 +11,47 @@ export default function Navbar() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: 'smooth' });
       setIsOpen(false);
     }
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md border-b border-[hsl(210,100%,55%)]/20">
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-48">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0 py-2">
-            <img
+            <img 
               src={logoPath}
-              alt="IA MOTORSHUB"
-              className="h-48 w-auto brightness-0 invert"
-              style={{ filter: "brightness(0) invert(1)" }}
+              alt="IA MOTORSHUB" 
+              className="h-20 w-auto brightness-0 invert"
+              style={{ filter: 'brightness(0) invert(1)' }}
             />
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <button
-              onClick={() => scrollToSection("servicios")}
+            <button 
+              onClick={() => scrollToSection('servicios')}
               className="text-white hover:text-[hsl(210,100%,55%)] font-semibold transition-colors"
             >
               Servicios
             </button>
-            <button
-              onClick={() => scrollToSection("diferenciadores")}
+            <button 
+              onClick={() => scrollToSection('diferenciadores')}
               className="text-white hover:text-[hsl(210,100%,55%)] font-semibold transition-colors"
             >
               Diferenciadores
             </button>
-            <button
-              onClick={() => scrollToSection("testimonios")}
+            <button 
+              onClick={() => scrollToSection('testimonios')}
               className="text-white hover:text-[hsl(210,100%,55%)] font-semibold transition-colors"
             >
               Testimonios
             </button>
             <Button
-              onClick={() => scrollToSection("asistente")}
+              onClick={() => scrollToSection('asistente')}
               className="bg-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,50%)] text-white font-bold"
             >
               Contacto
@@ -70,26 +71,26 @@ export default function Navbar() {
         {isOpen && (
           <div className="md:hidden pb-4">
             <div className="flex flex-col space-y-4">
-              <button
-                onClick={() => scrollToSection("servicios")}
+              <button 
+                onClick={() => scrollToSection('servicios')}
                 className="text-white hover:text-[hsl(210,100%,55%)] font-semibold transition-colors text-left"
               >
                 Servicios
               </button>
-              <button
-                onClick={() => scrollToSection("diferenciadores")}
+              <button 
+                onClick={() => scrollToSection('diferenciadores')}
                 className="text-white hover:text-[hsl(210,100%,55%)] font-semibold transition-colors text-left"
               >
                 Diferenciadores
               </button>
-              <button
-                onClick={() => scrollToSection("testimonios")}
+              <button 
+                onClick={() => scrollToSection('testimonios')}
                 className="text-white hover:text-[hsl(210,100%,55%)] font-semibold transition-colors text-left"
               >
                 Testimonios
               </button>
               <Button
-                onClick={() => scrollToSection("asistente")}
+                onClick={() => scrollToSection('asistente')}
                 className="bg-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,50%)] text-white font-bold w-full"
               >
                 Contacto
