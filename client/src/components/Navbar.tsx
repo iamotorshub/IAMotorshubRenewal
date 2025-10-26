@@ -9,93 +9,49 @@ export default function Navbar() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
       setIsOpen(false);
     }
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md border-b border-[hsl(210,100%,55%)]/20">
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-28 md:h-32">
-          {/* Logo */}
-          <div className="flex-shrink-0 h-full flex items-center">
-            <img 
-              src={logoPath}
-              alt="IA MOTORSHUB" 
-              className="h-full max-h-[120px] w-auto brightness-0 invert scale-110 md:scale-125"
-              style={{ filter: 'brightness(0) invert(1)' }}
-            />
-          </div>
+    <nav className="fixed top-0 left-0 right-0 z-[9999] bg-transparent border-b border-[hsl(210,100%,55%)]/20">
+      <div className="relative w-full h-[200px] flex items-center justify-center">
+        {/* Logo gigante fijo */}
+        <img
+          src={logoPath}
+          alt="IA MOTORSHUB"
+          className="absolute top-0 left-1/2 -translate-x-1/2 h-[200px] w-auto brightness-0 invert"
+          style={{ filter: "brightness(0) invert(1)" }}
+        />
+      </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection('servicios')}
-              className="text-white hover:text-[hsl(210,100%,55%)] font-semibold transition-colors"
-            >
-              Servicios
-            </button>
-            <button 
-              onClick={() => scrollToSection('diferenciadores')}
-              className="text-white hover:text-[hsl(210,100%,55%)] font-semibold transition-colors"
-            >
-              Diferenciadores
-            </button>
-            <button 
-              onClick={() => scrollToSection('testimonios')}
-              className="text-white hover:text-[hsl(210,100%,55%)] font-semibold transition-colors"
-            >
-              Testimonios
-            </button>
-            <Button
-              onClick={() => scrollToSection('asistente')}
-              className="bg-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,50%)] text-white font-bold"
-            >
-              Contacto
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white"
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden pb-4">
-            <div className="flex flex-col space-y-4">
-              <button 
-                onClick={() => scrollToSection('servicios')}
-                className="text-white hover:text-[hsl(210,100%,55%)] font-semibold transition-colors text-left"
-              >
-                Servicios
-              </button>
-              <button 
-                onClick={() => scrollToSection('diferenciadores')}
-                className="text-white hover:text-[hsl(210,100%,55%)] font-semibold transition-colors text-left"
-              >
-                Diferenciadores
-              </button>
-              <button 
-                onClick={() => scrollToSection('testimonios')}
-                className="text-white hover:text-[hsl(210,100%,55%)] font-semibold transition-colors text-left"
-              >
-                Testimonios
-              </button>
-              <Button
-                onClick={() => scrollToSection('asistente')}
-                className="bg-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,50%)] text-white font-bold w-full"
-              >
-                Contacto
-              </Button>
-            </div>
-          </div>
-        )}
+      {/* Menú oculto (solo por si más adelante lo querés usar) */}
+      <div className="hidden md:flex items-center justify-center space-x-10 pb-6">
+        <button
+          onClick={() => scrollToSection("servicios")}
+          className="text-white hover:text-[hsl(210,100%,55%)] font-semibold transition-colors"
+        >
+          Servicios
+        </button>
+        <button
+          onClick={() => scrollToSection("diferenciadores")}
+          className="text-white hover:text-[hsl(210,100%,55%)] font-semibold transition-colors"
+        >
+          Diferenciadores
+        </button>
+        <button
+          onClick={() => scrollToSection("testimonios")}
+          className="text-white hover:text-[hsl(210,100%,55%)] font-semibold transition-colors"
+        >
+          Testimonios
+        </button>
+        <Button
+          onClick={() => scrollToSection("asistente")}
+          className="bg-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,50%)] text-white font-bold"
+        >
+          Contacto
+        </Button>
       </div>
     </nav>
   );
