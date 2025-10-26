@@ -17,13 +17,13 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md border-b border-[hsl(210,100%,55%)]/20">
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-28 md:h-32">
           {/* Logo */}
-          <div className="flex-shrink-0 py-2 h-full flex items-center">
+          <div className="flex-shrink-0 h-full flex items-center">
             <img 
               src={logoPath}
               alt="IA MOTORSHUB" 
-              className="h-full max-h-[96px] w-auto brightness-0 invert"
+              className="h-full max-h-[120px] w-auto brightness-0 invert scale-110 md:scale-125"
               style={{ filter: 'brightness(0) invert(1)' }}
             />
           </div>
