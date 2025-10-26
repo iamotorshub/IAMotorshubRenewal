@@ -19,11 +19,11 @@ export default function Navbar() {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
-          <div className="flex-shrink-0 py-2">
+          <div className="flex-shrink-0 py-2 h-full flex items-center">
             <img 
               src={logoPath}
               alt="IA MOTORSHUB" 
-              className="h-24 w-auto brightness-0 invert"
+              className="h-full max-h-[96px] w-auto brightness-0 invert"
               style={{ filter: 'brightness(0) invert(1)' }}
             />
           </div>
