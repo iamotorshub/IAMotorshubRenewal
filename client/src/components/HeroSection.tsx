@@ -75,12 +75,12 @@ export default function HeroSection() {
       </div>
 
       {/* Logo y navegación */}
-      <div className="pointer-events-none absolute left-0 right-0 top-1 z-[60] flex flex-col items-start gap-3 px-4 sm:top-3 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-12 md:top-4 md:px-16">
+      <div className="pointer-events-none absolute left-0 right-0 top-0 z-[60] flex flex-col items-start gap-3 px-4 sm:top-0 sm:flex-row sm:items-start sm:justify-between sm:gap-8 sm:px-12 md:top-0 md:px-16">
         <div className="pointer-events-auto sm:pl-2">
           <img
             src={logoPath}
             alt="IA MOTORSHUB"
-            className="h-[16rem] w-auto sm:h-[20rem] md:h-[22rem] lg:h-[24rem] brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)]"
+            className="h-[20.8rem] w-auto sm:h-[26rem] md:h-[28.6rem] lg:h-[31.2rem] brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)]"
             style={{ filter: "brightness(0) invert(1)" }}
           />
         </div>

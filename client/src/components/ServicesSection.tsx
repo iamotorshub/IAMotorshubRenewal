@@ -1,4 +1,11 @@
 import { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   MessageSquare,
@@ -6,7 +13,8 @@ import {
   Phone,
   TrendingUp,
   ArrowRight,
-  RefreshCcw,
+  CheckCircle,
+  RotateCcw,
 } from "lucide-react";
 // Imágenes actualizadas para servicios
 import rentalsImage from "@assets/hero-rentals-ai_1760656167854.png";
@@ -15,7 +23,8 @@ import menuImage from "@assets/hero-menu-vivo_1760656167856.jpg";
 import automationImage from "@assets/hero-automatizacion-comercial_1760656167856.png";
 import videoImage from "@assets/hero-storyboard-pro_1760656167864.jpg";
 import phoneImage from "@assets/hero-agentes-telefonicos_1760656167864.jpg";
-const scalingImage = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop";
+const scalingImage =
+  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop";
 
 interface ServiceProps {
   icon: React.ComponentType<{ className?: string }>;
@@ -24,7 +33,6 @@ interface ServiceProps {
   subtitle: string;
   problem: string;
   solution: string;
-  highlight: string;
   features: string[];
   result: string;
   testimonial: string;
@@ -40,7 +48,6 @@ function ServiceCard({
   subtitle,
   problem,
   solution,
-  highlight,
   features,
   result,
   testimonial,
@@ -48,135 +55,163 @@ function ServiceCard({
   ctaText,
   onCtaClick,
 }: ServiceProps) {
-  const [flipped, setFlipped] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   return (
-    <article
-      className="group relative h-full [perspective:1800px]"
+    <div
+      className="perspective-1000 group"
       data-testid={`card-${title.toLowerCase().replace(/\s+/g, '-')}`}
     >
       <div
-        className={`relative h-full w-full transition-transform duration-700 ease-out [transform-style:preserve-3d] ${
-          flipped ? "[transform:rotateY(180deg)]" : ""
+        className={`relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] ${
+          isFlipped ? "[transform:rotateY(180deg)]" : ""
         }`}
       >
-        <div className="absolute inset-0 overflow-hidden rounded-[2.5rem] border border-white/10 shadow-[0_26px_80px_rgba(6,20,52,0.45)] [backface-visibility:hidden]">
-          <img
-            src={image}
-            alt={title}
-            loading="lazy"
-            decoding="async"
-            className="h-full w-full object-cover object-center transition-transform duration-[1400ms] group-hover:[transform:scale(1.05)]"
-          />
-          <div className="absolute inset-x-0 bottom-0 flex flex-col gap-6 bg-black/60 p-7 backdrop-blur-[6px] sm:p-9">
-            <div className="flex items-center gap-4">
-              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-black/60 backdrop-blur-xl shadow-[0_18px_48px_rgba(14,116,233,0.35)]">
-                <Icon className="h-7 w-7 text-sky-200" />
-              </span>
-              <div className="space-y-1 text-left">
-                <h3 className="text-lg font-semibold uppercase tracking-[0.22em] text-white sm:text-xl">
-                  {title}
-                </h3>
-                <p className="text-xs font-medium text-slate-100/90 sm:text-sm">{subtitle}</p>
+        {/* Front of Card */}
+        <div className="absolute inset-0 h-full w-full [backface-visibility:hidden]">
+          <Card className="flex h-full flex-col overflow-hidden rounded-[2rem] border border-[hsl(210,100%,55%)]/20 bg-gradient-to-br from-[hsl(220,15%,92%)] to-white shadow-lg transition-all duration-300 hover:border-[hsl(210,100%,55%)]/40 hover:shadow-[0_28px_70px_rgba(28,100,210,0.18)]">
+            {/* Image Header */}
+            <div className="relative h-56 overflow-hidden">
+              <img
+                src={image}
+                alt={title}
+                className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute top-5 left-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-[hsl(210,100%,55%)] shadow-xl shadow-[hsl(210,100%,55%)]/40">
+                <Icon className="h-8 w-8 text-white" />
               </div>
             </div>
-            <p className="text-sm font-medium text-slate-100/95 drop-shadow-[0_14px_35px_rgba(0,0,0,0.7)] sm:text-base">
-              {highlight}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {features.slice(0, 3).map((feature, index) => (
-                <span
-                  key={index}
-                  className="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-slate-50 backdrop-blur-lg sm:text-xs"
+
+            <CardHeader className="space-y-2 pb-3">
+              <CardTitle className="text-2xl font-serif font-bold text-[hsl(220,70%,25%)]">
+                {title}
+              </CardTitle>
+              <CardDescription className="text-sm font-medium uppercase tracking-[0.14em] text-[hsl(210,100%,45%)]">
+                {subtitle}
+              </CardDescription>
+            </CardHeader>
+
+            <CardContent className="flex flex-1 flex-col justify-between space-y-6 pb-6">
+              <div className="rounded-xl border border-red-200 bg-red-50/80 p-4 shadow-inner">
+                <h4 className="text-xs font-semibold uppercase tracking-[0.22em] text-red-500">
+                  Problema
+                </h4>
+                <p className="mt-2 text-sm font-medium text-[hsl(220,20%,20%)]">"{problem}"</p>
+              </div>
+
+              <div className="mt-auto flex items-center gap-3">
+                <Button
+                  className="flex-1 rounded-full bg-[hsl(210,100%,55%)] px-6 py-3 font-semibold uppercase tracking-[0.18em] text-white shadow-lg shadow-[hsl(210,100%,55%)]/35 transition-all duration-300 hover:scale-[1.03] hover:bg-[hsl(210,100%,52%)]"
+                  onClick={() => setIsFlipped(true)}
+                  data-testid={`button-ver-solucion-${title.toLowerCase().replace(/\s+/g, '-')}`}
                 >
-                  {feature}
-                </span>
-              ))}
-            </div>
-            <button
-              type="button"
-              onClick={() => setFlipped(true)}
-              className="group/button inline-flex items-center justify-center self-start rounded-full border border-white/30 bg-white/90 px-6 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-slate-900 shadow-[0_18px_45px_rgba(255,255,255,0.2)] transition-transform duration-300 hover:scale-[1.05] hover:bg-white sm:text-sm"
-            >
-              Ver caso completo
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1" />
-            </button>
-          </div>
+                  Ver solución
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="h-12 w-12 rounded-full border-[hsl(210,100%,55%)] text-[hsl(210,100%,55%)] transition-all duration-300 hover:bg-[hsl(210,100%,55%)] hover:text-white"
+                  onClick={() => setIsFlipped(true)}
+                  aria-label="Ver solución"
+                >
+                  <RotateCcw className="h-5 w-5" />
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
-        <div className="absolute inset-0 flex h-full flex-col justify-between overflow-hidden rounded-[2.5rem] border border-white/12 bg-[rgba(4,12,28,0.92)] p-7 text-slate-100 shadow-[0_30px_90px_rgba(6,22,58,0.5)] [backface-visibility:hidden] [transform:rotateY(180deg)] sm:p-10">
-          <div className="space-y-6 text-left">
-            <div className="flex items-center gap-3">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-xl">
-                <Icon className="h-6 w-6 text-sky-200" />
-              </span>
-              <div>
-                <h3 className="text-lg font-semibold uppercase tracking-[0.22em] text-white sm:text-xl">{title}</h3>
-                <p className="text-xs font-medium text-slate-200/85 sm:text-sm">{subtitle}</p>
+        {/* Back of Card */}
+        <div className="absolute inset-0 h-full w-full [backface-visibility:hidden] [transform:rotateY(180deg)]">
+          <Card className="flex h-full flex-col overflow-hidden rounded-[2rem] border border-[hsl(210,100%,55%)]/50 bg-gradient-to-br from-[hsl(220,70%,25%)] via-[hsl(220,30%,20%)] to-[hsl(220,20%,15%)] text-white shadow-[0_36px_90px_rgba(10,40,98,0.55)]">
+            <CardHeader>
+              <div className="flex items-start justify-between gap-3">
+                <div className="space-y-1">
+                  <CardTitle className="text-2xl font-serif font-bold text-white">
+                    {title}
+                  </CardTitle>
+                  <CardDescription className="text-sm font-medium uppercase tracking-[0.14em] text-[hsl(210,100%,75%)]">
+                    {subtitle}
+                  </CardDescription>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="rounded-full text-white transition-colors duration-300 hover:bg-white/10"
+                  onClick={() => setIsFlipped(false)}
+                  data-testid={`button-flip-back-${title.toLowerCase().replace(/\s+/g, '-')}`}
+                >
+                  <RotateCcw className="h-5 w-5" />
+                </Button>
               </div>
-            </div>
+            </CardHeader>
 
-            <div className="space-y-4 text-sm text-slate-100/90 sm:text-base">
-              <div>
-                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-sky-200/80 sm:text-xs">
-                  Problema
-                </p>
-                <p className="mt-2 leading-relaxed">{problem}</p>
+            <CardContent className="flex flex-1 flex-col justify-between space-y-6 pb-6">
+              <div className="space-y-4">
+                <div>
+                  <h4 className="text-xs font-semibold uppercase tracking-[0.24em] text-[hsl(210,100%,75%)]">
+                    Solución
+                  </h4>
+                  <p className="mt-2 text-sm font-medium text-white/95">"{solution}"</p>
+                </div>
+
+                <div>
+                  <h4 className="text-xs font-semibold uppercase tracking-[0.24em] text-[hsl(210,100%,75%)]">
+                    Características
+                  </h4>
+                  <ul className="mt-3 space-y-2">
+                    {features.map((feature, index) => (
+                      <li
+                        key={index}
+                        className="flex items-start gap-3 rounded-xl border border-white/15 bg-white/10 p-3 text-sm text-white/95"
+                      >
+                        <CheckCircle className="mt-0.5 h-4 w-4 text-[hsl(210,100%,75%)]" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="rounded-xl border border-white/20 bg-white/10 p-4">
+                  <h4 className="text-xs font-semibold uppercase tracking-[0.24em] text-[hsl(210,100%,75%)]">
+                    Resultado
+                  </h4>
+                  <p className="mt-2 text-sm font-bold text-white">{result}</p>
+                </div>
+
+                <div className="rounded-xl border border-white/20 bg-white/5 p-4 backdrop-blur-md">
+                  <p className="text-sm italic text-white/90">"{testimonial}"</p>
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(210,100%,70%)]">
+                    - {author}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-sky-50 sm:text-xs">
-                  Solución
-                </p>
-                <p className="mt-2 font-medium leading-relaxed text-slate-50/95">{solution}</p>
-              </div>
-              <ul className="grid gap-2 text-xs text-slate-100/90 sm:text-sm">
-                {features.map((feature, index) => (
-                  <li
-                    key={index}
-                    className="flex items-start gap-2 rounded-2xl border border-white/12 bg-white/8 px-4 py-2"
-                  >
-                    <span className="mt-[2px] h-2 w-2 flex-shrink-0 rounded-full bg-sky-300"></span>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
 
-          <div className="space-y-5">
-            <div className="rounded-2xl border border-white/14 bg-black/30 p-5">
-              <h4 className="text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-sky-100/90 sm:text-xs">
-                Resultado
-              </h4>
-              <p className="mt-2 text-sm font-semibold text-white sm:text-base">{result}</p>
-              <p className="mt-3 text-sm italic text-slate-100/90">"{testimonial}"</p>
-              <p className="mt-2 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-sky-200/80 sm:text-xs">
-                {author}
-              </p>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-3">
               <Button
-                className="group/cta inline-flex items-center justify-center rounded-full bg-[linear-gradient(135deg,#38bdf8,#60a5fa)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-slate-950 shadow-[0_22px_55px_rgba(14,116,233,0.35)] transition-transform duration-300 hover:scale-[1.05] hover:shadow-[0_32px_85px_rgba(14,116,233,0.45)] sm:px-8 sm:py-4 sm:text-base"
+                className="w-full rounded-full bg-[hsl(210,100%,55%)] px-6 py-3 font-semibold uppercase tracking-[0.18em] text-white shadow-lg shadow-[hsl(210,100%,55%)]/35 transition-all duration-300 hover:scale-[1.03] hover:bg-[hsl(210,100%,60%)]"
                 onClick={onCtaClick}
                 data-testid={`button-${ctaText.toLowerCase().replace(/\s+/g, '-')}`}
               >
                 {ctaText}
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" />
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-
-              <button
-                type="button"
-                onClick={() => setFlipped(false)}
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-transparent px-5 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-slate-100 transition-all duration-300 hover:border-sky-300/60 hover:text-white"
-              >
-                <RefreshCcw className="h-4 w-4" /> Volver
-              </button>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
-    </article>
+
+      {/* 3D Transform Styles */}
+      <style>{`
+        .perspective-1000 {
+          perspective: 1400px;
+        }
+        .backface-hidden {
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+        }
+      `}</style>
+    </div>
   );
 }
 
@@ -189,17 +224,16 @@ export default function ServicesSection() {
       subtitle: "Para: Inmobiliarias | Propietarios | Administradores de Propiedades",
       problem: "Pierdes inquilinos por atención lenta y falta de seguimiento",
       solution: "IA que gestiona consultas, visitas y contratos automáticamente",
-      highlight: "Agenda consultas, visitas y contratos en piloto automático",
       features: [
         "Atención 24/7 a consultas de propiedades",
         "Agendamiento automático de visitas",
         "Calificación inteligente de potenciales inquilinos",
-        "Seguimiento automatizado del proceso de alquiler"
+        "Seguimiento automatizado del proceso de alquiler",
       ],
       result: "+200% consultas atendidas | -70% tiempo administrativo",
       testimonial: "Cerramos 3x más contratos con la mitad del esfuerzo",
       author: "Inmobiliaria Premium, CABA",
-      ctaText: "VER DEMO RENTALS AI"
+      ctaText: "VER DEMO RENTALS AI",
     },
     {
       icon: Film,
@@ -208,17 +242,16 @@ export default function ServicesSection() {
       subtitle: "Para: Locales de Ropa | Showrooms | Emprendedores de Moda",
       problem: "Clientes no compran sin probarse la ropa físicamente",
       solution: "IA que permite probar ropa virtualmente desde cualquier lugar",
-      highlight: "Probador virtual con IA para vender más sin tienda física",
       features: [
         "Prueba virtual de prendas en tiempo real",
         "Recomendaciones de talla personalizadas",
         "Visualización 3D de combinaciones de outfits",
-        "Incremento de conversión online significativo"
+        "Incremento de conversión online significativo",
       ],
       result: "+150% conversión online | -40% devoluciones",
       testimonial: "Las ventas online superaron las ventas en tienda",
       author: "Boutique Fashion, Palermo",
-      ctaText: "PROBAR PROBADOR VIRTUAL"
+      ctaText: "PROBAR PROBADOR VIRTUAL",
     },
     {
       icon: Phone,
@@ -227,17 +260,16 @@ export default function ServicesSection() {
       subtitle: "Para: Bares | Restaurantes | Cafeterías",
       problem: "Menús desactualizados, clientes no saben qué hay disponible hoy",
       solution: "Menú digital actualizado en tiempo real con IA",
-      highlight: "Menú inteligente que se actualiza en segundos y vende por vos",
       features: [
         "Actualización instantánea de disponibilidad",
         "Fotos profesionales generadas por IA",
         "Recomendaciones personalizadas según preferencias",
-        "Pedidos y reservas integrados"
+        "Pedidos y reservas integrados",
       ],
       result: "+80% pedidos digitales | -50% errores en pedidos",
       testimonial: "Nuestros clientes ahora ordenan antes de llegar",
       author: "Restaurante El Buen Sabor, Bahía Blanca",
-      ctaText: "VER MENÚ EN VIVO"
+      ctaText: "VER MENÚ EN VIVO",
     },
     {
       icon: MessageSquare,
@@ -246,17 +278,16 @@ export default function ServicesSection() {
       subtitle: "Para: Concesionarios | Contables | Clínicas | Servicios",
       problem: "Pierdes 70% de leads por atención manual deficiente",
       solution: "IA conversacional que atiende como humano 24/7",
-      highlight: "Tus leads atendidos 24/7 por IA entrenada en tu negocio",
       features: [
         "WhatsApp inteligente sector-específico",
         "Agendamiento automático perfecto",
         "CRM que nunca olvida un seguimiento",
-        "Pipeline que se gestiona solo"
+        "Pipeline que se gestiona solo",
       ],
       result: "+300% leads | -60% trabajo manual",
       testimonial: "De 25 consultas/mes a 80 consultas/mes automáticamente",
       author: "Roberto Martínez, Ford Bahía Blanca",
-      ctaText: "VER DEMO AUTOMATIZACIÓN"
+      ctaText: "VER DEMO AUTOMATIZACIÓN",
     },
     {
       icon: Film,
@@ -265,17 +296,16 @@ export default function ServicesSection() {
       subtitle: "Para: Agencias | Productoras | Creadores de Contenido",
       problem: "Producción audiovisual cuesta $50K+ y demora meses",
       solution: "Storyboards 8K + Personajes consistentes en días",
-      highlight: "Producción audiovisual con IA a velocidad récord",
       features: [
         "Character Studio: 3 imágenes → personaje perfecto",
         "Art Department IA: locaciones + props automáticos",
         "Storyboards cinematográficos profesionales",
-        "1,000+ imágenes diarias GRATIS"
+        "1,000+ imágenes diarias GRATIS",
       ],
       result: "90% menos costo | 10x más velocidad",
       testimonial: "Lo que costaba $80K en 2 meses, ahora 1 semana",
       author: "Diego Fernández, Productora CABA",
-      ctaText: "PROBAR STORYBOARD STUDIO"
+      ctaText: "PROBAR STORYBOARD STUDIO",
     },
     {
       icon: Phone,
@@ -284,17 +314,16 @@ export default function ServicesSection() {
       subtitle: "Para: Call Centers | Empresas de Ventas",
       problem: "Agentes humanos caros, inconsistentes, se cansan",
       solution: "IA clonada de tus mejores vendedores",
-      highlight: "Voces IA que venden como tu top seller sin parar",
       features: [
         "Voz y personalidad idéntica a tu top seller",
         "Nunca se cansa, enferma o renuncia",
         "Scripts perfectos siempre",
-        "Métricas y optimización continua"
+        "Métricas y optimización continua",
       ],
       result: "50% menos costo | 200% más conversión",
       testimonial: "IA convierte 40% vs 15% promedio humano",
       author: "Call Center Seguros",
-      ctaText: "CREAR MI AGENTE IA"
+      ctaText: "CREAR MI AGENTE IA",
     },
     {
       icon: TrendingUp,
@@ -303,33 +332,38 @@ export default function ServicesSection() {
       subtitle: "Para: Emprendedores | Consultores | CEO's",
       problem: "No sé cómo escalar mi negocio con IA real",
       solution: "Consultoría + implementación completa",
-      highlight: "Escalá con IA real: auditoría, estrategia y ejecución",
       features: [
         "Audit de automatización personalizado",
         "Estrategia de IA sector-específica",
         "Implementación hands-on completa",
-        "Optimización continua resultados"
+        "Optimización continua resultados",
       ],
       result: "De manual a automatizado en 30 días",
       testimonial: "Escaló de $50K/mes a $200K/mes automatizado",
       author: "Consultor Marketing",
-      ctaText: "CONSULTA ESTRATÉGICA"
-    }
+      ctaText: "CONSULTA ESTRATÉGICA",
+    },
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-[hsl(220,15%,97%)] via-white to-[hsl(220,15%,97%)]">
+    <section className="bg-gradient-to-b from-[hsl(220,15%,97%)] via-white to-[hsl(220,15%,97%)] py-24">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-slide-up">
-          <h2 className="text-4xl md:text-6xl font-serif font-black text-[hsl(220,70%,25%)] mb-6" data-testid="text-services-title">
-            SERVICIOS <span className="bg-gradient-to-r from-[hsl(210,100%,55%)] to-[hsl(210,100%,70%)] bg-clip-text text-transparent">PRINCIPALES</span>
+        <div className="animate-slide-up mb-16 text-center">
+          <h2
+            className="text-4xl font-serif font-black text-[hsl(220,70%,25%)] md:text-6xl"
+            data-testid="text-services-title"
+          >
+            SERVICIOS
+            <span className="bg-gradient-to-r from-[hsl(210,100%,55%)] to-[hsl(210,100%,70%)] bg-clip-text text-transparent">
+              {" "}PRINCIPALES
+            </span>
           </h2>
-          <p className="text-xl text-[hsl(220,10%,45%)] max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-xl text-[hsl(220,10%,45%)]">
             Ecosistema completo de automatización con IA que transforma industrias
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 gap-8 max-w-7xl mx-auto lg:grid-cols-2">
+
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-2">
           {services.map((service, index) => (
             <div
               key={index}
@@ -349,15 +383,15 @@ export default function ServicesSection() {
           ))}
         </div>
       </div>
-      
+
       {/* Animation Styles */}
       <style>{`
         @keyframes slide-up {
-          from { 
+          from {
             opacity: 0;
             transform: translateY(30px);
           }
-          to { 
+          to {
             opacity: 1;
             transform: translateY(0);
           }
