@@ -1,11 +1,4 @@
-import { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { useCallback, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   MessageSquare,
@@ -45,7 +38,9 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
   const [isFlipped, setIsFlipped] = useState(false);
   const cardId = title.toLowerCase().replace(/\s+/g, "-");
   const ctaId = ctaText.toLowerCase().replace(/\s+/g, "-");
-  const handleFlipToggle = () => setIsFlipped((prev) => !prev);
+  const handleFlipToggle = useCallback(() => {
+    setIsFlipped((prev) => !prev);
+  }, []);
 
   return (
     <div className="group perspective-1200" data-testid={`card-${cardId}`}>
@@ -64,7 +59,7 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
             />
             <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[rgba(2,10,24,0.85)] via-[rgba(2,10,24,0.45)] to-transparent"></div>
 
-            <div className="pointer-events-auto absolute right-6 top-6 z-20 sm:right-8 sm:top-8">
+            <div className="pointer-events-auto absolute right-6 top-6 z-30 sm:right-8 sm:top-8">
               <Button
                 variant="ghost"
                 size="icon"
@@ -72,6 +67,8 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
                 onClick={handleFlipToggle}
                 type="button"
                 data-testid={`button-flip-${cardId}`}
+                aria-label="Girar tarjeta"
+                aria-pressed={isFlipped}
               >
                 <RotateCcw className="h-5 w-5" />
               </Button>
@@ -140,12 +137,14 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
                 onClick={handleFlipToggle}
                 type="button"
                 data-testid={`button-flip-back-${cardId}`}
+                aria-label="Girar tarjeta"
+                aria-pressed={isFlipped}
               >
                 <RotateCcw className="h-5 w-5" />
               </Button>
             </div>
 
-            <div className="hide-scrollbar flex-1 overflow-y-auto px-8 pb-12 pt-5 sm:px-10 sm:pb-14 sm:pt-7">
+            <div className="hide-scrollbar flex-1 overflow-y-auto px-8 pb-20 pt-5 sm:px-10 sm:pb-24 sm:pt-7">
               <div className="space-y-6 pr-1">
                 <div className="rounded-3xl border border-sky-300/30 bg-sky-300/15 p-6 text-slate-100">
                   <h4 className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-sky-100/85">Solución</h4>
@@ -156,7 +155,10 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
                   <h4 className="text-[0.65rem] font-semibold uppercase tracking-[0.32em] text-sky-100/80">Características clave</h4>
                   <ul className="mt-4 grid gap-3">
                     {features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-3 text-[0.92rem] leading-relaxed text-slate-100/95">
+                      <li
+                        key={index}
+                        className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-3 text-sm leading-relaxed text-slate-100/95 sm:text-[0.95rem]"
+                      >
                         <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-sky-200" />
                         <span>{feature}</span>
                       </li>
