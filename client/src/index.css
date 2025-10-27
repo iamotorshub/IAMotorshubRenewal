@@ -151,6 +151,24 @@
 
 }
 
+html {
+  zoom: 0.85;
+}
+
+@supports not (zoom: 1) {
+  html {
+    overflow-x: hidden;
+  }
+
+  body {
+    transform: scale(0.85);
+    transform-origin: top center;
+    width: calc(100% / 0.85);
+    min-height: calc(100vh / 0.85);
+    margin: 0 auto;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;

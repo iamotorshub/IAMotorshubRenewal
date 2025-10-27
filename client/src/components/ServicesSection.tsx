@@ -43,13 +43,13 @@ interface ServiceProps {
 
 function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, features, result, testimonial, author, ctaText, onCtaClick }: ServiceProps) {
   const [isFlipped, setIsFlipped] = useState(false);
-  const cardId = title.toLowerCase().replace(/\s+/g, '-');
-  const ctaId = ctaText.toLowerCase().replace(/\s+/g, '-');
+  const cardId = title.toLowerCase().replace(/\s+/g, "-");
+  const ctaId = ctaText.toLowerCase().replace(/\s+/g, "-");
 
   return (
     <div className="group perspective-1200" data-testid={`card-${cardId}`}>
       <div
-        className={`relative h-[620px] w-full transition-transform duration-700 [transform-style:preserve-3d] sm:h-[660px] lg:h-[700px] ${
+        className={`relative h-[660px] w-full transition-transform duration-700 [transform-style:preserve-3d] sm:h-[700px] lg:h-[760px] ${
           isFlipped ? '[transform:rotateY(180deg)]' : ''
         }`}
       >
@@ -63,7 +63,19 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
             />
             <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[rgba(2,10,24,0.85)] via-[rgba(2,10,24,0.45)] to-transparent"></div>
 
-            <div className="relative z-10 flex flex-1 flex-col justify-between p-8 sm:p-10">
+            <div className="pointer-events-auto absolute right-6 top-6 z-20 sm:right-8 sm:top-8">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-11 w-11 rounded-full border border-white/20 bg-[rgba(255,255,255,0.12)] text-white transition-colors duration-300 hover:bg-white/25"
+                onClick={() => setIsFlipped((prev) => !prev)}
+                data-testid={`button-flip-${cardId}`}
+              >
+                <RotateCcw className="h-5 w-5" />
+              </Button>
+            </div>
+
+            <div className="relative z-10 flex flex-1 flex-col justify-between px-8 pb-8 pt-16 sm:px-10 sm:pb-10 sm:pt-20">
               <div className="flex items-start gap-4 text-white">
                 <div className="flex h-16 w-16 items-center justify-center rounded-[1.75rem] border border-white/30 bg-white/15 backdrop-blur-md shadow-[0_18px_45px_rgba(0,0,0,0.35)]">
                   <Icon className="h-8 w-8" />
@@ -121,14 +133,14 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
                 variant="ghost"
                 size="icon"
                 className="h-11 w-11 rounded-full border border-white/15 bg-[rgba(255,255,255,0.12)] text-white transition-colors duration-300 hover:bg-white/25"
-                onClick={() => setIsFlipped(false)}
+                onClick={() => setIsFlipped((prev) => !prev)}
                 data-testid={`button-flip-back-${cardId}`}
               >
                 <RotateCcw className="h-5 w-5" />
               </Button>
             </div>
 
-            <div className="flex-1 overflow-y-auto px-8 pb-8 pt-6 sm:px-10 sm:pb-10 sm:pt-8">
+            <div className="hide-scrollbar flex-1 overflow-y-auto px-8 pb-10 pt-6 sm:px-10 sm:pb-12 sm:pt-8">
               <div className="space-y-6 pr-1">
                 <div className="rounded-3xl border border-sky-300/30 bg-sky-300/15 p-6 text-slate-100">
                   <h4 className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-sky-100/85">Solución</h4>
@@ -159,25 +171,14 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
                 </div>
               </div>
             </div>
-
             <div className="px-8 pb-8 sm:px-10 sm:pb-10">
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <Button
-                  className="w-full rounded-full border border-white/25 bg-white/15 py-4 text-xs font-bold uppercase tracking-[0.24em] text-white transition-all duration-300 hover:bg-white/25 sm:text-sm"
-                  onClick={() => setIsFlipped(false)}
-                  data-testid={`button-return-${cardId}`}
-                >
-                  Volver al frente
-                  <RotateCcw className="ml-2 h-4 w-4" />
-                </Button>
-                <Button
-                  className="w-full rounded-full bg-[rgba(255,255,255,0.22)] py-4 text-xs font-bold uppercase tracking-[0.24em] text-white transition-all duration-300 hover:bg-[rgba(255,255,255,0.32)] sm:text-sm"
-                  onClick={onCtaClick}
-                >
-                  {ctaText}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
+              <Button
+                className="w-full rounded-full bg-[rgba(255,255,255,0.22)] py-4 text-xs font-bold uppercase tracking-[0.24em] text-white transition-all duration-300 hover:bg-[rgba(255,255,255,0.32)] sm:text-sm"
+                onClick={onCtaClick}
+              >
+                {ctaText}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
             </div>
           </div>
         </div>
@@ -199,6 +200,12 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
         .rotate-y-180,
         .group [transform\:rotateY(180deg)] {
           transform: rotateY(180deg);
+        }
+        .hide-scrollbar {
+          scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
         }
       `}</style>
     </div>
