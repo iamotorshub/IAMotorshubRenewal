@@ -49,7 +49,7 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
   return (
     <div className="group perspective-1200" data-testid={`card-${cardId}`}>
       <div
-        className={`relative h-[560px] w-full transition-transform duration-700 [transform-style:preserve-3d] sm:h-[600px] lg:h-[640px] ${
+        className={`relative h-[620px] w-full transition-transform duration-700 [transform-style:preserve-3d] sm:h-[660px] lg:h-[700px] ${
           isFlipped ? '[transform:rotateY(180deg)]' : ''
         }`}
       >
@@ -161,13 +161,23 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
             </div>
 
             <div className="px-8 pb-8 sm:px-10 sm:pb-10">
-              <Button
-                className="w-full rounded-full bg-[rgba(255,255,255,0.22)] py-4 text-xs font-bold uppercase tracking-[0.24em] text-white transition-all duration-300 hover:bg-[rgba(255,255,255,0.32)] sm:text-sm"
-                onClick={onCtaClick}
-              >
-                {ctaText}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button
+                  className="w-full rounded-full border border-white/25 bg-white/15 py-4 text-xs font-bold uppercase tracking-[0.24em] text-white transition-all duration-300 hover:bg-white/25 sm:text-sm"
+                  onClick={() => setIsFlipped(false)}
+                  data-testid={`button-return-${cardId}`}
+                >
+                  Volver al frente
+                  <RotateCcw className="ml-2 h-4 w-4" />
+                </Button>
+                <Button
+                  className="w-full rounded-full bg-[rgba(255,255,255,0.22)] py-4 text-xs font-bold uppercase tracking-[0.24em] text-white transition-all duration-300 hover:bg-[rgba(255,255,255,0.32)] sm:text-sm"
+                  onClick={onCtaClick}
+                >
+                  {ctaText}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>

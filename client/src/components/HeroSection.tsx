@@ -75,8 +75,8 @@ export default function HeroSection() {
 
       {/* Logo y navegación */}
       <header className="pointer-events-none absolute inset-x-0 top-0 z-[60] px-4 pt-2 sm:px-12 md:px-16">
-        <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
-          <div className="logo pointer-events-auto -translate-y-12 sm:-translate-y-[3.75rem]">
+        <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+          <div className="logo pointer-events-auto -translate-y-[3.5rem] -translate-x-1 sm:-translate-x-3 sm:-translate-y-[4.75rem] md:-translate-y-[5.25rem] lg:-translate-y-[5.5rem]">
             <img
               src={logoPath}
               alt="IA MOTORSHUB"
@@ -86,7 +86,7 @@ export default function HeroSection() {
           </div>
 
           <nav
-            className={`pointer-events-auto relative mt-1 flex w-full max-w-[480px] flex-wrap items-center justify-center gap-3 px-2 transition-all duration-700 sm:mt-0 sm:ml-auto sm:max-w-none sm:flex-nowrap sm:justify-end ${
+            className={`pointer-events-auto relative mt-2 flex w-full max-w-[480px] flex-wrap items-center justify-center gap-3 px-2 transition-all duration-700 sm:mt-1 sm:ml-auto sm:max-w-none sm:flex-nowrap sm:justify-end ${
               showButtons ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           >
