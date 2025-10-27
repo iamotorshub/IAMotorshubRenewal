@@ -1,57 +1,8 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Clock, MapPin, CheckCircle, AlertTriangle } from "lucide-react";
+import { Clock, CheckCircle, AlertTriangle } from "lucide-react";
 import { useState, useEffect } from "react";
 import ScheduleModal from "./ScheduleModal";
-
-interface SlotProps {
-  sector: string;
-  available: number;
-  total: number;
-  status: 'available' | 'limited' | 'full';
-}
-
-function SlotCard({ sector, available, total, status }: SlotProps) {
-  const getStatusColor = () => {
-    switch (status) {
-      case 'available': return 'bg-green-500';
-      case 'limited': return 'bg-[hsl(210,100%,55%)]';
-      case 'full': return 'bg-red-500';
-    }
-  };
-
-  const getStatusText = () => {
-    switch (status) {
-      case 'available': return 'DISPONIBLE';
-      case 'limited': return 'LIMITADO';
-      case 'full': return 'COMPLETO';
-    }
-  };
-
-  return (
-    <Card className="bg-gradient-to-br from-white to-[hsl(220,15%,92%)] border-[hsl(210,100%,55%)]/30 hover-elevate transition-all duration-300 hover:border-[hsl(210,100%,55%)]/50 hover:scale-105">
-      <CardHeader className="pb-3">
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-[hsl(220,70%,25%)] font-serif text-base">{sector}</CardTitle>
-          <Badge className={`${getStatusColor()} text-white font-bold`}>
-            {getStatusText()}
-          </Badge>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <div className="text-center">
-          <div className="text-3xl font-bold text-[hsl(210,100%,55%)] mb-2">
-            {available}/{total}
-          </div>
-          <p className="text-[hsl(220,10%,45%)] text-sm">
-            {status === 'full' ? 'Lista de espera' : 'Slots disponibles'}
-          </p>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
 
 function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({
@@ -109,16 +60,8 @@ export default function UrgencySection() {
     setShowScheduleModal(true);
   };
 
-  const slots = [
-    { sector: 'Concesionarios', available: 1, total: 1, status: 'limited' as const },
-    { sector: 'Inmobiliarias', available: 2, total: 3, status: 'available' as const },
-    { sector: 'Clínicas', available: 1, total: 2, status: 'limited' as const },
-    { sector: 'Contables', available: 2, total: 3, status: 'available' as const },
-    { sector: 'Call Centers', available: 0, total: 2, status: 'full' as const }
-  ];
-
   const offers = [
-    { icon: CheckCircle, text: 'Consulta estratégica 2 horas', value: '$50,000', status: 'GRATIS' },
+    { icon: CheckCircle, text: 'Consulta estratégica 1 hora', value: '$50,000', status: 'GRATIS' },
     { icon: CheckCircle, text: 'Audit completo automatización', value: 'Premium', status: 'GRATIS' },
     { icon: CheckCircle, text: 'Preview personalizado funcionando', value: 'Exclusivo', status: 'GRATIS' },
     { icon: CheckCircle, text: '30 días implementación supervisada', value: 'Hands-on', status: 'GRATIS' }
@@ -140,24 +83,8 @@ export default function UrgencySection() {
           </p>
         </div>
 
-        {/* Exclusivity Section */}
-        <div className="bg-gradient-to-r from-[hsl(220,15%,92%)] via-white to-[hsl(220,15%,92%)] rounded-2xl border-2 border-[hsl(210,100%,55%)]/30 p-8 mb-12 shadow-xl animate-slide-up" style={{ animationDelay: '0.2s' }}>
-          <div className="flex items-center gap-3 mb-6">
-            <MapPin className="h-6 w-6 text-[hsl(210,100%,55%)]" />
-            <h3 className="text-2xl font-serif font-bold text-[hsl(220,70%,25%)]">
-              BAHÍA BLANCA - SLOTS DISPONIBLES
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {slots.map((slot, index) => (
-              <SlotCard key={index} {...slot} />
-            ))}
-          </div>
-        </div>
-
         {/* Limited Time Offer */}
-        <div className="bg-gradient-to-r from-[hsl(210,100%,55%)]/10 via-[hsl(210,100%,55%)]/5 to-[hsl(210,100%,55%)]/10 rounded-2xl border-2 border-[hsl(210,100%,55%)]/50 p-8 mb-12 shadow-xl animate-slide-up" style={{ animationDelay: '0.4s' }}>
+        <div className="bg-gradient-to-r from-[hsl(210,100%,55%)]/10 via-[hsl(210,100%,55%)]/5 to-[hsl(210,100%,55%)]/10 rounded-2xl border-2 border-[hsl(210,100%,55%)]/50 p-8 mb-12 shadow-xl animate-slide-up" style={{ animationDelay: '0.2s' }}>
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-2 mb-4">
               <Clock className="h-6 w-6 text-[hsl(210,100%,55%)]" />
@@ -166,7 +93,7 @@ export default function UrgencySection() {
               </h3>
             </div>
             <p className="text-xl text-[hsl(210,100%,55%)] font-bold mb-6">
-              PARA LAS PRIMERAS 3 EMPRESAS ESTA SEMANA:
+              LAS 3 PRIMERAS EMPRESAS DURANTE EL MES DE NOVIEMBRE
             </p>
 
             <CountdownTimer />
@@ -220,9 +147,11 @@ export default function UrgencySection() {
             </Button>
           </div>
 
-          <p className="text-[hsl(210,100%,55%)] font-bold text-xl mt-8" data-testid="text-closing">
-            "No vendemos herramientas. Creamos ecosistemas que transforman industrias."
-          </p>
+          <div className="mx-auto mt-10 max-w-4xl rounded-[2.5rem] border border-[hsl(210,100%,55%)]/40 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.22),rgba(255,255,255,0.05))] p-8 shadow-[0_35px_120px_rgba(15,76,129,0.35)]">
+            <p className="text-2xl font-serif font-black uppercase tracking-[0.18em] text-white drop-shadow-[0_18px_55px_rgba(8,32,82,0.85)] md:text-4xl" data-testid="text-closing">
+              "No vendemos herramientas. Creamos ecosistemas que transforman industrias."
+            </p>
+          </div>
         </div>
       </div>
 
