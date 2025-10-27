@@ -272,3 +272,31 @@
     inset: -1px;
   }
 }
+
+header nav {
+  background: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+header nav a {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+header .logo {
+  position: relative;
+  top: -12px;
+  margin-bottom: 0;
+  display: flex;
+}
+
+header .logo img {
+  width: auto;
+}
+
+main {
+  margin-top: 0 !important;
+}
