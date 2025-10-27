@@ -186,8 +186,7 @@ export default function HeroSection() {
             className="relative grid w-full max-w-6xl grid-cols-1 gap-4 text-center animate-slide-up md:grid-cols-3 lg:grid-cols-5"
             style={{ animationDelay: "0.6s" }}
           >
-            <div className="pointer-events-none absolute inset-0 -z-10 rounded-[2.1rem] bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.15),transparent_65%)]"></div>
-            {["BARES Y RESTAURANTES", "LOCALES DE ROPA", "E-COMMERCE", "POSICIONAMIENTO", "EMPRESAS"].map((title, index) => {
+            {["BARES Y RESTAURANTES", "LOCALES DE ROPA", "E-COMMERCE", "SEO", "EMPRESAS"].map((title, index) => {
               const descriptions = [
                 "Automatización y reservas inteligentes",
                 "Asistentes virtuales y ventas online",
@@ -222,21 +221,9 @@ export default function HeroSection() {
         .animate-slide-up {
           animation: slide-up 0.8s ease-out both;
         }
-        @keyframes heroHalo {
-          0%, 100% { opacity: 0.9; transform: scale(1); }
-          50% { opacity: 0.55; transform: scale(1.08); }
-        }
-        @keyframes slowSpin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        @keyframes logoPulse {
-          0%, 100% { opacity: 0; transform: scale(0.95); }
-          50% { opacity: 0.6; transform: scale(1.1); }
-        }
-        @keyframes logoOrbit {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+        @keyframes capsuleGlow {
+          0%, 100% { opacity: 0.75; transform: scale(1); }
+          50% { opacity: 0.45; transform: scale(1.02); }
         }
       `}</style>
     </section>
