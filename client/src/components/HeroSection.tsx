@@ -22,15 +22,24 @@ const carouselImages = [
 
 export default function HeroSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showButtons, setShowButtons] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(
         (prevIndex) => (prevIndex + 1) % carouselImages.length
       );
-    }, 5000); // Change image every 5 seconds
-
+    }, 5000);
     return () => clearInterval(interval);
+  }, []);
+
+  // Detecta el scroll para ocultar los botones cuando baja
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowButtons(window.scrollY < window.innerHeight * 0.5);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -63,9 +72,63 @@ export default function HeroSection() {
         ></div>
       </div>
 
-      {/* Content */}
+      {/* Floating Logo + Buttons */}
+      <div
+        className={`absolute top-6 left-0 w-full px-10 z-30 flex justify-between items-center transition-all duration-700 ${
+          showButtons ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        {/* Logo arriba a la izquierda */}
+        <img
+          src={logoPath}
+          alt="IA MOTORSHUB"
+          className="h-20 md:h-28 brightness-0 invert drop-shadow-lg hover:scale-105 transition-transform duration-300"
+          style={{ filter: "brightness(0) invert(1)" }}
+        />
+
+        {/* Botones flotantes estilo Aceternity */}
+        <div className="flex gap-4 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 shadow-lg">
+          <Button
+            className="bg-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,50%)] text-white font-bold px-6 py-3 rounded-full text-sm shadow-md hover:shadow-[hsl(210,100%,55%)]/40 transition-all duration-300"
+            onClick={() => {
+              const serviciosSection =
+                document.getElementById("servicios");
+              serviciosSection?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }}
+          >
+            Servicios
+          </Button>
+          <Button
+            variant="outline"
+            className="border-2 border-[hsl(210,100%,55%)] text-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,55%)] hover:text-white font-bold px-6 py-3 rounded-full text-sm backdrop-blur-sm bg-white/5 transition-all duration-300"
+            onClick={() => {
+              const asistenteSection =
+                document.getElementById("asistente");
+              asistenteSection?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }}
+          >
+            Asistente Virtual
+          </Button>
+          <Button
+            className="bg-gradient-to-r from-green-500 to-green-400 text-white font-bold px-6 py-3 rounded-full text-sm shadow-md hover:shadow-green-400/40 hover:scale-105 transition-all duration-300"
+            onClick={() => {
+              window.open("https://wa.me/5492915206692", "_blank");
+            }}
+          >
+            WhatsApp Directo
+          </Button>
+        </div>
+      </div>
+
+      {/* Main Content */}
       <div className="relative z-20 container mx-auto px-6 text-center">
-        {/* Logo with Animation - ENLARGED */}
+        {/* Logo central (mantiene tu original) */}
         <div className="mb-8 animate-fade-in">
           <img
             src={logoPath}
@@ -76,7 +139,7 @@ export default function HeroSection() {
           />
         </div>
 
-        {/* Main Headline with Gradient Text */}
+        {/* Main Headline */}
         <h1
           className="text-5xl md:text-7xl font-serif font-black mb-6 leading-tight text-white animate-slide-up"
           data-testid="text-headline"
@@ -109,7 +172,7 @@ export default function HeroSection() {
           </span>
         </p>
 
-        {/* CTAs with Modern Design */}
+        {/* CTAs originales */}
         <div
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-slide-up"
           style={{ animationDelay: "0.4s" }}
@@ -149,66 +212,50 @@ export default function HeroSection() {
           </Button>
         </div>
 
-        {/* Social Proof Cards with Glassmorphism */}
+        {/* Social Proof Cards (mantiene todo igual) */}
         <div
           className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 text-center max-w-6xl mx-auto animate-slide-up"
           style={{ animationDelay: "0.6s" }}
         >
           <div className="bg-white/5 backdrop-blur-md border border-[hsl(210,100%,55%)]/30 rounded-lg p-4 hover:bg-white/10 hover:border-[hsl(210,100%,55%)]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[hsl(210,100%,55%)]/20">
-            <div
-              className="text-[hsl(210,100%,55%)] text-2xl font-bold mb-1 flex items-center justify-center gap-1"
-              data-testid="text-companies"
-            >
-              <Sparkles className="h-5 w-5" />
-              BARES Y RESTAURANTES
+            <div className="text-[hsl(210,100%,55%)] text-2xl font-bold mb-1 flex items-center justify-center gap-1">
+              <Sparkles className="h-5 w-5" /> BARES Y RESTAURANTES
             </div>
             <div className="text-sm text-[hsl(220,15%,92%)]">
               Automatización y reservas inteligentes
             </div>
           </div>
+
           <div className="bg-white/5 backdrop-blur-md border border-[hsl(210,100%,55%)]/30 rounded-lg p-4 hover:bg-white/10 hover:border-[hsl(210,100%,55%)]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[hsl(210,100%,55%)]/20">
-            <div
-              className="text-[hsl(210,100%,55%)] text-2xl font-bold mb-1 flex items-center justify-center gap-1"
-              data-testid="text-agents"
-            >
-              <Sparkles className="h-5 w-5" />
-              LOCALES DE ROPA
+            <div className="text-[hsl(210,100%,55%)] text-2xl font-bold mb-1 flex items-center justify-center gap-1">
+              <Sparkles className="h-5 w-5" /> LOCALES DE ROPA
             </div>
             <div className="text-sm text-[hsl(220,15%,92%)]">
               Asistentes virtuales y ventas online
             </div>
           </div>
+
           <div className="bg-white/5 backdrop-blur-md border border-[hsl(210,100%,55%)]/30 rounded-lg p-4 hover:bg-white/10 hover:border-[hsl(210,100%,55%)]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[hsl(210,100%,55%)]/20">
-            <div
-              className="text-[hsl(210,100%,55%)] text-2xl font-bold mb-1 flex items center justify-center gap-1"
-              data-testid="text-storyboards"
-            >
-              <Sparkles className="h-5 w-5" />
-              E-COMMERCE
+            <div className="text-[hsl(210,100%,55%)] text-2xl font-bold mb-1 flex items-center justify-center gap-1">
+              <Sparkles className="h-5 w-5" /> E-COMMERCE
             </div>
             <div className="text-sm text-[hsl(220,15%,92%)]">
               Optimización y conversión con IA
             </div>
           </div>
+
           <div className="bg-white/5 backdrop-blur-md border border-[hsl(210,100%,55%)]/30 rounded-lg p-4 hover:bg-white/10 hover:border-[hsl(210,100%,55%)]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[hsl(210,100%,55%)]/20">
-            <div
-              className="text-[hsl(210,100%,55%)] text-2xl font-bold mb-1 flex items-center justify-center gap-1"
-              data-testid="text-platforms"
-            >
-              <Sparkles className="h-5 w-5" />
-              POSICIONAMIENTO
+            <div className="text-[hsl(210,100%,55%)] text-2xl font-bold mb-1 flex items-center justify-center gap-1">
+              <Sparkles className="h-5 w-5" /> POSICIONAMIENTO
             </div>
             <div className="text-sm text-[hsl(220,15%,92%)]">
               SEO y marketing digital con IA
             </div>
           </div>
+
           <div className="bg-white/5 backdrop-blur-md border border-[hsl(210,100%,55%)]/30 rounded-lg p-4 hover:bg-white/10 hover:border-[hsl(210,100%,55%)]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[hsl(210,100%,55%)]/20">
-            <div
-              className="text-[hsl(210,100%,55%)] text-2xl font-bold mb-1 flex items-center justify-center gap-1"
-              data-testid="text-arsenal"
-            >
-              <Sparkles className="h-5 w-5" />
-              EMPRESAS
+            <div className="text-[hsl(210,100%,55%)] text-2xl font-bold mb-1 flex items-center justify-center gap-1">
+              <Sparkles className="h-5 w-5" /> EMPRESAS
             </div>
             <div className="text-sm text-[hsl(220,15%,92%)]">
               Soluciones complejas personalizadas
@@ -244,4 +291,3 @@ export default function HeroSection() {
     </section>
   );
 }
-
