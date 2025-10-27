@@ -151,6 +151,24 @@
 
 }
 
+html {
+  zoom: 0.85;
+}
+
+@supports not (zoom: 1) {
+  html {
+    overflow-x: hidden;
+  }
+
+  body {
+    transform: scale(0.85);
+    transform-origin: top center;
+    width: calc(100% / 0.85);
+    min-height: calc(100vh / 0.85);
+    margin: 0 auto;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -271,4 +289,32 @@
   .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
     inset: -1px;
   }
+}
+
+header nav {
+  background: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+header nav a {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+header .logo {
+  position: relative;
+  top: 0;
+  margin-bottom: 0;
+  display: flex;
+}
+
+header .logo img {
+  width: auto;
+}
+
+main {
+  margin-top: 0 !important;
 }
