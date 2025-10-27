@@ -45,11 +45,12 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
   const [isFlipped, setIsFlipped] = useState(false);
   const cardId = title.toLowerCase().replace(/\s+/g, "-");
   const ctaId = ctaText.toLowerCase().replace(/\s+/g, "-");
+  const handleFlipToggle = () => setIsFlipped((prev) => !prev);
 
   return (
     <div className="group perspective-1200" data-testid={`card-${cardId}`}>
       <div
-        className={`relative h-[660px] w-full transition-transform duration-700 [transform-style:preserve-3d] sm:h-[700px] lg:h-[760px] ${
+        className={`relative h-[680px] w-full transition-transform duration-700 [transform-style:preserve-3d] sm:h-[720px] lg:h-[780px] ${
           isFlipped ? '[transform:rotateY(180deg)]' : ''
         }`}
       >
@@ -68,7 +69,8 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
                 variant="ghost"
                 size="icon"
                 className="h-11 w-11 rounded-full border border-white/20 bg-[rgba(255,255,255,0.12)] text-white transition-colors duration-300 hover:bg-white/25"
-                onClick={() => setIsFlipped((prev) => !prev)}
+                onClick={handleFlipToggle}
+                type="button"
                 data-testid={`button-flip-${cardId}`}
               >
                 <RotateCcw className="h-5 w-5" />
@@ -100,6 +102,7 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
                   <Button
                     className="flex-1 rounded-full bg-white/15 px-6 py-3 text-xs font-bold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:bg-white/25 sm:text-sm"
                     onClick={() => setIsFlipped(true)}
+                    type="button"
                     data-testid={`button-ver-solucion-${cardId}`}
                   >
                     Ver solución
@@ -108,6 +111,7 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
                   <Button
                     className="rounded-full border border-[rgba(255,255,255,0.35)] bg-[rgba(255,255,255,0.18)] px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:border-white/60 hover:bg-[rgba(255,255,255,0.28)] sm:text-sm"
                     onClick={onCtaClick}
+                    type="button"
                     data-testid={`button-${ctaId}`}
                   >
                     {ctaText}
@@ -133,25 +137,26 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
                 variant="ghost"
                 size="icon"
                 className="h-11 w-11 rounded-full border border-white/15 bg-[rgba(255,255,255,0.12)] text-white transition-colors duration-300 hover:bg-white/25"
-                onClick={() => setIsFlipped((prev) => !prev)}
+                onClick={handleFlipToggle}
+                type="button"
                 data-testid={`button-flip-back-${cardId}`}
               >
                 <RotateCcw className="h-5 w-5" />
               </Button>
             </div>
 
-            <div className="hide-scrollbar flex-1 overflow-y-auto px-8 pb-10 pt-6 sm:px-10 sm:pb-12 sm:pt-8">
+            <div className="hide-scrollbar flex-1 overflow-y-auto px-8 pb-12 pt-5 sm:px-10 sm:pb-14 sm:pt-7">
               <div className="space-y-6 pr-1">
                 <div className="rounded-3xl border border-sky-300/30 bg-sky-300/15 p-6 text-slate-100">
                   <h4 className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-sky-100/85">Solución</h4>
-                  <p className="mt-3 text-base font-semibold leading-relaxed text-white/95 sm:text-lg">“{solution}”</p>
+                  <p className="mt-3 text-base font-semibold leading-relaxed text-white/95 sm:text-[1.05rem]">“{solution}”</p>
                 </div>
 
                 <div>
                   <h4 className="text-[0.65rem] font-semibold uppercase tracking-[0.32em] text-sky-100/80">Características clave</h4>
                   <ul className="mt-4 grid gap-3">
                     {features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-3 text-sm leading-relaxed text-slate-100/95">
+                      <li key={index} className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-3 text-[0.92rem] leading-relaxed text-slate-100/95">
                         <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-sky-200" />
                         <span>{feature}</span>
                       </li>
@@ -162,7 +167,7 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="rounded-3xl border border-sky-300/25 bg-sky-400/20 p-5">
                     <h4 className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-sky-100/85">Resultado</h4>
-                    <p className="mt-3 text-lg font-bold text-white">{result}</p>
+                    <p className="mt-3 text-base font-bold text-white sm:text-lg">{result}</p>
                   </div>
                   <div className="rounded-3xl border border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.12)] p-5 backdrop-blur-md">
                     <p className="text-sm italic text-white/90">“{testimonial}”</p>
@@ -175,6 +180,7 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
               <Button
                 className="w-full rounded-full bg-[rgba(255,255,255,0.22)] py-4 text-xs font-bold uppercase tracking-[0.24em] text-white transition-all duration-300 hover:bg-[rgba(255,255,255,0.32)] sm:text-sm"
                 onClick={onCtaClick}
+                type="button"
               >
                 {ctaText}
                 <ArrowRight className="ml-2 h-4 w-4" />
