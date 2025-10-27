@@ -6,7 +6,7 @@ import {
   Phone,
   TrendingUp,
   ArrowRight,
-  ChevronDown,
+  RefreshCcw,
 } from "lucide-react";
 // Imágenes actualizadas para servicios
 import rentalsImage from "@assets/hero-rentals-ai_1760656167854.png";
@@ -46,115 +46,133 @@ function ServiceCard({
   ctaText,
   onCtaClick,
 }: ServiceProps) {
-  const [expanded, setExpanded] = useState(false);
+  const [flipped, setFlipped] = useState(false);
 
   return (
     <article
-      className="group relative flex h-full flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-[rgba(4,12,28,0.78)] text-slate-100 shadow-[0_30px_90px_rgba(6,22,58,0.45)] transition-all duration-500 hover:-translate-y-1 hover:border-sky-400/40 hover:shadow-[0_45px_120px_rgba(8,32,82,0.55)]"
+      className="group relative h-full [perspective:1800px]"
       data-testid={`card-${title.toLowerCase().replace(/\s+/g, '-')}`}
     >
-      <div className="absolute inset-0">
-        <img
-          src={image}
-          alt={title}
-          loading="lazy"
-          decoding="async"
-          className="h-full w-full object-cover object-center transition-transform duration-[900ms] group-hover:scale-[1.05]"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,18,0.82)_0%,rgba(4,10,26,0.74)_45%,rgba(4,10,26,0.9)_100%)]"></div>
-        <div
-          className="absolute inset-0 opacity-0 mix-blend-screen transition-opacity duration-700 group-hover:opacity-60"
-          style={{
-            background:
-              "radial-gradient(circle at 18% 22%, rgba(96,165,250,0.35), transparent 52%), radial-gradient(circle at 82% 18%, rgba(14,165,233,0.28), transparent 55%)",
-          }}
-        ></div>
-      </div>
-
-      <div className="relative z-10 flex h-full flex-col gap-6 p-7 sm:p-10">
-        <div className="flex flex-col gap-6 text-left">
-          <div className="flex flex-wrap items-center gap-4">
-            <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-xl shadow-[0_18px_45px_rgba(14,116,233,0.28)]">
-              <Icon className="h-7 w-7 text-sky-200" />
-            </span>
-            <div className="space-y-1">
-              <h3 className="text-lg font-semibold uppercase tracking-[0.22em] text-white sm:text-xl">
-                {title}
-              </h3>
-              <p className="text-xs font-medium text-slate-200/85 sm:text-sm">{subtitle}</p>
+      <div
+        className={`relative h-full w-full transition-transform duration-700 ease-out [transform-style:preserve-3d] ${
+          flipped ? "[transform:rotateY(180deg)]" : ""
+        }`}
+      >
+        <div className="absolute inset-0 overflow-hidden rounded-[2.5rem] border border-white/10 shadow-[0_26px_80px_rgba(6,20,52,0.45)] [backface-visibility:hidden]">
+          <img
+            src={image}
+            alt={title}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover object-center transition-transform duration-[1400ms] group-hover:[transform:scale(1.04)]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-transparent"></div>
+          <div className="absolute inset-x-0 bottom-0 flex flex-col gap-6 p-7 sm:p-9">
+            <div className="flex items-center gap-4">
+              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-black/35 backdrop-blur-xl shadow-[0_18px_48px_rgba(14,116,233,0.35)]">
+                <Icon className="h-7 w-7 text-sky-200" />
+              </span>
+              <div className="space-y-1 text-left">
+                <h3 className="text-lg font-semibold uppercase tracking-[0.22em] text-white sm:text-xl">
+                  {title}
+                </h3>
+                <p className="text-xs font-medium text-slate-100/90 sm:text-sm">{subtitle}</p>
+              </div>
             </div>
-          </div>
-
-          <div className="grid gap-4 text-sm text-slate-100/90 sm:text-base">
-            <div className="rounded-[1.5rem] border border-white/12 bg-white/10 p-5 shadow-[0_15px_35px_rgba(6,20,50,0.25)] backdrop-blur-lg">
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-sky-200/80 sm:text-xs">
-                Problema
-              </p>
-              <p className="mt-2 leading-relaxed">{problem}</p>
+            <p className="text-sm font-medium text-slate-100/95 drop-shadow-[0_14px_35px_rgba(0,0,0,0.6)] sm:text-base">
+              {solution}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {features.slice(0, 3).map((feature, index) => (
+                <span
+                  key={index}
+                  className="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-slate-50 backdrop-blur-lg sm:text-xs"
+                >
+                  {feature}
+                </span>
+              ))}
             </div>
-            <div className="rounded-[1.5rem] border border-sky-400/40 bg-sky-500/10 p-5 shadow-[0_20px_48px_rgba(14,116,233,0.28)] backdrop-blur-lg">
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-sky-50 sm:text-xs">
-                Solución
-              </p>
-              <p className="mt-2 font-medium leading-relaxed text-slate-50/95">{solution}</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap gap-2">
-          {features.map((feature, index) => (
-            <span
-              key={index}
-              className="rounded-full border border-white/18 bg-white/8 px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-slate-100/85 transition-all duration-300 hover:border-sky-300/60 hover:bg-sky-500/15 hover:text-white"
+            <button
+              type="button"
+              onClick={() => setFlipped(true)}
+              className="group/button inline-flex items-center justify-center self-start rounded-full border border-sky-300/60 bg-sky-500/90 px-6 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-slate-950 shadow-[0_18px_45px_rgba(56,189,248,0.45)] transition-transform duration-300 hover:scale-[1.05] sm:text-sm"
             >
-              {feature}
-            </span>
-          ))}
-        </div>
-
-        <div
-          className={`grid transition-[grid-template-rows] duration-500 ease-in-out ${
-            expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-          }`}
-        >
-          <div className="overflow-hidden">
-            <div className="space-y-5 rounded-[1.5rem] border border-white/12 bg-white/8 p-6 backdrop-blur-lg">
-              <div>
-                <h4 className="text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-sky-100/90 sm:text-xs">
-                  Resultado
-                </h4>
-                <p className="mt-2 text-sm font-semibold text-white sm:text-base">{result}</p>
-              </div>
-              <div className="rounded-2xl border border-white/14 bg-black/25 p-4">
-                <p className="text-sm italic text-slate-100/90">"{testimonial}"</p>
-                <p className="mt-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-sky-200/80 sm:text-xs">
-                  {author}
-                </p>
-              </div>
-            </div>
+              Ver caso completo
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1" />
+            </button>
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <Button
-            className="group/cta inline-flex items-center justify-center rounded-full bg-[linear-gradient(135deg,#38bdf8,#60a5fa)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-slate-950 shadow-[0_22px_55px_rgba(14,116,233,0.35)] transition-transform duration-300 hover:scale-[1.04] hover:shadow-[0_32px_85px_rgba(14,116,233,0.45)] sm:px-8 sm:py-4 sm:text-base"
-            onClick={onCtaClick}
-            data-testid={`button-${ctaText.toLowerCase().replace(/\s+/g, '-')}`}
-          >
-            {ctaText}
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" />
-          </Button>
+        <div className="absolute inset-0 flex h-full flex-col justify-between overflow-hidden rounded-[2.5rem] border border-white/12 bg-[rgba(4,12,28,0.9)] p-7 text-slate-100 shadow-[0_30px_90px_rgba(6,22,58,0.5)] [backface-visibility:hidden] [transform:rotateY(180deg)] sm:p-10">
+          <div className="space-y-6 text-left">
+            <div className="flex items-center gap-3">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-xl">
+                <Icon className="h-6 w-6 text-sky-200" />
+              </span>
+              <div>
+                <h3 className="text-lg font-semibold uppercase tracking-[0.22em] text-white sm:text-xl">{title}</h3>
+                <p className="text-xs font-medium text-slate-200/85 sm:text-sm">{subtitle}</p>
+              </div>
+            </div>
 
-          <button
-            type="button"
-            onClick={() => setExpanded((prev) => !prev)}
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/18 bg-white/8 px-5 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-slate-100 transition-all duration-300 hover:border-sky-300/60 hover:bg-sky-500/15 hover:text-white"
-          >
-            {expanded ? "Ocultar caso" : "Ver caso completo"}
-            <ChevronDown
-              className={`h-4 w-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
-            />
-          </button>
+            <div className="space-y-4 text-sm text-slate-100/90 sm:text-base">
+              <div>
+                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-sky-200/80 sm:text-xs">
+                  Problema
+                </p>
+                <p className="mt-2 leading-relaxed">{problem}</p>
+              </div>
+              <div>
+                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-sky-50 sm:text-xs">
+                  Solución
+                </p>
+                <p className="mt-2 font-medium leading-relaxed text-slate-50/95">{solution}</p>
+              </div>
+              <ul className="grid gap-2 text-xs text-slate-100/90 sm:text-sm">
+                {features.map((feature, index) => (
+                  <li
+                    key={index}
+                    className="flex items-start gap-2 rounded-2xl border border-white/12 bg-white/8 px-4 py-2"
+                  >
+                    <span className="mt-[2px] h-2 w-2 flex-shrink-0 rounded-full bg-sky-300"></span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="space-y-5">
+            <div className="rounded-2xl border border-white/14 bg-black/30 p-5">
+              <h4 className="text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-sky-100/90 sm:text-xs">
+                Resultado
+              </h4>
+              <p className="mt-2 text-sm font-semibold text-white sm:text-base">{result}</p>
+              <p className="mt-3 text-sm italic text-slate-100/90">"{testimonial}"</p>
+              <p className="mt-2 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-sky-200/80 sm:text-xs">
+                {author}
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3">
+              <Button
+                className="group/cta inline-flex items-center justify-center rounded-full bg-[linear-gradient(135deg,#38bdf8,#60a5fa)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-slate-950 shadow-[0_22px_55px_rgba(14,116,233,0.35)] transition-transform duration-300 hover:scale-[1.05] hover:shadow-[0_32px_85px_rgba(14,116,233,0.45)] sm:px-8 sm:py-4 sm:text-base"
+                onClick={onCtaClick}
+                data-testid={`button-${ctaText.toLowerCase().replace(/\s+/g, '-')}`}
+              >
+                {ctaText}
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" />
+              </Button>
+
+              <button
+                type="button"
+                onClick={() => setFlipped(false)}
+                className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/8 px-5 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-slate-100 transition-all duration-300 hover:border-sky-300/60 hover:bg-sky-500/15 hover:text-white"
+              >
+                <RefreshCcw className="h-4 w-4" /> Volver
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </article>

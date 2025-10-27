@@ -57,7 +57,7 @@ export default function HeroSection() {
               alt={`Hero ${index + 1}`}
               loading={index === 0 ? "eager" : "lazy"}
               decoding="async"
-              className="h-full w-full object-cover object-center brightness-[1.04] contrast-[1.05]"
+              className="h-full w-full object-cover object-center md:object-[50%_52%] lg:object-[50%_48%] brightness-[1.03] contrast-[1.05]"
             />
           </div>
         ))}
@@ -74,23 +74,23 @@ export default function HeroSection() {
       </div>
 
       {/* Logo y navegación */}
-      <div className="pointer-events-none absolute top-6 left-0 right-0 z-[60] flex flex-col items-center gap-4 px-4 sm:top-8 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-10 md:top-10 md:px-16">
+      <div className="pointer-events-none absolute left-0 right-0 top-3 z-[60] flex flex-col items-start gap-4 px-4 sm:top-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-10 md:top-6 md:px-16">
         <div className="pointer-events-auto">
           <img
             src={logoPath}
             alt="IA MOTORSHUB"
-            className="h-[17rem] w-auto sm:h-[22rem] md:h-[25rem] lg:h-[27rem] brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)]"
+            className="h-[19rem] w-auto sm:h-[25rem] md:h-[29rem] lg:h-[32rem] brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)]"
             style={{ filter: "brightness(0) invert(1)" }}
           />
         </div>
 
         <div
-          className={`pointer-events-auto w-full max-w-[420px] transition-all duration-700 sm:max-w-none ${
+          className={`pointer-events-auto w-full max-w-[440px] transition-all duration-700 sm:max-w-none ${
             showButtons ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
         >
-          <div className="relative flex flex-wrap items-center justify-center gap-3 overflow-hidden rounded-[2.75rem] border border-white/10 bg-[rgba(6,18,40,0.14)] px-4 py-3 shadow-[0_22px_60px_rgba(5,18,40,0.32)] backdrop-blur-[18px] sm:flex-nowrap sm:justify-end">
-            <span className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(96,165,250,0.14),rgba(12,25,50,0.26))] opacity-80 animate-[capsuleGlow_12s_linear_infinite]"></span>
+          <div className="relative flex flex-wrap items-center justify-center gap-3 overflow-hidden rounded-[2.75rem] border border-white/10 bg-[rgba(6,18,40,0.12)] px-4 py-3 shadow-[0_22px_60px_rgba(5,18,40,0.28)] backdrop-blur-[18px] sm:flex-nowrap sm:justify-end">
+            <span className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(96,165,250,0.12),rgba(12,25,50,0.22))] opacity-80 animate-[capsuleGlow_12s_linear_infinite]"></span>
             {[
               ["Servicios", "servicios"],
               ["Diferenciadores", "diferenciadores"],
@@ -101,7 +101,7 @@ export default function HeroSection() {
                 key={label}
                 borderRadius="1.5rem"
                 className="px-5 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-slate-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:text-sm"
-                innerBackground="rgba(10, 28, 60, 0.45)"
+                innerBackground="rgba(10, 28, 60, 0.38)"
                 onClick={() =>
                   document.getElementById(target)?.scrollIntoView({
                     behavior: "smooth",
@@ -117,7 +117,7 @@ export default function HeroSection() {
       </div>
 
       {/* Contenido principal */}
-      <div className="relative z-20 container mx-auto px-4 pb-28 pt-[22rem] text-center sm:px-6 sm:pt-[23rem] md:pt-[24rem] lg:pt-[26rem]">
+      <div className="relative z-20 container mx-auto px-4 pb-24 pt-[19rem] text-center sm:px-6 sm:pt-[20rem] md:pt-[21rem] lg:pt-[23rem]">
         <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-8 px-4 sm:gap-10 sm:px-10">
           <h1 className="relative text-4xl font-serif font-black uppercase leading-tight text-white drop-shadow-[0_14px_35px_rgba(3,10,26,0.95)] animate-slide-up sm:text-5xl md:text-6xl lg:text-7xl">
             SOLUCIONES DE IA
@@ -135,23 +135,22 @@ export default function HeroSection() {
           </h1>
 
           <p
-            className="relative max-w-3xl text-base leading-relaxed text-slate-100 drop-shadow-[0_16px_38px_rgba(2,8,22,0.65)] animate-slide-up sm:text-lg md:text-xl"
+            className="relative max-w-3xl text-base leading-relaxed text-slate-100 drop-shadow-[0_18px_42px_rgba(2,8,22,0.7)] animate-slide-up sm:text-lg md:text-xl"
             style={{
               animationDelay: "0.2s",
-              textShadow: "0 0 28px rgba(4,16,40,0.65), 0 0 8px rgba(8,120,220,0.35)",
             }}
           >
             Desde bares y restaurantes hasta e-commerce y empresas corporativas.
             <br />
-            <span className="font-semibold text-sky-200">
+            <span className="bg-gradient-to-r from-sky-200 via-sky-100 to-sky-200 bg-clip-text font-semibold text-transparent [text-shadow:0_0_14px_rgba(9,40,80,0.55)]">
               Posicionamiento digital
             </span>{" "}
             •{" "}
-            <span className="font-semibold text-sky-200">
+            <span className="bg-gradient-to-r from-sky-200 via-white to-sky-200 bg-clip-text font-semibold text-transparent [text-shadow:0_0_14px_rgba(9,40,80,0.55)]">
               Automatización inteligente
             </span>{" "}
             •{" "}
-            <span className="font-semibold text-sky-200">
+            <span className="bg-gradient-to-r from-sky-200 via-sky-100 to-white bg-clip-text font-semibold text-transparent [text-shadow:0_0_14px_rgba(9,40,80,0.55)]">
               Soluciones personalizadas
             </span>
           </p>
