@@ -45,7 +45,7 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
   return (
     <div className="group perspective-1200" data-testid={`card-${cardId}`}>
       <div
-        className={`relative h-[680px] w-full transition-transform duration-700 [transform-style:preserve-3d] sm:h-[720px] lg:h-[780px] ${
+        className={`relative h-[760px] w-full transition-transform duration-700 [transform-style:preserve-3d] sm:h-[820px] lg:h-[880px] ${
           isFlipped ? '[transform:rotateY(180deg)]' : ''
         }`}
       >
@@ -144,7 +144,7 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
               </Button>
             </div>
 
-            <div className="hide-scrollbar flex-1 overflow-y-auto px-8 pb-20 pt-5 sm:px-10 sm:pb-24 sm:pt-7">
+            <div className="hide-scrollbar flex-1 overflow-y-auto px-8 pb-24 pt-5 sm:px-10 sm:pb-28 sm:pt-7">
               <div className="space-y-6 pr-1">
                 <div className="rounded-3xl border border-sky-300/30 bg-sky-300/15 p-6 text-slate-100">
                   <h4 className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-sky-100/85">Solución</h4>
@@ -157,7 +157,7 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
                     {features.map((feature, index) => (
                       <li
                         key={index}
-                        className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-3 text-sm leading-relaxed text-slate-100/95 sm:text-[0.95rem]"
+                        className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-3 text-[0.85rem] leading-relaxed text-slate-100/95 sm:text-sm"
                       >
                         <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-sky-200" />
                         <span>{feature}</span>
@@ -169,16 +169,16 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="rounded-3xl border border-sky-300/25 bg-sky-400/20 p-5">
                     <h4 className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-sky-100/85">Resultado</h4>
-                    <p className="mt-3 text-base font-bold text-white sm:text-lg">{result}</p>
+                    <p className="mt-3 text-sm font-bold text-white sm:text-base">{result}</p>
                   </div>
                   <div className="rounded-3xl border border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.12)] p-5 backdrop-blur-md">
-                    <p className="text-sm italic text-white/90">“{testimonial}”</p>
-                    <p className="mt-3 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-sky-100/85">{author}</p>
+                    <p className="text-[0.85rem] italic text-white/90 sm:text-sm">“{testimonial}”</p>
+                    <p className="mt-3 text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-sky-100/85 sm:text-[0.65rem]">{author}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="px-8 pb-8 sm:px-10 sm:pb-10">
+            <div className="px-8 pb-10 sm:px-10 sm:pb-12">
               <Button
                 className="w-full rounded-full bg-[rgba(255,255,255,0.22)] py-4 text-xs font-bold uppercase tracking-[0.24em] text-white transition-all duration-300 hover:bg-[rgba(255,255,255,0.32)] sm:text-sm"
                 onClick={onCtaClick}
