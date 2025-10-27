@@ -81,6 +81,7 @@ export default function HeroSection() {
           className="h-[13rem] w-auto sm:h-[17rem] md:h-[20rem] lg:h-[22rem] brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)]"
           style={{ filter: "brightness(0) invert(1)" }}
         />
+        <div className="pointer-events-none absolute inset-0 rounded-full opacity-0 mix-blend-screen animate-[logoPulse_9s_ease-in-out_infinite]"></div>
       </div>
 
       {/* Botones de navegación (servicios, etc.) */}
