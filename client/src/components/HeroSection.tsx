@@ -4,7 +4,6 @@ import { Play, ChevronRight, Sparkles } from "lucide-react";
 import logoPath from "@assets/IA MOTORSHUB LOGO_1758912846792.png";
 import { useState, useEffect } from "react";
 
-// Import hero carousel images
 import heroAgentes from "@assets/hero-agentes-telefonicos.jpg";
 import heroMenu from "@assets/hero-menu-vivo.jpg";
 import heroRealEstate from "@assets/hero-real-estate-ai.jpg";
@@ -34,7 +33,6 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, []);
 
-  // Oculta los botones al hacer scroll
   useEffect(() => {
     const handleScroll = () => {
       setShowButtons(window.scrollY < window.innerHeight * 0.5);
@@ -73,77 +71,49 @@ export default function HeroSection() {
         ></div>
       </div>
 
-      {/* Logo + Botones */}
-      <div
-        className={`absolute top-6 left-0 w-full px-10 z-30 flex justify-between items-center transition-all duration-700 ${
-          showButtons ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        {/* Logo único grande */}
+      {/* Logo fijo independiente */}
+      <div className="absolute top-10 left-12 z-[60]">
+        <div className="absolute -inset-6 bg-[hsl(210,100%,55%)]/25 blur-3xl rounded-full"></div>
         <img
           src={logoPath}
           alt="IA MOTORSHUB"
-          className="h-24 md:h-36 lg:h-44 brightness-0 invert drop-shadow-lg hover:scale-105 transition-transform duration-300"
-          style={{ filter: "brightness(0) invert(1)" }}
+          className="relative h-[130px] md:h-[170px] lg:h-[200px] brightness-0 invert drop-shadow-2xl hover:scale-[1.05] transition-transform duration-500"
+          style={{ filter: 'brightness(0) invert(1)' }}
         />
+      </div>
 
-        {/* Botones Aceternity */}
-        <div className="flex gap-4">
+      {/* Botones Aceternity */}
+      <div
+        className={`absolute top-16 right-16 z-40 flex gap-5 bg-white/5 backdrop-blur-md px-8 py-4 rounded-full border border-white/20 shadow-lg transition-all duration-700 ${
+          showButtons ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        {[
+          ["Servicios", "servicios"],
+          ["Diferenciadores", "diferenciadores"],
+          ["Testimonios", "testimonios"],
+          ["Contacto", "asistente"],
+        ].map(([label, target]) => (
           <MovingButton
+            key={label}
             borderRadius="1.75rem"
-            className="bg-white/10 text-white hover:bg-white/20"
+            className="text-white font-medium px-6 py-2 bg-transparent hover:text-[hsl(210,100%,80%)]"
             onClick={() =>
-              document.getElementById("servicios")?.scrollIntoView({
+              document.getElementById(target)?.scrollIntoView({
                 behavior: "smooth",
                 block: "start",
               })
             }
           >
-            Servicios
+            {label}
           </MovingButton>
-          <MovingButton
-            borderRadius="1.75rem"
-            className="bg-white/10 text-white hover:bg-white/20"
-            onClick={() =>
-              document.getElementById("diferenciadores")?.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              })
-            }
-          >
-            Diferenciadores
-          </MovingButton>
-          <MovingButton
-            borderRadius="1.75rem"
-            className="bg-white/10 text-white hover:bg-white/20"
-            onClick={() =>
-              document.getElementById("testimonios")?.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              })
-            }
-          >
-            Testimonios
-          </MovingButton>
-          <MovingButton
-            borderRadius="1.75rem"
-            className="bg-white/10 text-white hover:bg-white/20"
-            onClick={() =>
-              document
-                .getElementById("asistente")
-                ?.scrollIntoView({ behavior: "smooth", block: "start" })
-            }
-          >
-            Contacto
-          </MovingButton>
-        </div>
+        ))}
       </div>
 
       {/* Contenido principal */}
-      <div className="relative z-20 container mx-auto px-6 text-center">
-        {/* Título */}
+      <div className="relative z-20 container mx-auto px-6 text-center pt-48">
         <h1
-          className="text-5xl md:text-7xl font-serif font-black mb-6 leading-tight text-white animate-slide-up mt-32"
+          className="text-5xl md:text-7xl font-serif font-black mb-8 leading-tight text-white animate-slide-up"
           data-testid="text-headline"
         >
           SOLUCIONES DE IA<br />
@@ -153,9 +123,8 @@ export default function HeroSection() {
           </span>
         </h1>
 
-        {/* Subtítulo */}
         <p
-          className="text-xl md:text-2xl font-sans mb-8 max-w-4xl mx-auto leading-relaxed text-[hsl(220,15%,92%)] animate-slide-up"
+          className="text-xl md:text-2xl font-sans mb-10 max-w-4xl mx-auto leading-relaxed text-[hsl(220,15%,92%)] animate-slide-up"
           style={{ animationDelay: "0.2s" }}
         >
           Desde bares y restaurantes hasta e-commerce y empresas corporativas.
@@ -173,14 +142,14 @@ export default function HeroSection() {
           </span>
         </p>
 
-        {/* CTAs originales */}
+        {/* CTAs */}
         <div
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-slide-up"
+          className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-16 animate-slide-up"
           style={{ animationDelay: "0.4s" }}
         >
           <MovingButton
             borderRadius="1.75rem"
-            className="bg-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,50%)] text-white font-bold px-8 py-6 text-lg group transition-all duration-300 hover:shadow-lg hover:shadow-[hsl(210,100%,55%)]/50 hover:scale-105"
+            className="px-10 py-5 text-lg font-bold bg-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,45%)] text-white shadow-lg hover:shadow-[hsl(210,100%,55%)]/50 transition-all duration-300"
             onClick={() => {
               document.getElementById("servicios")?.scrollIntoView({
                 behavior: "smooth",
@@ -188,12 +157,13 @@ export default function HeroSection() {
               });
             }}
           >
-            <Play className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-            DESCUBRE NUESTRAS SOLUCIONES
+            <Play className="mr-2 h-5 w-5" />
+            DESCUBRIR NUESTRAS SOLUCIONES
           </MovingButton>
+
           <MovingButton
             borderRadius="1.75rem"
-            className="border-2 border-[hsl(210,100%,55%)] text-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,55%)] hover:text-white font-bold px-8 py-6 text-lg backdrop-blur-sm bg-white/5 transition-all duration-300 hover:scale-105"
+            className="px-10 py-5 text-lg font-bold text-[hsl(210,100%,55%)] border border-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,55%)] hover:text-white transition-all duration-300 backdrop-blur-sm bg-white/10"
             onClick={() => {
               document.getElementById("asistente")?.scrollIntoView({
                 behavior: "smooth",
@@ -231,15 +201,13 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Animaciones */}
       <style>{`
         @keyframes slide-up {
           from { opacity: 0; transform: translateY(30px); }
           to { opacity: 1; transform: translateY(0); }
         }
         .animate-slide-up {
-          animation: slide-up 0.8s ease-out;
-          animation-fill-mode: both;
+          animation: slide-up 0.8s ease-out both;
         }
       `}</style>
     </section>
