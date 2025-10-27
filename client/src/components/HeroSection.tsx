@@ -75,7 +75,7 @@ export default function HeroSection() {
       </div>
 
       {/* Logo y navegación */}
-      <div className="pointer-events-none absolute left-0 right-0 top-0 z-[60] flex flex-col items-start gap-3 px-4 sm:top-0 sm:flex-row sm:items-start sm:justify-between sm:gap-8 sm:px-12 md:top-0 md:px-16">
+      <div className="pointer-events-none absolute left-0 right-0 top-1 z-[60] flex flex-col items-start gap-3 px-4 sm:top-2 sm:flex-row sm:items-start sm:justify-between sm:gap-8 sm:px-12 md:top-3 md:px-16">
         <div className="pointer-events-auto sm:pl-2">
           <img
             src={logoPath}
@@ -91,7 +91,7 @@ export default function HeroSection() {
           }`}
         >
           <div className="relative flex flex-wrap items-center justify-center gap-3 overflow-hidden rounded-[2.75rem] border border-white/10 bg-[rgba(6,18,40,0.12)] px-4 py-3 shadow-[0_22px_60px_rgba(5,18,40,0.28)] backdrop-blur-[18px] sm:flex-nowrap sm:justify-end">
-            <span className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(96,165,250,0.12),rgba(12,25,50,0.22))] opacity-80 animate-[capsuleGlow_12s_linear_infinite]"></span>
+            <span className="pointer-events-none absolute inset-y-1 left-4 right-4 -z-10 rounded-[2.5rem] bg-[radial-gradient(circle_at_center,rgba(96,165,250,0.16),rgba(12,25,50,0.22))] opacity-80 animate-[capsuleGlow_12s_linear_infinite]"></span>
             {[
               ["Servicios", "servicios"],
               ["Diferenciadores", "diferenciadores"],

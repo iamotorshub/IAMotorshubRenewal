@@ -63,7 +63,7 @@ function ServiceCard({
       data-testid={`card-${title.toLowerCase().replace(/\s+/g, '-')}`}
     >
       <div
-        className={`relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] ${
+        className={`relative h-[560px] w-full transition-all duration-700 [transform-style:preserve-3d] sm:h-[600px] lg:h-[640px] ${
           isFlipped ? "[transform:rotateY(180deg)]" : ""
         }`}
       >
@@ -99,23 +99,14 @@ function ServiceCard({
                 <p className="mt-2 text-sm font-medium text-[hsl(220,20%,20%)]">"{problem}"</p>
               </div>
 
-              <div className="mt-auto flex items-center gap-3">
+              <div className="mt-auto">
                 <Button
-                  className="flex-1 rounded-full bg-[hsl(210,100%,55%)] px-6 py-3 font-semibold uppercase tracking-[0.18em] text-white shadow-lg shadow-[hsl(210,100%,55%)]/35 transition-all duration-300 hover:scale-[1.03] hover:bg-[hsl(210,100%,52%)]"
+                  className="w-full rounded-full bg-[hsl(210,100%,55%)] px-6 py-3 font-semibold uppercase tracking-[0.18em] text-white shadow-lg shadow-[hsl(210,100%,55%)]/35 transition-all duration-300 hover:scale-[1.03] hover:bg-[hsl(210,100%,52%)]"
                   onClick={() => setIsFlipped(true)}
                   data-testid={`button-ver-solucion-${title.toLowerCase().replace(/\s+/g, '-')}`}
                 >
                   Ver solución
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="h-12 w-12 rounded-full border-[hsl(210,100%,55%)] text-[hsl(210,100%,55%)] transition-all duration-300 hover:bg-[hsl(210,100%,55%)] hover:text-white"
-                  onClick={() => setIsFlipped(true)}
-                  aria-label="Ver solución"
-                >
-                  <RotateCcw className="h-5 w-5" />
                 </Button>
               </div>
             </CardContent>
