@@ -24,6 +24,7 @@ interface ServiceProps {
   subtitle: string;
   problem: string;
   solution: string;
+  highlight: string;
   features: string[];
   result: string;
   testimonial: string;
@@ -39,6 +40,7 @@ function ServiceCard({
   subtitle,
   problem,
   solution,
+  highlight,
   features,
   result,
   testimonial,
@@ -64,12 +66,11 @@ function ServiceCard({
             alt={title}
             loading="lazy"
             decoding="async"
-            className="h-full w-full object-cover object-center transition-transform duration-[1400ms] group-hover:[transform:scale(1.04)]"
+            className="h-full w-full object-cover object-center transition-transform duration-[1400ms] group-hover:[transform:scale(1.05)]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-transparent"></div>
-          <div className="absolute inset-x-0 bottom-0 flex flex-col gap-6 p-7 sm:p-9">
+          <div className="absolute inset-x-0 bottom-0 flex flex-col gap-6 bg-black/60 p-7 backdrop-blur-[6px] sm:p-9">
             <div className="flex items-center gap-4">
-              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-black/35 backdrop-blur-xl shadow-[0_18px_48px_rgba(14,116,233,0.35)]">
+              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-black/60 backdrop-blur-xl shadow-[0_18px_48px_rgba(14,116,233,0.35)]">
                 <Icon className="h-7 w-7 text-sky-200" />
               </span>
               <div className="space-y-1 text-left">
@@ -79,8 +80,8 @@ function ServiceCard({
                 <p className="text-xs font-medium text-slate-100/90 sm:text-sm">{subtitle}</p>
               </div>
             </div>
-            <p className="text-sm font-medium text-slate-100/95 drop-shadow-[0_14px_35px_rgba(0,0,0,0.6)] sm:text-base">
-              {solution}
+            <p className="text-sm font-medium text-slate-100/95 drop-shadow-[0_14px_35px_rgba(0,0,0,0.7)] sm:text-base">
+              {highlight}
             </p>
             <div className="flex flex-wrap gap-2">
               {features.slice(0, 3).map((feature, index) => (
@@ -95,7 +96,7 @@ function ServiceCard({
             <button
               type="button"
               onClick={() => setFlipped(true)}
-              className="group/button inline-flex items-center justify-center self-start rounded-full border border-sky-300/60 bg-sky-500/90 px-6 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-slate-950 shadow-[0_18px_45px_rgba(56,189,248,0.45)] transition-transform duration-300 hover:scale-[1.05] sm:text-sm"
+              className="group/button inline-flex items-center justify-center self-start rounded-full border border-white/30 bg-white/90 px-6 py-3 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-slate-900 shadow-[0_18px_45px_rgba(255,255,255,0.2)] transition-transform duration-300 hover:scale-[1.05] hover:bg-white sm:text-sm"
             >
               Ver caso completo
               <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1" />
@@ -103,7 +104,7 @@ function ServiceCard({
           </div>
         </div>
 
-        <div className="absolute inset-0 flex h-full flex-col justify-between overflow-hidden rounded-[2.5rem] border border-white/12 bg-[rgba(4,12,28,0.9)] p-7 text-slate-100 shadow-[0_30px_90px_rgba(6,22,58,0.5)] [backface-visibility:hidden] [transform:rotateY(180deg)] sm:p-10">
+        <div className="absolute inset-0 flex h-full flex-col justify-between overflow-hidden rounded-[2.5rem] border border-white/12 bg-[rgba(4,12,28,0.92)] p-7 text-slate-100 shadow-[0_30px_90px_rgba(6,22,58,0.5)] [backface-visibility:hidden] [transform:rotateY(180deg)] sm:p-10">
           <div className="space-y-6 text-left">
             <div className="flex items-center gap-3">
               <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-xl">
@@ -167,7 +168,7 @@ function ServiceCard({
               <button
                 type="button"
                 onClick={() => setFlipped(false)}
-                className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/8 px-5 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-slate-100 transition-all duration-300 hover:border-sky-300/60 hover:bg-sky-500/15 hover:text-white"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-transparent px-5 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-slate-100 transition-all duration-300 hover:border-sky-300/60 hover:text-white"
               >
                 <RefreshCcw className="h-4 w-4" /> Volver
               </button>
@@ -188,6 +189,7 @@ export default function ServicesSection() {
       subtitle: "Para: Inmobiliarias | Propietarios | Administradores de Propiedades",
       problem: "Pierdes inquilinos por atención lenta y falta de seguimiento",
       solution: "IA que gestiona consultas, visitas y contratos automáticamente",
+      highlight: "Agenda consultas, visitas y contratos en piloto automático",
       features: [
         "Atención 24/7 a consultas de propiedades",
         "Agendamiento automático de visitas",
@@ -206,6 +208,7 @@ export default function ServicesSection() {
       subtitle: "Para: Locales de Ropa | Showrooms | Emprendedores de Moda",
       problem: "Clientes no compran sin probarse la ropa físicamente",
       solution: "IA que permite probar ropa virtualmente desde cualquier lugar",
+      highlight: "Probador virtual con IA para vender más sin tienda física",
       features: [
         "Prueba virtual de prendas en tiempo real",
         "Recomendaciones de talla personalizadas",
@@ -224,6 +227,7 @@ export default function ServicesSection() {
       subtitle: "Para: Bares | Restaurantes | Cafeterías",
       problem: "Menús desactualizados, clientes no saben qué hay disponible hoy",
       solution: "Menú digital actualizado en tiempo real con IA",
+      highlight: "Menú inteligente que se actualiza en segundos y vende por vos",
       features: [
         "Actualización instantánea de disponibilidad",
         "Fotos profesionales generadas por IA",
@@ -242,6 +246,7 @@ export default function ServicesSection() {
       subtitle: "Para: Concesionarios | Contables | Clínicas | Servicios",
       problem: "Pierdes 70% de leads por atención manual deficiente",
       solution: "IA conversacional que atiende como humano 24/7",
+      highlight: "Tus leads atendidos 24/7 por IA entrenada en tu negocio",
       features: [
         "WhatsApp inteligente sector-específico",
         "Agendamiento automático perfecto",
@@ -260,6 +265,7 @@ export default function ServicesSection() {
       subtitle: "Para: Agencias | Productoras | Creadores de Contenido",
       problem: "Producción audiovisual cuesta $50K+ y demora meses",
       solution: "Storyboards 8K + Personajes consistentes en días",
+      highlight: "Producción audiovisual con IA a velocidad récord",
       features: [
         "Character Studio: 3 imágenes → personaje perfecto",
         "Art Department IA: locaciones + props automáticos",
@@ -278,6 +284,7 @@ export default function ServicesSection() {
       subtitle: "Para: Call Centers | Empresas de Ventas",
       problem: "Agentes humanos caros, inconsistentes, se cansan",
       solution: "IA clonada de tus mejores vendedores",
+      highlight: "Voces IA que venden como tu top seller sin parar",
       features: [
         "Voz y personalidad idéntica a tu top seller",
         "Nunca se cansa, enferma o renuncia",
@@ -296,6 +303,7 @@ export default function ServicesSection() {
       subtitle: "Para: Emprendedores | Consultores | CEO's",
       problem: "No sé cómo escalar mi negocio con IA real",
       solution: "Consultoría + implementación completa",
+      highlight: "Escalá con IA real: auditoría, estrategia y ejecución",
       features: [
         "Audit de automatización personalizado",
         "Estrategia de IA sector-específica",

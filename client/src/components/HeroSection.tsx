@@ -42,7 +42,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#040b1c]">
       {/* Fondo del carrusel */}
       <div className="absolute inset-0 z-0">
         {carouselImages.map((image, index) => (
@@ -57,7 +57,8 @@ export default function HeroSection() {
               alt={`Hero ${index + 1}`}
               loading={index === 0 ? "eager" : "lazy"}
               decoding="async"
-              className="h-full w-full object-cover object-center md:object-[50%_52%] lg:object-[50%_48%] brightness-[1.03] contrast-[1.05]"
+              className="h-full w-full object-cover object-center brightness-[1.04] contrast-[1.05]"
+              style={{ transform: "scale(0.97)", transformOrigin: "center" }}
             />
           </div>
         ))}
@@ -74,18 +75,18 @@ export default function HeroSection() {
       </div>
 
       {/* Logo y navegación */}
-      <div className="pointer-events-none absolute left-0 right-0 top-3 z-[60] flex flex-col items-start gap-4 px-4 sm:top-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-10 md:top-6 md:px-16">
-        <div className="pointer-events-auto">
+      <div className="pointer-events-none absolute left-0 right-0 top-1 z-[60] flex flex-col items-start gap-3 px-4 sm:top-3 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-12 md:top-4 md:px-16">
+        <div className="pointer-events-auto sm:pl-2">
           <img
             src={logoPath}
             alt="IA MOTORSHUB"
-            className="h-[19rem] w-auto sm:h-[25rem] md:h-[29rem] lg:h-[32rem] brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)]"
+            className="h-[16rem] w-auto sm:h-[20rem] md:h-[22rem] lg:h-[24rem] brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)]"
             style={{ filter: "brightness(0) invert(1)" }}
           />
         </div>
 
         <div
-          className={`pointer-events-auto w-full max-w-[440px] transition-all duration-700 sm:max-w-none ${
+          className={`pointer-events-auto w-full max-w-[460px] transition-all duration-700 sm:ml-auto sm:max-w-none ${
             showButtons ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
         >
@@ -117,9 +118,9 @@ export default function HeroSection() {
       </div>
 
       {/* Contenido principal */}
-      <div className="relative z-20 container mx-auto px-4 pb-24 pt-[19rem] text-center sm:px-6 sm:pt-[20rem] md:pt-[21rem] lg:pt-[23rem]">
+      <div className="relative z-20 container mx-auto px-4 pb-24 pt-[16rem] text-center sm:px-6 sm:pt-[17rem] md:pt-[18rem] lg:pt-[19rem]">
         <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-8 px-4 sm:gap-10 sm:px-10">
-          <h1 className="relative text-4xl font-serif font-black uppercase leading-tight text-white drop-shadow-[0_14px_35px_rgba(3,10,26,0.95)] animate-slide-up sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="relative text-4xl font-serif font-black uppercase leading-tight text-white drop-shadow-[0_18px_40px_rgba(3,10,26,0.95)] animate-slide-up sm:text-5xl md:text-6xl lg:text-7xl">
             SOLUCIONES DE IA
             <br />
             PARA{" "}
@@ -135,22 +136,22 @@ export default function HeroSection() {
           </h1>
 
           <p
-            className="relative max-w-3xl text-base leading-relaxed text-slate-100 drop-shadow-[0_18px_42px_rgba(2,8,22,0.7)] animate-slide-up sm:text-lg md:text-xl"
+            className="relative max-w-3xl text-base leading-relaxed text-slate-100 drop-shadow-[0_22px_46px_rgba(2,8,22,0.75)] animate-slide-up sm:text-lg md:text-xl"
             style={{
               animationDelay: "0.2s",
             }}
           >
             Desde bares y restaurantes hasta e-commerce y empresas corporativas.
             <br />
-            <span className="bg-gradient-to-r from-sky-200 via-sky-100 to-sky-200 bg-clip-text font-semibold text-transparent [text-shadow:0_0_14px_rgba(9,40,80,0.55)]">
+            <span className="bg-gradient-to-r from-white via-sky-100 to-white bg-clip-text font-semibold text-transparent [text-shadow:0_0_16px_rgba(9,40,80,0.65)]">
               Posicionamiento digital
             </span>{" "}
             •{" "}
-            <span className="bg-gradient-to-r from-sky-200 via-white to-sky-200 bg-clip-text font-semibold text-transparent [text-shadow:0_0_14px_rgba(9,40,80,0.55)]">
+            <span className="bg-gradient-to-r from-white via-sky-100 to-white bg-clip-text font-semibold text-transparent [text-shadow:0_0_16px_rgba(9,40,80,0.65)]">
               Automatización inteligente
             </span>{" "}
             •{" "}
-            <span className="bg-gradient-to-r from-sky-200 via-sky-100 to-white bg-clip-text font-semibold text-transparent [text-shadow:0_0_14px_rgba(9,40,80,0.55)]">
+            <span className="bg-gradient-to-r from-white via-sky-100 to-white bg-clip-text font-semibold text-transparent [text-shadow:0_0_16px_rgba(9,40,80,0.65)]">
               Soluciones personalizadas
             </span>
           </p>
@@ -188,7 +189,7 @@ export default function HeroSection() {
                 "Automatización y reservas inteligentes",
                 "Asistentes virtuales y ventas online",
                 "Optimización y conversión con IA",
-                "Posicionamiento y marketing digital",
+                "Posicionamiento y marketing IA",
                 "Soluciones complejas personalizadas",
               ];
               return (
@@ -199,7 +200,7 @@ export default function HeroSection() {
                   <div className="mb-2 flex items-center justify-center gap-2 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-sky-200 drop-shadow-[0_8px_22px_rgba(5,16,38,0.85)] sm:text-base">
                     <Sparkles className="h-5 w-5 sm:h-6 sm:w-6" /> {title}
                   </div>
-                  <div className="text-xs font-medium text-slate-100/90 drop-shadow-[0_6px_18px_rgba(4,10,24,0.65)] sm:text-sm">
+                  <div className="text-pretty text-xs font-medium text-slate-100/90 drop-shadow-[0_6px_18px_rgba(4,10,24,0.65)] sm:text-sm">
                     {descriptions[index]}
                   </div>
                 </div>
