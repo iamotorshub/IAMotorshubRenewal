@@ -57,13 +57,13 @@ export default function HeroSection() {
               alt={`Hero ${index + 1}`}
               loading={index === 0 ? "eager" : "lazy"}
               decoding="async"
-              className="h-full w-full object-cover object-center brightness-105 contrast-105 scale-[0.9] sm:scale-100"
+              className="w-full h-full object-cover brightness-105 contrast-105"
             />
           </div>
         ))}
-        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,70%,25%)]/35 via-[hsl(220,25%,18%)]/45 to-[hsl(220,25%,12%)]/35"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(8,18,38,0.45),transparent_68%)]"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(4,12,28,0.45)_18%,rgba(4,12,28,0.28)_55%,transparent_82%)]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,70%,25%)]/45 via-[hsl(220,25%,15%)]/55 to-[hsl(220,25%,12%)]/45"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(8,18,38,0.6),transparent_62%)] mix-blend-screen"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(4,12,28,0.55)_20%,rgba(4,12,28,0.35)_55%,transparent_82%)]"></div>
       </div>
 
       {/* Luz azul animada */}
@@ -73,14 +73,17 @@ export default function HeroSection() {
         <div className="absolute bottom-[-12%] left-1/3 h-64 w-64 rounded-full bg-[hsl(210,100%,65%)]/15 blur-3xl animate-[pulse_8s_ease-in-out_infinite]"></div>
       </div>
 
-      {/* Logo superior */}
-      <div className="absolute left-3 top-4 z-[60] sm:left-6 sm:top-6 md:left-10 md:top-8">
+      {/* Logo grande fijo con halo */}
+      <div className="absolute left-2 top-4 z-[60] flex items-center sm:left-6 sm:top-6 md:left-10 md:top-10">
+        <div className="pointer-events-none absolute -inset-20 rounded-full bg-[radial-gradient(circle_at_center,rgba(96,165,250,0.55),rgba(12,24,48,0.05))] blur-3xl opacity-90 animate-[heroHalo_8s_ease-in-out_infinite]"></div>
+        <div className="pointer-events-none absolute -inset-10 -z-10 rounded-full border border-white/15 bg-[radial-gradient(circle_at_top,rgba(125,211,252,0.55),rgba(15,30,60,0.15))] backdrop-blur-2xl shadow-[0_45px_120px_rgba(46,131,255,0.55)] before:absolute before:inset-2 before:rounded-full before:border before:border-white/20 before:opacity-60 before:animate-[logoOrbit_18s_linear_infinite] before:content-['']"></div>
         <img
           src={logoPath}
           alt="IA MOTORSHUB"
-          className="h-[13rem] w-auto sm:h-[17rem] md:h-[20rem] lg:h-[22rem] brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)]"
+          className="relative h-[12.5rem] w-auto sm:h-[16rem] md:h-[19rem] lg:h-[23rem] xl:h-[26rem] brightness-0 invert drop-shadow-[0_24px_70px_rgba(12,34,78,0.8)] transition-all duration-700 ease-out will-change-transform"
           style={{ filter: "brightness(0) invert(1)" }}
         />
+        <div className="pointer-events-none absolute inset-0 rounded-full opacity-0 mix-blend-screen animate-[logoPulse_9s_ease-in-out_infinite]"></div>
       </div>
 
       {/* Botones de navegación (servicios, etc.) */}
@@ -89,9 +92,9 @@ export default function HeroSection() {
           showButtons ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="relative flex flex-wrap items-center justify-center gap-3 overflow-hidden rounded-[2.5rem] border border-white/10 bg-[rgba(6,18,40,0.15)] px-4 py-3 shadow-[0_22px_70px_rgba(5,18,40,0.32)] backdrop-blur-[22px] sm:flex-nowrap sm:justify-start">
-          <span className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(96,165,250,0.14),rgba(12,25,50,0.32))] opacity-80 animate-[capsuleGlow_12s_linear_infinite]"></span>
-          <span className="pointer-events-none absolute inset-[3px] rounded-[2.3rem] border border-white/10 bg-white/5 mix-blend-soft-light opacity-30"></span>
+        <div className="relative flex flex-wrap items-center justify-center gap-3 overflow-hidden rounded-[2.25rem] border border-white/10 bg-[rgba(10,18,36,0.32)] px-4 py-3 shadow-[0_28px_85px_rgba(5,18,40,0.45)] backdrop-blur-2xl sm:flex-nowrap sm:justify-start">
+          <span className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(96,165,250,0.25),rgba(12,25,50,0.35))] opacity-80"></span>
+          <span className="pointer-events-none absolute inset-1 rounded-[2rem] border border-white/5 bg-white/5 mix-blend-overlay opacity-30"></span>
           {[
             ["Servicios", "servicios"],
             ["Diferenciadores", "diferenciadores"],
@@ -101,8 +104,8 @@ export default function HeroSection() {
             <MovingButton
               key={label}
               borderRadius="1.5rem"
-              className="px-5 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-slate-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:text-sm"
-              innerBackground="rgba(10, 28, 60, 0.45)"
+              className="px-5 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-sky-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:text-sm"
+              innerBackground="rgba(6, 20, 42, 0.35)"
               onClick={() =>
                 document.getElementById(target)?.scrollIntoView({
                   behavior: "smooth",
@@ -117,8 +120,10 @@ export default function HeroSection() {
       </div>
 
       {/* Contenido principal */}
-      <div className="relative z-20 container mx-auto px-4 pb-28 pt-[19rem] text-center sm:px-6 sm:pt-[18rem] md:pt-[19rem] lg:pt-[22rem]">
-        <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-8 px-6 py-10 sm:gap-10 sm:px-10 sm:py-12">
+      <div className="relative z-20 container mx-auto px-4 pb-28 pt-72 text-center sm:px-6 sm:pt-64 md:pt-72 lg:pt-[22rem]">
+        <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-8 rounded-[2.75rem] border border-white/10 bg-[rgba(5,12,24,0.68)] px-6 py-10 shadow-[0_50px_130px_rgba(5,16,38,0.62)] backdrop-blur-[22px] sm:gap-10 sm:px-10 sm:py-14">
+          <div className="pointer-events-none absolute -inset-px -z-10 rounded-[2.75rem] bg-[linear-gradient(135deg,rgba(59,130,246,0.2),rgba(14,165,233,0.16)_40%,rgba(2,132,199,0.1)_75%,transparent)] opacity-100"></div>
+          <div className="pointer-events-none absolute inset-4 rounded-[2.25rem] border border-white/5"></div>
           <h1 className="relative text-4xl font-serif font-black uppercase leading-tight text-white drop-shadow-[0_14px_35px_rgba(3,10,26,0.95)] animate-slide-up sm:text-5xl md:text-6xl lg:text-7xl">
             SOLUCIONES DE IA
             <br />
@@ -135,7 +140,7 @@ export default function HeroSection() {
           </h1>
 
           <p
-            className="relative max-w-4xl text-base leading-relaxed text-slate-100 drop-shadow-[0_12px_35px_rgba(4,10,24,0.55)] animate-slide-up sm:text-lg md:text-xl"
+            className="relative max-w-4xl text-base leading-relaxed text-slate-100 drop-shadow-[0_10px_28px_rgba(4,10,24,0.85)] animate-slide-up sm:text-lg md:text-xl"
             style={{ animationDelay: "0.2s" }}
           >
             Desde bares y restaurantes hasta e-commerce y empresas corporativas.
@@ -182,12 +187,12 @@ export default function HeroSection() {
             style={{ animationDelay: "0.6s" }}
           >
             <div className="pointer-events-none absolute inset-0 -z-10 rounded-[2.1rem] bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.15),transparent_65%)]"></div>
-            {["BARES Y RESTAURANTES", "LOCALES DE ROPA", "E-COMMERCE", "SEO", "EMPRESAS"].map((title, index) => {
+            {["BARES Y RESTAURANTES", "LOCALES DE ROPA", "E-COMMERCE", "POSICIONAMIENTO", "EMPRESAS"].map((title, index) => {
               const descriptions = [
                 "Automatización y reservas inteligentes",
                 "Asistentes virtuales y ventas online",
                 "Optimización y conversión con IA",
-                "Posicionamiento y marketing digital",
+                "SEO y marketing digital con IA",
                 "Soluciones complejas personalizadas",
               ];
               return (
@@ -195,7 +200,7 @@ export default function HeroSection() {
                   key={title}
                   className="group rounded-[1.75rem] border border-white/10 bg-white/10 p-4 text-slate-100 shadow-[0_22px_55px_rgba(5,18,48,0.45)] transition-all duration-300 backdrop-blur-xl hover:border-sky-300/70 hover:bg-white/15 hover:shadow-[0_32px_95px_rgba(10,34,82,0.55)] sm:p-6"
                 >
-                  <div className="mb-2 flex items-center justify-center gap-2 text-base font-bold uppercase tracking-[0.22em] text-sky-200 drop-shadow-[0_8px_22px_rgba(5,16,38,0.85)] sm:text-xl">
+                  <div className="mb-2 flex items-center justify-center gap-2 text-base font-bold uppercase tracking-[0.28em] text-sky-200 drop-shadow-[0_8px_22px_rgba(5,16,38,0.85)] sm:text-xl">
                     <Sparkles className="h-5 w-5 sm:h-6 sm:w-6" /> {title}
                   </div>
                   <div className="text-xs font-medium text-slate-100/90 drop-shadow-[0_6px_18px_rgba(4,10,24,0.65)] sm:text-sm">
@@ -217,9 +222,21 @@ export default function HeroSection() {
         .animate-slide-up {
           animation: slide-up 0.8s ease-out both;
         }
-        @keyframes capsuleGlow {
-          0%, 100% { opacity: 0.75; transform: scale(1); }
-          50% { opacity: 0.45; transform: scale(1.02); }
+        @keyframes heroHalo {
+          0%, 100% { opacity: 0.9; transform: scale(1); }
+          50% { opacity: 0.55; transform: scale(1.08); }
+        }
+        @keyframes slowSpin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes logoPulse {
+          0%, 100% { opacity: 0; transform: scale(0.95); }
+          50% { opacity: 0.6; transform: scale(1.1); }
+        }
+        @keyframes logoOrbit {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
       `}</style>
     </section>
