@@ -91,7 +91,7 @@ export default function HeroSection() {
         <div className="flex gap-4">
           <MovingButton
             borderRadius="1.75rem"
-            className="bg-white/10 text-white border-neutral-200/30 hover:bg-white/20 transition-all duration-300"
+            className="bg-white/10 text-white hover:bg-white/20"
             onClick={() =>
               document.getElementById("servicios")?.scrollIntoView({
                 behavior: "smooth",
@@ -103,7 +103,7 @@ export default function HeroSection() {
           </MovingButton>
           <MovingButton
             borderRadius="1.75rem"
-            className="bg-white/10 text-white border-neutral-200/30 hover:bg-white/20 transition-all duration-300"
+            className="bg-white/10 text-white hover:bg-white/20"
             onClick={() =>
               document.getElementById("diferenciadores")?.scrollIntoView({
                 behavior: "smooth",
@@ -115,7 +115,7 @@ export default function HeroSection() {
           </MovingButton>
           <MovingButton
             borderRadius="1.75rem"
-            className="bg-white/10 text-white border-neutral-200/30 hover:bg-white/20 transition-all duration-300"
+            className="bg-white/10 text-white hover:bg-white/20"
             onClick={() =>
               document.getElementById("testimonios")?.scrollIntoView({
                 behavior: "smooth",
@@ -127,7 +127,7 @@ export default function HeroSection() {
           </MovingButton>
           <MovingButton
             borderRadius="1.75rem"
-            className="bg-white/10 text-white border-neutral-200/30 hover:bg-white/20 transition-all duration-300"
+            className="bg-white/10 text-white hover:bg-white/20"
             onClick={() =>
               document
                 .getElementById("asistente")
