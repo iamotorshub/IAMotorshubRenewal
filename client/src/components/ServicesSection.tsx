@@ -1,7 +1,13 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, Film, Phone, TrendingUp, ArrowRight, CheckCircle, RotateCcw } from "lucide-react";
+import {
+  MessageSquare,
+  Film,
+  Phone,
+  TrendingUp,
+  ArrowRight,
+  ChevronDown,
+} from "lucide-react";
 // Imágenes actualizadas para servicios
 import rentalsImage from "@assets/hero-rentals-ai_1760656167854.png";
 import probadorImage from "@assets/hero-Probador -virtual_1760656167864.jpg";
@@ -26,142 +32,132 @@ interface ServiceProps {
   onCtaClick: () => void;
 }
 
-function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, features, result, testimonial, author, ctaText, onCtaClick }: ServiceProps) {
-  const [isFlipped, setIsFlipped] = useState(false);
+function ServiceCard({
+  icon: Icon,
+  image,
+  title,
+  subtitle,
+  problem,
+  solution,
+  features,
+  result,
+  testimonial,
+  author,
+  ctaText,
+  onCtaClick,
+}: ServiceProps) {
+  const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="perspective-1000 group" data-testid={`card-${title.toLowerCase().replace(/\s+/g, '-')}`}>
-      <div className={`relative w-full h-[600px] transition-all duration-700 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}`}>
-        {/* Front of Card */}
-        <div className="absolute w-full h-full backface-hidden">
-          <Card className="h-full bg-gradient-to-br from-[hsl(220,15%,92%)] to-white border-[hsl(210,100%,55%)]/20 hover-elevate transition-all duration-300 hover:border-[hsl(210,100%,55%)]/40 hover:shadow-xl hover:shadow-[hsl(210,100%,55%)]/20 overflow-hidden group-hover:scale-[1.02]">
-            {/* Image Header with Overlay */}
-            <div className="relative h-48 overflow-hidden">
-              <img
-                src={image}
-                alt={title}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(220,70%,25%)]/90 to-transparent"></div>
-              <div className="absolute top-4 left-4 w-14 h-14 bg-[hsl(210,100%,55%)] rounded-full flex items-center justify-center shadow-lg">
-                <Icon className="h-7 w-7 text-white" />
-              </div>
+    <article
+      className="group relative flex h-full flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-[rgba(4,12,28,0.78)] text-slate-100 shadow-[0_30px_90px_rgba(6,22,58,0.45)] transition-all duration-500 hover:-translate-y-1 hover:border-sky-400/40 hover:shadow-[0_45px_120px_rgba(8,32,82,0.55)]"
+      data-testid={`card-${title.toLowerCase().replace(/\s+/g, '-')}`}
+    >
+      <div className="absolute inset-0">
+        <img
+          src={image}
+          alt={title}
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full object-cover object-center transition-transform duration-[900ms] group-hover:scale-[1.05]"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,18,0.82)_0%,rgba(4,10,26,0.74)_45%,rgba(4,10,26,0.9)_100%)]"></div>
+        <div
+          className="absolute inset-0 opacity-0 mix-blend-screen transition-opacity duration-700 group-hover:opacity-60"
+          style={{
+            background:
+              "radial-gradient(circle at 18% 22%, rgba(96,165,250,0.35), transparent 52%), radial-gradient(circle at 82% 18%, rgba(14,165,233,0.28), transparent 55%)",
+          }}
+        ></div>
+      </div>
+
+      <div className="relative z-10 flex h-full flex-col gap-6 p-7 sm:p-10">
+        <div className="flex flex-col gap-6 text-left">
+          <div className="flex flex-wrap items-center gap-4">
+            <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-xl shadow-[0_18px_45px_rgba(14,116,233,0.28)]">
+              <Icon className="h-7 w-7 text-sky-200" />
+            </span>
+            <div className="space-y-1">
+              <h3 className="text-lg font-semibold uppercase tracking-[0.22em] text-white sm:text-xl">
+                {title}
+              </h3>
+              <p className="text-xs font-medium text-slate-200/85 sm:text-sm">{subtitle}</p>
             </div>
-            
-            <CardHeader className="pb-4">
-              <CardTitle className="text-2xl font-serif font-bold text-[hsl(220,70%,25%)]">{title}</CardTitle>
-              <CardDescription className="text-[hsl(210,100%,55%)] font-medium">{subtitle}</CardDescription>
-            </CardHeader>
-            
-            <CardContent className="space-y-4">
-              <div className="bg-red-50 border-l-4 border-red-400 p-3 rounded">
-                <h4 className="text-red-600 font-semibold text-sm mb-1">PROBLEMA:</h4>
-                <p className="text-[hsl(220,20%,15%)] text-sm">"{problem}"</p>
-              </div>
-              
-              <div className="bg-green-50 border-l-4 border-green-500 p-3 rounded">
-                <h4 className="text-green-700 font-semibold text-sm mb-1">SOLUCIÓN:</h4>
-                <p className="text-[hsl(220,20%,15%)] font-medium text-sm">"{solution}"</p>
-              </div>
-              
-              <div className="flex gap-2">
-                <Button 
-                  className="flex-1 bg-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,50%)] text-white font-bold transition-all duration-300 hover:shadow-lg hover:shadow-[hsl(210,100%,55%)]/30"
-                  onClick={onCtaClick}
-                  data-testid={`button-${ctaText.toLowerCase().replace(/\s+/g, '-')}`}
-                >
-                  {ctaText}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="border-[hsl(210,100%,55%)] text-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,55%)] hover:text-white"
-                  onClick={() => setIsFlipped(true)}
-                  data-testid={`button-flip-${title.toLowerCase().replace(/\s+/g, '-')}`}
-                >
-                  <RotateCcw className="h-4 w-4" />
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          </div>
+
+          <div className="grid gap-4 text-sm text-slate-100/90 sm:text-base">
+            <div className="rounded-[1.5rem] border border-white/12 bg-white/10 p-5 shadow-[0_15px_35px_rgba(6,20,50,0.25)] backdrop-blur-lg">
+              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-sky-200/80 sm:text-xs">
+                Problema
+              </p>
+              <p className="mt-2 leading-relaxed">{problem}</p>
+            </div>
+            <div className="rounded-[1.5rem] border border-sky-400/40 bg-sky-500/10 p-5 shadow-[0_20px_48px_rgba(14,116,233,0.28)] backdrop-blur-lg">
+              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-sky-50 sm:text-xs">
+                Solución
+              </p>
+              <p className="mt-2 font-medium leading-relaxed text-slate-50/95">{solution}</p>
+            </div>
+          </div>
         </div>
 
-        {/* Back of Card */}
-        <div className="absolute w-full h-full backface-hidden rotate-y-180">
-          <Card className="h-full bg-gradient-to-br from-[hsl(220,70%,25%)] to-[hsl(220,20%,15%)] border-[hsl(210,100%,55%)]/40 text-white overflow-auto">
-            <CardHeader>
-              <div className="flex justify-between items-start">
-                <div>
-                  <CardTitle className="text-2xl font-serif font-bold text-white">{title}</CardTitle>
-                  <CardDescription className="text-[hsl(210,100%,55%)] font-medium">{subtitle}</CardDescription>
-                </div>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-white hover:bg-white/10"
-                  onClick={() => setIsFlipped(false)}
-                  data-testid={`button-flip-back-${title.toLowerCase().replace(/\s+/g, '-')}`}
-                >
-                  <RotateCcw className="h-4 w-4" />
-                </Button>
-              </div>
-            </CardHeader>
-            
-            <CardContent className="space-y-4">
+        <div className="flex flex-wrap gap-2">
+          {features.map((feature, index) => (
+            <span
+              key={index}
+              className="rounded-full border border-white/18 bg-white/8 px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-slate-100/85 transition-all duration-300 hover:border-sky-300/60 hover:bg-sky-500/15 hover:text-white"
+            >
+              {feature}
+            </span>
+          ))}
+        </div>
+
+        <div
+          className={`grid transition-[grid-template-rows] duration-500 ease-in-out ${
+            expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+          }`}
+        >
+          <div className="overflow-hidden">
+            <div className="space-y-5 rounded-[1.5rem] border border-white/12 bg-white/8 p-6 backdrop-blur-lg">
               <div>
-                <h4 className="text-[hsl(210,100%,55%)] font-semibold mb-3">CARACTERÍSTICAS:</h4>
-                <ul className="space-y-2">
-                  {features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-2 text-[hsl(220,15%,92%)] text-sm">
-                      <CheckCircle className="h-4 w-4 text-[hsl(210,100%,55%)] mt-0.5 flex-shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                <h4 className="text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-sky-100/90 sm:text-xs">
+                  Resultado
+                </h4>
+                <p className="mt-2 text-sm font-semibold text-white sm:text-base">{result}</p>
               </div>
-              
-              <div className="bg-[hsl(210,100%,55%)]/20 rounded-lg p-4 border border-[hsl(210,100%,55%)]/30">
-                <h4 className="text-[hsl(210,100%,55%)] font-semibold mb-2">RESULTADO:</h4>
-                <p className="text-white font-bold">{result}</p>
+              <div className="rounded-2xl border border-white/14 bg-black/25 p-4">
+                <p className="text-sm italic text-slate-100/90">"{testimonial}"</p>
+                <p className="mt-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-sky-200/80 sm:text-xs">
+                  {author}
+                </p>
               </div>
-              
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                <p className="text-[hsl(220,15%,92%)] italic text-sm mb-2">"{testimonial}"</p>
-                <p className="text-[hsl(210,100%,55%)] font-medium text-sm">- {author}</p>
-              </div>
-              
-              <Button 
-                className="w-full bg-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,60%)] text-white font-bold"
-                onClick={onCtaClick}
-              >
-                {ctaText}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <Button
+            className="group/cta inline-flex items-center justify-center rounded-full bg-[linear-gradient(135deg,#38bdf8,#60a5fa)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-slate-950 shadow-[0_22px_55px_rgba(14,116,233,0.35)] transition-transform duration-300 hover:scale-[1.04] hover:shadow-[0_32px_85px_rgba(14,116,233,0.45)] sm:px-8 sm:py-4 sm:text-base"
+            onClick={onCtaClick}
+            data-testid={`button-${ctaText.toLowerCase().replace(/\s+/g, '-')}`}
+          >
+            {ctaText}
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" />
+          </Button>
+
+          <button
+            type="button"
+            onClick={() => setExpanded((prev) => !prev)}
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/18 bg-white/8 px-5 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-slate-100 transition-all duration-300 hover:border-sky-300/60 hover:bg-sky-500/15 hover:text-white"
+          >
+            {expanded ? "Ocultar caso" : "Ver caso completo"}
+            <ChevronDown
+              className={`h-4 w-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
+            />
+          </button>
         </div>
       </div>
-      
-      {/* 3D Transform Styles */}
-      <style>{`
-        .perspective-1000 {
-          perspective: 1000px;
-        }
-        .transform-style-3d {
-          transform-style: preserve-3d;
-        }
-        .backface-hidden {
-          backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
-        }
-        .rotate-y-180 {
-          transform: rotateY(180deg);
-        }
-      `}</style>
-    </div>
+    </article>
   );
 }
 
@@ -307,16 +303,21 @@ export default function ServicesSection() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 gap-8 max-w-7xl mx-auto lg:grid-cols-2">
           {services.map((service, index) => (
-            <div 
+            <div
               key={index}
               className="animate-slide-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <ServiceCard
                 {...service}
-                onCtaClick={() => console.log(`${service.ctaText} clicked`)}
+                onCtaClick={() =>
+                  document.getElementById("asistente")?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  })
+                }
               />
             </div>
           ))}

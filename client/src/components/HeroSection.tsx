@@ -57,13 +57,13 @@ export default function HeroSection() {
               alt={`Hero ${index + 1}`}
               loading={index === 0 ? "eager" : "lazy"}
               decoding="async"
-              className="h-full w-full object-cover object-center brightness-[1.08] contrast-[1.04] scale-[0.72] sm:scale-[0.78] md:scale-[0.84] lg:scale-[0.88] xl:scale-[0.92]"
+              className="h-full w-full object-cover object-center brightness-[1.04] contrast-[1.05]"
             />
           </div>
         ))}
-        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,70%,25%)]/18 via-[hsl(220,25%,18%)]/24 to-[hsl(220,25%,12%)]/18"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(8,18,38,0.22),transparent_72%)]"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(4,12,28,0.24)_18%,rgba(4,12,28,0.16)_55%,transparent_82%)]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,70%,25%)]/14 via-[hsl(220,25%,18%)]/18 to-[hsl(220,25%,12%)]/14"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,16,32,0.32),transparent_76%)]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(2,8,20,0.28)_15%,rgba(2,8,20,0.18)_55%,transparent_85%)]"></div>
       </div>
 
       {/* Luz azul animada */}
@@ -73,52 +73,52 @@ export default function HeroSection() {
         <div className="absolute bottom-[-12%] left-1/3 h-64 w-64 rounded-full bg-[hsl(210,100%,65%)]/15 blur-3xl animate-[pulse_8s_ease-in-out_infinite]"></div>
       </div>
 
-      {/* Logo superior */}
-      <div className="absolute left-3 top-4 z-[60] sm:left-6 sm:top-6 md:left-10 md:top-8">
-        <img
-          src={logoPath}
-          alt="IA MOTORSHUB"
-          className="h-[13rem] w-auto sm:h-[17rem] md:h-[20rem] lg:h-[22rem] brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)]"
-          style={{ filter: "brightness(0) invert(1)" }}
-        />
-        <div className="pointer-events-none absolute inset-0 rounded-full opacity-0 mix-blend-screen animate-[logoPulse_9s_ease-in-out_infinite]"></div>
-      </div>
+      {/* Logo y navegación */}
+      <div className="pointer-events-none absolute top-6 left-0 right-0 z-[60] flex flex-col items-center gap-4 px-4 sm:top-8 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-10 md:top-10 md:px-16">
+        <div className="pointer-events-auto">
+          <img
+            src={logoPath}
+            alt="IA MOTORSHUB"
+            className="h-[17rem] w-auto sm:h-[22rem] md:h-[25rem] lg:h-[27rem] brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)]"
+            style={{ filter: "brightness(0) invert(1)" }}
+          />
+        </div>
 
-      {/* Botones de navegación (servicios, etc.) */}
-      <div
-        className={`absolute left-1/2 top-40 z-40 w-[min(92vw,380px)] -translate-x-1/2 transition-all duration-700 sm:left-auto sm:right-10 sm:top-24 sm:w-auto sm:-translate-x-0 md:top-24 lg:top-28 ${
-          showButtons ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        <div className="relative flex flex-wrap items-center justify-center gap-3 overflow-hidden rounded-[2.5rem] border border-white/10 bg-[rgba(6,18,40,0.12)] px-4 py-3 shadow-[0_22px_60px_rgba(5,18,40,0.28)] backdrop-blur-[18px] sm:flex-nowrap sm:justify-start">
-          <span className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(96,165,250,0.12),rgba(12,25,50,0.26))] opacity-70 animate-[capsuleGlow_12s_linear_infinite]"></span>
-          {[
-            ["Servicios", "servicios"],
-            ["Diferenciadores", "diferenciadores"],
-            ["Testimonios", "testimonios"],
-            ["Contacto", "asistente"],
-          ].map(([label, target]) => (
-            <MovingButton
-              key={label}
-              borderRadius="1.5rem"
-              className="px-5 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-slate-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:text-sm"
-              innerBackground="rgba(10, 28, 60, 0.45)"
-              onClick={() =>
-                document.getElementById(target)?.scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
-                })
-              }
-            >
-              {label}
-            </MovingButton>
-          ))}
+        <div
+          className={`pointer-events-auto w-full max-w-[420px] transition-all duration-700 sm:max-w-none ${
+            showButtons ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+        >
+          <div className="relative flex flex-wrap items-center justify-center gap-3 overflow-hidden rounded-[2.75rem] border border-white/10 bg-[rgba(6,18,40,0.14)] px-4 py-3 shadow-[0_22px_60px_rgba(5,18,40,0.32)] backdrop-blur-[18px] sm:flex-nowrap sm:justify-end">
+            <span className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(96,165,250,0.14),rgba(12,25,50,0.26))] opacity-80 animate-[capsuleGlow_12s_linear_infinite]"></span>
+            {[
+              ["Servicios", "servicios"],
+              ["Diferenciadores", "diferenciadores"],
+              ["Testimonios", "testimonios"],
+              ["Contacto", "asistente"],
+            ].map(([label, target]) => (
+              <MovingButton
+                key={label}
+                borderRadius="1.5rem"
+                className="px-5 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-slate-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:text-sm"
+                innerBackground="rgba(10, 28, 60, 0.45)"
+                onClick={() =>
+                  document.getElementById(target)?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  })
+                }
+              >
+                {label}
+              </MovingButton>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Contenido principal */}
-      <div className="relative z-20 container mx-auto px-4 pb-28 pt-[19rem] text-center sm:px-6 sm:pt-[18rem] md:pt-[19rem] lg:pt-[22rem]">
-        <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-8 px-6 py-10 sm:gap-10 sm:px-10 sm:py-12">
+      <div className="relative z-20 container mx-auto px-4 pb-28 pt-[22rem] text-center sm:px-6 sm:pt-[23rem] md:pt-[24rem] lg:pt-[26rem]">
+        <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-8 px-4 sm:gap-10 sm:px-10">
           <h1 className="relative text-4xl font-serif font-black uppercase leading-tight text-white drop-shadow-[0_14px_35px_rgba(3,10,26,0.95)] animate-slide-up sm:text-5xl md:text-6xl lg:text-7xl">
             SOLUCIONES DE IA
             <br />
@@ -135,8 +135,11 @@ export default function HeroSection() {
           </h1>
 
           <p
-            className="relative max-w-4xl text-base leading-relaxed text-slate-100 drop-shadow-[0_12px_35px_rgba(4,10,24,0.55)] animate-slide-up sm:text-lg md:text-xl"
-            style={{ animationDelay: "0.2s" }}
+            className="relative max-w-3xl text-base leading-relaxed text-slate-100 drop-shadow-[0_16px_38px_rgba(2,8,22,0.65)] animate-slide-up sm:text-lg md:text-xl"
+            style={{
+              animationDelay: "0.2s",
+              textShadow: "0 0 28px rgba(4,16,40,0.65), 0 0 8px rgba(8,120,220,0.35)",
+            }}
           >
             Desde bares y restaurantes hasta e-commerce y empresas corporativas.
             <br />
@@ -186,7 +189,7 @@ export default function HeroSection() {
                 "Automatización y reservas inteligentes",
                 "Asistentes virtuales y ventas online",
                 "Optimización y conversión con IA",
-                "Posicionamiento y marketing IA",
+                "Posicionamiento y marketing digital",
                 "Soluciones complejas personalizadas",
               ];
               return (
