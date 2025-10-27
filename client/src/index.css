@@ -288,7 +288,7 @@ header nav a {
 
 header .logo {
   position: relative;
-  top: -12px;
+  top: 0;
   margin-bottom: 0;
   display: flex;
 }

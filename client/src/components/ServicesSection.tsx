@@ -41,165 +41,154 @@ interface ServiceProps {
   onCtaClick: () => void;
 }
 
-function ServiceCard({
-  icon: Icon,
-  image,
-  title,
-  subtitle,
-  problem,
-  solution,
-  features,
-  result,
-  testimonial,
-  author,
-  ctaText,
-  onCtaClick,
-}: ServiceProps) {
+function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, features, result, testimonial, author, ctaText, onCtaClick }: ServiceProps) {
   const [isFlipped, setIsFlipped] = useState(false);
+  const cardId = title.toLowerCase().replace(/\s+/g, '-');
+  const ctaId = ctaText.toLowerCase().replace(/\s+/g, '-');
 
   return (
-    <div
-      className="perspective-1000 group"
-      data-testid={`card-${title.toLowerCase().replace(/\s+/g, '-')}`}
-    >
+    <div className="group perspective-1200" data-testid={`card-${cardId}`}>
       <div
-        className={`relative h-[560px] w-full transition-all duration-700 [transform-style:preserve-3d] sm:h-[600px] lg:h-[640px] ${
-          isFlipped ? "[transform:rotateY(180deg)]" : ""
+        className={`relative h-[560px] w-full transition-transform duration-700 [transform-style:preserve-3d] sm:h-[600px] lg:h-[640px] ${
+          isFlipped ? '[transform:rotateY(180deg)]' : ''
         }`}
       >
-        {/* Front of Card */}
+        {/* Front */}
         <div className="absolute inset-0 h-full w-full [backface-visibility:hidden]">
-          <Card className="flex h-full flex-col overflow-hidden rounded-[2rem] border border-[hsl(210,100%,55%)]/20 bg-gradient-to-br from-[hsl(220,15%,92%)] to-white shadow-lg transition-all duration-300 hover:border-[hsl(210,100%,55%)]/40 hover:shadow-[0_28px_70px_rgba(28,100,210,0.18)]">
-            {/* Image Header */}
-            <div className="relative h-56 overflow-hidden">
-              <img
-                src={image}
-                alt={title}
-                className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute top-5 left-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-[hsl(210,100%,55%)] shadow-xl shadow-[hsl(210,100%,55%)]/40">
-                <Icon className="h-8 w-8 text-white" />
+          <div className="group/front relative flex h-full w-full flex-col overflow-hidden rounded-[2.25rem] border border-[rgba(255,255,255,0.12)] bg-slate-950/40 shadow-[0_32px_90px_rgba(6,16,38,0.58)]">
+            <img
+              src={image}
+              alt={title}
+              className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[900ms] group-hover/front:scale-[1.05]"
+            />
+            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[rgba(2,10,24,0.85)] via-[rgba(2,10,24,0.45)] to-transparent"></div>
+
+            <div className="relative z-10 flex flex-1 flex-col justify-between p-8 sm:p-10">
+              <div className="flex items-start gap-4 text-white">
+                <div className="flex h-16 w-16 items-center justify-center rounded-[1.75rem] border border-white/30 bg-white/15 backdrop-blur-md shadow-[0_18px_45px_rgba(0,0,0,0.35)]">
+                  <Icon className="h-8 w-8" />
+                </div>
+                <div>
+                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.38em] text-slate-200/85 sm:text-xs">
+                    {subtitle}
+                  </p>
+                  <h3 className="mt-2 text-2xl font-serif font-bold leading-tight drop-shadow-[0_12px_30px_rgba(2,8,20,0.75)] sm:text-3xl">
+                    {title}
+                  </h3>
+                </div>
+              </div>
+
+              <div className="mt-auto space-y-5">
+                <div className="rounded-3xl border border-[rgba(255,255,255,0.25)] bg-[rgba(0,0,0,0.35)] p-6 text-white shadow-[0_22px_55px_rgba(2,8,22,0.6)] backdrop-blur-md">
+                  <h4 className="text-[0.65rem] font-semibold uppercase tracking-[0.32em] text-sky-200/90">Problema</h4>
+                  <p className="mt-3 text-base font-medium leading-relaxed text-slate-100 sm:text-lg">“{problem}”</p>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <Button
+                    className="flex-1 rounded-full bg-white/15 px-6 py-3 text-xs font-bold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:bg-white/25 sm:text-sm"
+                    onClick={() => setIsFlipped(true)}
+                    data-testid={`button-ver-solucion-${cardId}`}
+                  >
+                    Ver solución
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                  <Button
+                    className="rounded-full border border-[rgba(255,255,255,0.35)] bg-[rgba(255,255,255,0.18)] px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:border-white/60 hover:bg-[rgba(255,255,255,0.28)] sm:text-sm"
+                    onClick={onCtaClick}
+                    data-testid={`button-${ctaId}`}
+                  >
+                    {ctaText}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
               </div>
             </div>
-
-            <CardHeader className="space-y-2 pb-3">
-              <CardTitle className="text-2xl font-serif font-bold text-[hsl(220,70%,25%)]">
-                {title}
-              </CardTitle>
-              <CardDescription className="text-sm font-medium uppercase tracking-[0.14em] text-[hsl(210,100%,45%)]">
-                {subtitle}
-              </CardDescription>
-            </CardHeader>
-
-            <CardContent className="flex flex-1 flex-col justify-between space-y-6 pb-6">
-              <div className="rounded-xl border border-red-200 bg-red-50/80 p-4 shadow-inner">
-                <h4 className="text-xs font-semibold uppercase tracking-[0.22em] text-red-500">
-                  Problema
-                </h4>
-                <p className="mt-2 text-sm font-medium text-[hsl(220,20%,20%)]">"{problem}"</p>
-              </div>
-
-              <div className="mt-auto">
-                <Button
-                  className="w-full rounded-full bg-[hsl(210,100%,55%)] px-6 py-3 font-semibold uppercase tracking-[0.18em] text-white shadow-lg shadow-[hsl(210,100%,55%)]/35 transition-all duration-300 hover:scale-[1.03] hover:bg-[hsl(210,100%,52%)]"
-                  onClick={() => setIsFlipped(true)}
-                  data-testid={`button-ver-solucion-${title.toLowerCase().replace(/\s+/g, '-')}`}
-                >
-                  Ver solución
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          </div>
         </div>
 
-        {/* Back of Card */}
+        {/* Back */}
         <div className="absolute inset-0 h-full w-full [backface-visibility:hidden] [transform:rotateY(180deg)]">
-          <Card className="flex h-full flex-col overflow-hidden rounded-[2rem] border border-[hsl(210,100%,55%)]/50 bg-gradient-to-br from-[hsl(220,70%,25%)] via-[hsl(220,30%,20%)] to-[hsl(220,20%,15%)] text-white shadow-[0_36px_90px_rgba(10,40,98,0.55)]">
-            <CardHeader>
-              <div className="flex items-start justify-between gap-3">
-                <div className="space-y-1">
-                  <CardTitle className="text-2xl font-serif font-bold text-white">
-                    {title}
-                  </CardTitle>
-                  <CardDescription className="text-sm font-medium uppercase tracking-[0.14em] text-[hsl(210,100%,75%)]">
-                    {subtitle}
-                  </CardDescription>
-                </div>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="rounded-full text-white transition-colors duration-300 hover:bg-white/10"
-                  onClick={() => setIsFlipped(false)}
-                  data-testid={`button-flip-back-${title.toLowerCase().replace(/\s+/g, '-')}`}
-                >
-                  <RotateCcw className="h-5 w-5" />
-                </Button>
+          <div className="flex h-full flex-col overflow-hidden rounded-[2.25rem] border border-sky-400/25 bg-gradient-to-br from-[hsl(220,70%,20%)] via-[hsl(220,62%,16%)] to-[hsl(220,68%,12%)] text-white shadow-[0_36px_105px_rgba(4,16,40,0.68)]">
+            <div className="flex items-start justify-between gap-4 px-8 pt-8 sm:px-10 sm:pt-10">
+              <div>
+                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.34em] text-sky-200/80 sm:text-xs">{subtitle}</p>
+                <h3 className="mt-2 text-3xl font-serif font-bold leading-tight drop-shadow-[0_16px_45px_rgba(2,10,28,0.65)] sm:text-4xl">
+                  {title}
+                </h3>
               </div>
-            </CardHeader>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-11 w-11 rounded-full border border-white/15 bg-[rgba(255,255,255,0.12)] text-white transition-colors duration-300 hover:bg-white/25"
+                onClick={() => setIsFlipped(false)}
+                data-testid={`button-flip-back-${cardId}`}
+              >
+                <RotateCcw className="h-5 w-5" />
+              </Button>
+            </div>
 
-            <CardContent className="flex flex-1 flex-col justify-between space-y-6 pb-6">
-              <div className="space-y-4">
-                <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-[0.24em] text-[hsl(210,100%,75%)]">
-                    Solución
-                  </h4>
-                  <p className="mt-2 text-sm font-medium text-white/95">"{solution}"</p>
+            <div className="flex-1 overflow-y-auto px-8 pb-8 pt-6 sm:px-10 sm:pb-10 sm:pt-8">
+              <div className="space-y-6 pr-1">
+                <div className="rounded-3xl border border-sky-300/30 bg-sky-300/15 p-6 text-slate-100">
+                  <h4 className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-sky-100/85">Solución</h4>
+                  <p className="mt-3 text-base font-semibold leading-relaxed text-white/95 sm:text-lg">“{solution}”</p>
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-[0.24em] text-[hsl(210,100%,75%)]">
-                    Características
-                  </h4>
-                  <ul className="mt-3 space-y-2">
+                  <h4 className="text-[0.65rem] font-semibold uppercase tracking-[0.32em] text-sky-100/80">Características clave</h4>
+                  <ul className="mt-4 grid gap-3">
                     {features.map((feature, index) => (
-                      <li
-                        key={index}
-                        className="flex items-start gap-3 rounded-xl border border-white/15 bg-white/10 p-3 text-sm text-white/95"
-                      >
-                        <CheckCircle className="mt-0.5 h-4 w-4 text-[hsl(210,100%,75%)]" />
-                        {feature}
+                      <li key={index} className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-3 text-sm leading-relaxed text-slate-100/95">
+                        <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-sky-200" />
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="rounded-xl border border-white/20 bg-white/10 p-4">
-                  <h4 className="text-xs font-semibold uppercase tracking-[0.24em] text-[hsl(210,100%,75%)]">
-                    Resultado
-                  </h4>
-                  <p className="mt-2 text-sm font-bold text-white">{result}</p>
-                </div>
-
-                <div className="rounded-xl border border-white/20 bg-white/5 p-4 backdrop-blur-md">
-                  <p className="text-sm italic text-white/90">"{testimonial}"</p>
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(210,100%,70%)]">
-                    - {author}
-                  </p>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-3xl border border-sky-300/25 bg-sky-400/20 p-5">
+                    <h4 className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-sky-100/85">Resultado</h4>
+                    <p className="mt-3 text-lg font-bold text-white">{result}</p>
+                  </div>
+                  <div className="rounded-3xl border border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.12)] p-5 backdrop-blur-md">
+                    <p className="text-sm italic text-white/90">“{testimonial}”</p>
+                    <p className="mt-3 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-sky-100/85">{author}</p>
+                  </div>
                 </div>
               </div>
+            </div>
 
+            <div className="px-8 pb-8 sm:px-10 sm:pb-10">
               <Button
-                className="w-full rounded-full bg-[hsl(210,100%,55%)] px-6 py-3 font-semibold uppercase tracking-[0.18em] text-white shadow-lg shadow-[hsl(210,100%,55%)]/35 transition-all duration-300 hover:scale-[1.03] hover:bg-[hsl(210,100%,60%)]"
+                className="w-full rounded-full bg-[rgba(255,255,255,0.22)] py-4 text-xs font-bold uppercase tracking-[0.24em] text-white transition-all duration-300 hover:bg-[rgba(255,255,255,0.32)] sm:text-sm"
                 onClick={onCtaClick}
-                data-testid={`button-${ctaText.toLowerCase().replace(/\s+/g, '-')}`}
               >
                 {ctaText}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* 3D Transform Styles */}
       <style>{`
-        .perspective-1000 {
-          perspective: 1400px;
+        .perspective-1200 {
+          perspective: 1200px;
         }
-        .backface-hidden {
+        .transform-style-3d,
+        .group [transform-style\:preserve-3d] {
+          transform-style: preserve-3d;
+        }
+        .backface-hidden,
+        .group [backface-visibility\:hidden] {
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
+        }
+        .rotate-y-180,
+        .group [transform\:rotateY(180deg)] {
+          transform: rotateY(180deg);
         }
       `}</style>
     </div>
