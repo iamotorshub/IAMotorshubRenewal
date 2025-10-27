@@ -74,14 +74,13 @@ export default function HeroSection() {
       </div>
 
       {/* Logo grande fijo con halo */}
-      <div className="absolute left-1 top-2 z-[60] flex items-center sm:left-5 sm:top-4 md:left-10 md:top-8">
-        <div className="pointer-events-none absolute -inset-[6.5rem] rounded-full bg-[radial-gradient(circle_at_center,rgba(118,189,255,0.65),rgba(10,20,44,0.12))] blur-[120px] opacity-90 animate-[heroHalo_8s_ease-in-out_infinite]"></div>
-        <div className="pointer-events-none absolute -inset-14 -z-10 rounded-full border border-white/15 bg-[radial-gradient(circle_at_top,rgba(148,211,255,0.55),rgba(15,30,60,0.2))] backdrop-blur-3xl shadow-[0_55px_150px_rgba(30,110,255,0.6)] before:absolute before:inset-4 before:rounded-full before:border before:border-white/20 before:opacity-50 before:animate-[logoOrbit_18s_linear_infinite] before:content-['']"></div>
-        <span className="pointer-events-none absolute -inset-[3.75rem] rounded-full border border-white/20 bg-gradient-to-br from-white/10 via-sky-400/20 to-transparent opacity-70 mix-blend-screen animate-[logoRing_14s_linear_infinite]"></span>
+      <div className="absolute left-2 top-4 z-[60] flex items-center sm:left-6 sm:top-6 md:left-10 md:top-10">
+        <div className="pointer-events-none absolute -inset-20 rounded-full bg-[radial-gradient(circle_at_center,rgba(96,165,250,0.55),rgba(12,24,48,0.05))] blur-3xl opacity-90 animate-[heroHalo_8s_ease-in-out_infinite]"></div>
+        <div className="pointer-events-none absolute -inset-10 -z-10 rounded-full border border-white/15 bg-[radial-gradient(circle_at_top,rgba(125,211,252,0.55),rgba(15,30,60,0.15))] backdrop-blur-2xl shadow-[0_45px_120px_rgba(46,131,255,0.55)] before:absolute before:inset-2 before:rounded-full before:border before:border-white/20 before:opacity-60 before:animate-[logoOrbit_18s_linear_infinite] before:content-['']"></div>
         <img
           src={logoPath}
           alt="IA MOTORSHUB"
-          className="relative h-[14rem] w-auto sm:h-[19rem] md:h-[23rem] lg:h-[27rem] xl:h-[30rem] brightness-0 invert drop-shadow-[0_28px_90px_rgba(12,34,78,0.82)] transition-transform duration-[1200ms] ease-out will-change-transform animate-[logoFloat_11s_ease-in-out_infinite]"
+          className="relative h-[12.5rem] w-auto sm:h-[16rem] md:h-[19rem] lg:h-[23rem] xl:h-[26rem] brightness-0 invert drop-shadow-[0_24px_70px_rgba(12,34,78,0.8)] transition-all duration-700 ease-out will-change-transform"
           style={{ filter: "brightness(0) invert(1)" }}
         />
         <div className="pointer-events-none absolute inset-0 rounded-full opacity-0 mix-blend-screen animate-[logoPulse_9s_ease-in-out_infinite]"></div>
@@ -93,9 +92,9 @@ export default function HeroSection() {
           showButtons ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="relative flex flex-wrap items-center justify-center gap-3 overflow-hidden rounded-[2.5rem] border border-white/15 bg-[rgba(6,18,40,0.22)] px-4 py-3 shadow-[0_28px_85px_rgba(5,18,40,0.38)] backdrop-blur-[26px] sm:flex-nowrap sm:justify-start">
-          <span className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(96,165,250,0.18),rgba(12,25,50,0.4))] opacity-90 animate-[capsuleGlow_12s_linear_infinite]"></span>
-          <span className="pointer-events-none absolute inset-[3px] rounded-[2.3rem] border border-white/10 bg-white/10 mix-blend-soft-light opacity-35"></span>
+        <div className="relative flex flex-wrap items-center justify-center gap-3 overflow-hidden rounded-[2.25rem] border border-white/10 bg-[rgba(10,18,36,0.32)] px-4 py-3 shadow-[0_28px_85px_rgba(5,18,40,0.45)] backdrop-blur-2xl sm:flex-nowrap sm:justify-start">
+          <span className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(96,165,250,0.25),rgba(12,25,50,0.35))] opacity-80"></span>
+          <span className="pointer-events-none absolute inset-1 rounded-[2rem] border border-white/5 bg-white/5 mix-blend-overlay opacity-30"></span>
           {[
             ["Servicios", "servicios"],
             ["Diferenciadores", "diferenciadores"],
@@ -105,8 +104,8 @@ export default function HeroSection() {
             <MovingButton
               key={label}
               borderRadius="1.5rem"
-              className="px-5 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-slate-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:text-sm"
-              innerBackground="rgba(10, 28, 60, 0.45)"
+              className="px-5 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-sky-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:text-sm"
+              innerBackground="rgba(6, 20, 42, 0.35)"
               onClick={() =>
                 document.getElementById(target)?.scrollIntoView({
                   behavior: "smooth",
@@ -121,18 +120,10 @@ export default function HeroSection() {
       </div>
 
       {/* Contenido principal */}
-      <div className="relative z-20 container mx-auto px-4 pb-28 pt-[19rem] text-center sm:px-6 sm:pt-[18rem] md:pt-[19rem] lg:pt-[22rem]">
+      <div className="relative z-20 container mx-auto px-4 pb-28 pt-72 text-center sm:px-6 sm:pt-64 md:pt-72 lg:pt-[22rem]">
         <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-8 rounded-[2.75rem] border border-white/10 bg-[rgba(5,12,24,0.68)] px-6 py-10 shadow-[0_50px_130px_rgba(5,16,38,0.62)] backdrop-blur-[22px] sm:gap-10 sm:px-10 sm:py-14">
           <div className="pointer-events-none absolute -inset-px -z-10 rounded-[2.75rem] bg-[linear-gradient(135deg,rgba(59,130,246,0.2),rgba(14,165,233,0.16)_40%,rgba(2,132,199,0.1)_75%,transparent)] opacity-100"></div>
           <div className="pointer-events-none absolute inset-4 rounded-[2.25rem] border border-white/5"></div>
-          <div className="flex w-full flex-col items-center gap-3 text-xs uppercase tracking-[0.4em] text-sky-100/90 animate-slide-up sm:flex-row sm:justify-center sm:text-[0.7rem]" style={{ animationDelay: "0.05s" }}>
-            <span className="rounded-full border border-white/25 bg-white/10 px-5 py-2 font-semibold text-white shadow-[0_12px_35px_rgba(6,16,34,0.45)] backdrop-blur-sm">
-              GRANDES SOLUCIONES
-            </span>
-            <span className="rounded-full border border-white/15 bg-[rgba(8,20,46,0.55)] px-5 py-2 font-semibold text-sky-200 shadow-[0_12px_35px_rgba(6,16,34,0.4)]">
-              INTELIGENCIA ARTIFICIAL PARA TU NEGOCIO
-            </span>
-          </div>
           <h1 className="relative text-4xl font-serif font-black uppercase leading-tight text-white drop-shadow-[0_14px_35px_rgba(3,10,26,0.95)] animate-slide-up sm:text-5xl md:text-6xl lg:text-7xl">
             SOLUCIONES DE IA
             <br />
@@ -149,7 +140,7 @@ export default function HeroSection() {
           </h1>
 
           <p
-            className="relative max-w-4xl rounded-[2rem] border border-white/10 bg-[rgba(6,18,36,0.55)] px-6 py-5 text-base leading-relaxed text-slate-100 shadow-[0_24px_65px_rgba(4,10,24,0.65)] backdrop-blur-lg animate-slide-up sm:text-lg md:text-xl"
+            className="relative max-w-4xl text-base leading-relaxed text-slate-100 drop-shadow-[0_10px_28px_rgba(4,10,24,0.85)] animate-slide-up sm:text-lg md:text-xl"
             style={{ animationDelay: "0.2s" }}
           >
             Desde bares y restaurantes hasta e-commerce y empresas corporativas.
@@ -209,7 +200,7 @@ export default function HeroSection() {
                   key={title}
                   className="group rounded-[1.75rem] border border-white/10 bg-white/10 p-4 text-slate-100 shadow-[0_22px_55px_rgba(5,18,48,0.45)] transition-all duration-300 backdrop-blur-xl hover:border-sky-300/70 hover:bg-white/15 hover:shadow-[0_32px_95px_rgba(10,34,82,0.55)] sm:p-6"
                 >
-                  <div className="mb-2 flex items-center justify-center gap-2 text-base font-bold uppercase tracking-[0.22em] text-sky-200 drop-shadow-[0_8px_22px_rgba(5,16,38,0.85)] sm:text-xl">
+                  <div className="mb-2 flex items-center justify-center gap-2 text-base font-bold uppercase tracking-[0.28em] text-sky-200 drop-shadow-[0_8px_22px_rgba(5,16,38,0.85)] sm:text-xl">
                     <Sparkles className="h-5 w-5 sm:h-6 sm:w-6" /> {title}
                   </div>
                   <div className="text-xs font-medium text-slate-100/90 drop-shadow-[0_6px_18px_rgba(4,10,24,0.65)] sm:text-sm">
@@ -233,7 +224,11 @@ export default function HeroSection() {
         }
         @keyframes heroHalo {
           0%, 100% { opacity: 0.9; transform: scale(1); }
-          50% { opacity: 0.5; transform: scale(1.1); }
+          50% { opacity: 0.55; transform: scale(1.08); }
+        }
+        @keyframes slowSpin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
         @keyframes logoPulse {
           0%, 100% { opacity: 0; transform: scale(0.95); }
@@ -242,19 +237,6 @@ export default function HeroSection() {
         @keyframes logoOrbit {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
-        }
-        @keyframes logoFloat {
-          0%, 100% { transform: translate3d(0, -6px, 0) scale(1); }
-          50% { transform: translate3d(0, 10px, 0) scale(1.02); }
-        }
-        @keyframes logoRing {
-          0% { transform: rotate(0deg) scale(1); opacity: 0.75; }
-          50% { transform: rotate(180deg) scale(1.05); opacity: 0.45; }
-          100% { transform: rotate(360deg) scale(1); opacity: 0.75; }
-        }
-        @keyframes capsuleGlow {
-          0%, 100% { opacity: 0.75; transform: scale(1); }
-          50% { opacity: 0.45; transform: scale(1.02); }
         }
       `}</style>
     </section>
