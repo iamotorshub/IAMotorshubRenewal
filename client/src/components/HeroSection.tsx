@@ -55,36 +55,36 @@ export default function HeroSection() {
             <img
               src={image}
               alt={`Hero ${index + 1}`}
-              className="w-full h-full object-cover"
+              loading={index === 0 ? "eager" : "lazy"}
+              decoding="async"
+              className="w-full h-full object-cover brightness-105 contrast-105"
             />
           </div>
         ))}
-        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,70%,25%)]/60 via-[hsl(220,20%,15%)]/70 to-[hsl(220,20%,15%)]/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(220,70%,25%)]/45 via-[hsl(220,25%,15%)]/55 to-[hsl(220,25%,12%)]/45"></div>
       </div>
 
       {/* Luz azul animada */}
       <div className="absolute inset-0 z-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-[hsl(210,100%,55%)]/20 rounded-full blur-3xl animate-pulse"></div>
-        <div
-          className="absolute bottom-0 right-0 w-96 h-96 bg-[hsl(210,100%,55%)]/20 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "1s" }}
-        ></div>
+        <div className="absolute top-[-10%] left-[-10%] h-72 w-72 rounded-full bg-[hsl(210,100%,60%)]/25 blur-3xl animate-[pulse_7s_ease-in-out_infinite]"></div>
+        <div className="absolute right-[-15%] top-1/3 h-80 w-80 rounded-full bg-[hsl(210,85%,55%)]/20 blur-3xl animate-[pulse_6s_ease-in-out_infinite]"></div>
+        <div className="absolute bottom-[-12%] left-1/3 h-64 w-64 rounded-full bg-[hsl(210,100%,65%)]/15 blur-3xl animate-[pulse_8s_ease-in-out_infinite]"></div>
       </div>
 
       {/* Logo grande fijo con halo */}
-      <div className="absolute top-10 left-12 z-[60] flex items-center">
-      <div className="absolute -inset-6 bg-[hsl(210,100%,55%)]/25 blur-3xl rounded-full"></div>
+      <div className="absolute left-4 top-6 sm:left-8 sm:top-8 md:left-12 md:top-10 z-[60] flex items-center">
+        <div className="pointer-events-none absolute -inset-8 rounded-full bg-[hsl(210,100%,60%)]/35 blur-3xl"></div>
         <img
           src={logoPath}
           alt="IA MOTORSHUB"
-          className="relative h-[150px] md:h-[200px] lg:h-[220px] brightness-0 invert drop-shadow-2xl transition-transform duration-500"
-          style={{ filter: 'brightness(0) invert(1)' }}
+          className="relative h-40 w-auto sm:h-44 md:h-52 lg:h-60 brightness-0 invert drop-shadow-[0_0_35px_rgba(59,130,246,0.6)] transition-transform duration-500"
+          style={{ filter: "brightness(0) invert(1)" }}
         />
       </div>
 
       {/* Botones de navegación (servicios, etc.) */}
       <div
-        className={`absolute top-20 right-16 z-40 flex gap-5 bg-white/5 backdrop-blur-md px-8 py-4 rounded-full border border-white/20 shadow-lg transition-all duration-700 ${
+        className={`absolute left-1/2 top-36 z-40 flex w-[min(90vw,340px)] -translate-x-1/2 flex-wrap items-center justify-center gap-3 rounded-3xl border border-white/15 bg-[rgba(6,16,35,0.78)] px-4 py-3 shadow-[0_20px_60px_rgba(15,76,129,0.35)] backdrop-blur-lg transition-all duration-700 sm:left-auto sm:right-10 sm:top-20 sm:w-auto sm:-translate-x-0 sm:flex-nowrap sm:justify-start md:top-24 lg:top-28 ${
           showButtons ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -97,7 +97,8 @@ export default function HeroSection() {
           <MovingButton
             key={label}
             borderRadius="1.5rem"
-            className="px-5 py-2 text-[hsl(210,100%,85%)] font-semibold bg-transparent hover:text-white transition-all duration-300"
+            className="px-5 py-2 text-xs font-semibold uppercase tracking-wide text-sky-100 transition-all duration-300 hover:scale-[1.02] sm:text-sm"
+            innerBackground="rgba(6, 16, 35, 0.55)"
             onClick={() =>
               document.getElementById(target)?.scrollIntoView({
                 behavior: "smooth",
@@ -111,8 +112,8 @@ export default function HeroSection() {
       </div>
 
       {/* Contenido principal */}
-      <div className="relative z-20 container mx-auto px-6 text-center pt-52">
-        <h1 className="text-5xl md:text-7xl font-serif font-black mb-8 leading-tight text-white animate-slide-up">
+      <div className="relative z-20 container mx-auto px-4 sm:px-6 text-center pt-64 sm:pt-60 md:pt-64 lg:pt-72">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif font-black mb-8 leading-tight text-white animate-slide-up">
           SOLUCIONES DE IA<br />
           PARA{" "}
           <span className="bg-gradient-to-r from-[hsl(210,100%,55%)] to-[hsl(210,100%,70%)] bg-clip-text text-transparent">
@@ -121,7 +122,7 @@ export default function HeroSection() {
         </h1>
 
         <p
-          className="text-xl md:text-2xl font-sans mb-12 max-w-4xl mx-auto leading-relaxed text-[hsl(220,15%,92%)] animate-slide-up"
+          className="text-lg sm:text-xl md:text-2xl font-sans mb-14 max-w-4xl mx-auto leading-relaxed text-[hsl(220,15%,92%)] animate-slide-up"
           style={{ animationDelay: "0.2s" }}
         >
           Desde bares y restaurantes hasta e-commerce y empresas corporativas.
@@ -141,12 +142,14 @@ export default function HeroSection() {
 
         {/* CTA único */}
         <div
-          className="flex justify-center mb-16 animate-slide-up"
+          className="flex justify-center mb-20 animate-slide-up"
           style={{ animationDelay: "0.4s" }}
         >
           <MovingButton
             borderRadius="1.5rem"
-            className="px-12 py-6 text-lg font-bold text-[hsl(210,100%,55%)] border border-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,55%)] hover:text-white transition-all duration-300 backdrop-blur-sm bg-white/10"
+            className="group px-10 py-5 text-base font-bold text-sky-100 transition-all duration-300 hover:scale-[1.02] sm:px-12 sm:py-6 sm:text-lg"
+            innerBackground="rgba(12, 28, 52, 0.55)"
+            borderColors={["#38bdf8", "#60a5fa", "#38bdf8"]}
             onClick={() => {
               document.getElementById("asistente")?.scrollIntoView({
                 behavior: "smooth",
@@ -173,7 +176,7 @@ export default function HeroSection() {
           ].map(([title, desc]) => (
             <div
               key={title}
-              className="bg-white/5 backdrop-blur-md border border-[hsl(210,100%,55%)]/30 rounded-lg p-4 hover:bg-white/10 hover:border-[hsl(210,100%,55%)]/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[hsl(210,100%,55%)]/20"
+              className="bg-white/5 backdrop-blur-md border border-[hsl(210,100%,55%)]/30 rounded-lg p-4 transition-all duration-300 hover:bg-white/10 hover:border-[hsl(210,100%,55%)]/50 hover:scale-[1.03] hover:shadow-lg hover:shadow-[hsl(210,100%,55%)]/25"
             >
               <div className="text-[hsl(210,100%,55%)] text-2xl font-bold mb-1 flex items-center justify-center gap-1">
                 <Sparkles className="h-5 w-5" /> {title}

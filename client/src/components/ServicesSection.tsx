@@ -37,9 +37,11 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
           <Card className="h-full bg-gradient-to-br from-[hsl(220,15%,92%)] to-white border-[hsl(210,100%,55%)]/20 hover-elevate transition-all duration-300 hover:border-[hsl(210,100%,55%)]/40 hover:shadow-xl hover:shadow-[hsl(210,100%,55%)]/20 overflow-hidden group-hover:scale-[1.02]">
             {/* Image Header with Overlay */}
             <div className="relative h-48 overflow-hidden">
-              <img 
-                src={image} 
-                alt={title} 
+              <img
+                src={image}
+                alt={title}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[hsl(220,70%,25%)]/90 to-transparent"></div>
