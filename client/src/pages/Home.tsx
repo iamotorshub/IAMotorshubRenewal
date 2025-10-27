@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import DifferentiatorsSection from "@/components/DifferentiatorsSection";
@@ -10,7 +9,6 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
       <HeroSection />
       <div id="servicios">
         <ServicesSection />
