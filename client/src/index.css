@@ -280,25 +280,6 @@ header nav {
   border: none !important;
 }
 
-header nav::before,
-header nav::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 60px;
-  height: 100%;
-  backdrop-filter: blur(6px);
-  pointer-events: none;
-}
-
-header nav::before {
-  left: 0;
-}
-
-header nav::after {
-  right: 0;
-}
-
 header nav a {
   background: transparent !important;
   backdrop-filter: none !important;
@@ -307,13 +288,12 @@ header nav a {
 
 header .logo {
   position: relative;
-  top: -20px;
+  top: -12px;
   margin-bottom: 0;
-  height: 70px;
+  display: flex;
 }
 
 header .logo img {
-  max-height: 100%;
   width: auto;
 }
 
