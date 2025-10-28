@@ -62,7 +62,7 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
             <img
               src={image}
               alt={title}
-              className="absolute inset-0 h-full w-full origin-center object-cover object-center brightness-[1.08] contrast-[1.05] saturate-[1.25] transition-transform duration-[900ms] ease-out group-hover/front:scale-[1.05]"
+              className="absolute inset-0 h-full w-full origin-center rounded-[2.25rem] object-cover object-center brightness-[1.06] contrast-[1.04] saturate-[1.22] transition-transform duration-[900ms] ease-out group-hover/front:scale-[1.03]"
             />
             <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[rgba(2,10,24,0.85)] via-[rgba(2,10,24,0.45)] to-transparent"></div>
 

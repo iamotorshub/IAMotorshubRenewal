@@ -1,10 +1,126 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import ColourfulText from "@/components/ui/colourful-text";
 import { Clock, CheckCircle, AlertTriangle } from "lucide-react";
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import ScheduleModal from "./ScheduleModal";
+
+interface AnimatedLettersProps {
+  text: string;
+  isInView: boolean;
+  delayOffset?: number;
+  className?: string;
+}
+
+function AnimatedLetters({ text, isInView, delayOffset = 0, className = "" }: AnimatedLettersProps) {
+  return (
+    <span className="inline-block">
+      {Array.from(text).map((char, index) => (
+        <motion.span
+          key={`${text}-${index}`}
+          className={`inline-block ${className}`.trim()}
+          initial={{ opacity: 0, y: "0.6em" }}
+          animate={
+            isInView
+              ? { opacity: 1, y: 0 }
+              : { opacity: 0, y: "0.6em" }
+          }
+          transition={{
+            delay: delayOffset + index * 0.045,
+            duration: 0.55,
+            ease: [0.22, 1, 0.36, 1]
+          }}
+        >
+          {char === " " ? "\u00a0" : char}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
+
+function ManifestoStatement() {
+  const manifestoRef = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(manifestoRef, {
+    once: true,
+    margin: "-10% 0px"
+  });
+
+  return (
+    <div
+      ref={manifestoRef}
+      className="mx-auto max-w-4xl rounded-[2.75rem] border border-white/15 bg-[rgba(4,8,22,0.72)] px-8 py-14 shadow-[0_28px_95px_rgba(8,24,52,0.58)] backdrop-blur-2xl md:px-16"
+    >
+      <motion.p
+        className="mb-3 text-xs font-semibold uppercase tracking-[0.55em] text-white/80 md:mb-4"
+        initial={{ opacity: 0, y: 12 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+      >
+        Manifiesto
+      </motion.p>
+
+      <motion.div
+        className="text-center text-4xl font-serif font-black leading-tight text-white drop-shadow-[0_22px_48px_rgba(10,40,75,0.7)] sm:text-5xl lg:text-6xl xl:text-7xl"
+        data-testid="text-closing"
+        initial={{ opacity: 0, y: 24 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+      >
+        <div className="block">
+          <AnimatedLetters
+            text="No vendemos herramientas."
+            isInView={isInView}
+            delayOffset={0.25}
+            className="text-white"
+          />
+        </div>
+        <div className="mt-10 block">
+          <motion.span
+            className="relative inline-block bg-clip-text text-transparent drop-shadow-[0_24px_40px_rgba(56,189,248,0.45)]"
+            style={{
+              backgroundImage:
+                "linear-gradient(120deg, rgba(56,189,248,0.95), rgba(59,130,246,0.95), rgba(129,140,248,0.95), rgba(56,189,248,0.95))",
+              backgroundSize: "200% 100%"
+            }}
+            animate={
+              isInView
+                ? { backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }
+                : {}
+            }
+            transition={{ duration: 8, ease: "linear", repeat: Infinity }}
+          >
+            <AnimatedLetters
+              text="Creamos ecosistemas que transforman industrias."
+              isInView={isInView}
+              delayOffset={1.1}
+              className="text-transparent"
+            />
+            <motion.span
+              aria-hidden
+              className="pointer-events-none absolute inset-0 rounded-full opacity-25 blur-3xl mix-blend-screen"
+              style={{
+                background:
+                  "radial-gradient(circle at center, rgba(56,189,248,0.5), transparent 70%)"
+              }}
+              animate={
+                isInView
+                  ? { opacity: [0.18, 0.5, 0.25], scale: [0.9, 1.05, 0.95] }
+                  : {}
+              }
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                repeatType: "mirror",
+                ease: "easeInOut",
+                delay: 0.8
+              }}
+            />
+          </motion.span>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
 
 function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({
@@ -81,7 +197,7 @@ export default function UrgencySection() {
             <AlertTriangle className="h-8 w-8 text-red-500" />
           </div>
           <p className="text-xl text-[hsl(220,10%,45%)] max-w-3xl mx-auto">
-            Solo trabajamos con 1 empresa por sector en cada ciudad para garantizar ventaja competitiva total
+            Solo trabajamos con 2/3 empresas por sector en cada ciudad para garantizar ventaja competitiva total
           </p>
         </div>
 
@@ -174,17 +290,8 @@ export default function UrgencySection() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(12,74,110,0.28),transparent_70%)]" aria-hidden />
               <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(4,8,22,0.6),rgba(4,8,22,0.95))]" aria-hidden />
 
-              <div className="relative z-10 px-8 py-16 text-center md:px-20">
-                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.55em] text-white/70">Manifiesto</p>
-                <h4 className="text-balance text-3xl font-serif font-black leading-tight text-white drop-shadow-[0_22px_40px_rgba(10,40,75,0.65)] md:text-5xl" data-testid="text-closing">
-                  <span className="block">No vendemos herramientas.</span>
-                  <span className="mt-5 block">
-                    Creamos <ColourfulText
-                      text="ecosistemas que transforman industrias."
-                      className="font-serif drop-shadow-[0_18px_32px_rgba(56,189,248,0.35)]"
-                    />
-                  </span>
-                </h4>
+              <div className="relative z-10 px-6 py-12 text-center md:px-16 md:py-16">
+                <ManifestoStatement />
               </div>
             </div>
           </div>
