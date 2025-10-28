@@ -150,24 +150,24 @@ export default function UrgencySection() {
           </div>
 
           <div className="mx-auto mt-10 max-w-4xl">
-            <div className="relative overflow-hidden rounded-[2.5rem] border border-[hsl(210,100%,55%)]/40 bg-black/90 text-white shadow-[0_35px_120px_rgba(15,76,129,0.35)]">
+            <div className="relative overflow-hidden rounded-[2.5rem] border border-[hsl(210,100%,55%)]/30 bg-black text-white shadow-[0_35px_120px_rgba(15,76,129,0.35)]">
               <motion.img
                 aria-hidden
                 src="https://assets.aceternity.com/linear-demo.webp"
-                className="absolute inset-0 h-full w-full object-cover opacity-40 [mask-image:radial-gradient(circle,rgba(0,0,0,0)_10%,rgba(0,0,0,0.85)_70%)]"
-                initial={{ scale: 1.1, opacity: 0 }}
-                animate={{ scale: [1.1, 1, 1.05], opacity: [0.25, 0.4, 0.3] }}
-                transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+                className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-0 [mask-image:radial-gradient(circle,transparent,black_78%)]"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                transition={{ duration: 1.4, ease: "easeOut" }}
               />
 
-              <div className="relative z-10 px-8 py-12 text-center md:px-16">
-                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.45em] text-white/60">Manifiesto</p>
+              <div className="relative z-10 px-8 py-14 text-center md:px-16">
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.45em] text-white/60">Manifiesto</p>
                 <h4 className="text-balance text-2xl font-serif font-black leading-tight text-white md:text-4xl" data-testid="text-closing">
                   “<ColourfulText text="No vendemos herramientas. Creamos ecosistemas que transforman industrias." className="font-serif" />”
                 </h4>
               </div>
 
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.25),transparent_65%)]" aria-hidden />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.35),transparent_70%)]" aria-hidden />
             </div>
           </div>
         </div>
