@@ -152,7 +152,7 @@
 }
 
 html {
-  zoom: 0.85;
+  zoom: 0.9;
 }
 
 @supports not (zoom: 1) {
@@ -161,10 +161,10 @@ html {
   }
 
   body {
-    transform: scale(0.85);
+    transform: scale(0.9);
     transform-origin: top center;
-    width: calc(100% / 0.85);
-    min-height: calc(100vh / 0.85);
+    width: calc(100% / 0.9);
+    min-height: calc(100vh / 0.9);
     margin: 0 auto;
   }
 }
