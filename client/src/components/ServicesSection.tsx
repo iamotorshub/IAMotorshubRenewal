@@ -53,7 +53,11 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
         }`}
       >
         {/* Front */}
-        <div className="absolute inset-0 h-full w-full [backface-visibility:hidden]">
+        <div
+          className={`absolute inset-0 h-full w-full [backface-visibility:hidden] ${
+            isFlipped ? "pointer-events-none" : "pointer-events-auto"
+          }`}
+        >
           <div className="group/front relative flex h-full w-full flex-col overflow-hidden rounded-[2.25rem] border border-[rgba(255,255,255,0.12)] bg-slate-950/40 shadow-[0_32px_90px_rgba(6,16,38,0.58)]">
             <img
               src={image}
@@ -126,7 +130,11 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
         </div>
 
         {/* Back */}
-        <div className="absolute inset-0 h-full w-full [backface-visibility:hidden] [transform:rotateY(180deg)]">
+        <div
+          className={`absolute inset-0 h-full w-full [backface-visibility:hidden] [transform:rotateY(180deg)] ${
+            isFlipped ? "pointer-events-auto" : "pointer-events-none"
+          }`}
+        >
           <div className="flex h-full flex-col overflow-hidden rounded-[2.25rem] border border-sky-400/25 bg-gradient-to-br from-[hsl(220,70%,20%)] via-[hsl(220,62%,16%)] to-[hsl(220,68%,12%)] text-white shadow-[0_36px_105px_rgba(4,16,40,0.68)]">
             <div className="flex items-start justify-between gap-4 px-8 pt-8 sm:px-10 sm:pt-10">
               <div>
