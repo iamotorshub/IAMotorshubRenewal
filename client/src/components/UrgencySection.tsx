@@ -48,7 +48,7 @@ function ManifestoStatement() {
   return (
     <div
       ref={manifestoRef}
-      className="mx-auto max-w-3xl rounded-[2.75rem] border border-white/15 bg-[rgba(4,8,22,0.72)] px-6 py-10 shadow-[0_28px_75px_rgba(8,24,52,0.58)] backdrop-blur-2xl md:px-12"
+      className="mx-auto max-w-4xl rounded-[2.75rem] border border-white/15 bg-[rgba(4,8,22,0.72)] px-8 py-14 shadow-[0_28px_95px_rgba(8,24,52,0.58)] backdrop-blur-2xl md:px-16"
     >
       <motion.p
         className="mb-3 text-xs font-semibold uppercase tracking-[0.55em] text-white/80 md:mb-4"
@@ -60,7 +60,7 @@ function ManifestoStatement() {
       </motion.p>
 
       <motion.div
-        className="text-balance text-3xl font-serif font-black leading-tight text-white drop-shadow-[0_22px_40px_rgba(10,40,75,0.7)] md:text-5xl"
+        className="text-center text-4xl font-serif font-black leading-tight text-white drop-shadow-[0_22px_48px_rgba(10,40,75,0.7)] sm:text-5xl lg:text-6xl xl:text-7xl"
         data-testid="text-closing"
         initial={{ opacity: 0, y: 24 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
@@ -74,18 +74,12 @@ function ManifestoStatement() {
             className="text-white"
           />
         </div>
-        <div className="mt-6 block">
-          <AnimatedLetters
-            text="Creamos "
-            isInView={isInView}
-            delayOffset={1.1}
-            className="text-white"
-          />
+        <div className="mt-10 block">
           <motion.span
-            className="relative inline-block bg-clip-text text-transparent drop-shadow-[0_18px_32px_rgba(56,189,248,0.4)]"
+            className="relative inline-block bg-clip-text text-transparent drop-shadow-[0_24px_40px_rgba(56,189,248,0.45)]"
             style={{
               backgroundImage:
-                "linear-gradient(120deg, rgba(56,189,248,0.9), rgba(99,102,241,0.95), rgba(192,132,252,0.9), rgba(56,189,248,0.9))",
+                "linear-gradient(120deg, rgba(56,189,248,0.95), rgba(59,130,246,0.95), rgba(129,140,248,0.95), rgba(56,189,248,0.95))",
               backgroundSize: "200% 100%"
             }}
             animate={
@@ -96,25 +90,25 @@ function ManifestoStatement() {
             transition={{ duration: 8, ease: "linear", repeat: Infinity }}
           >
             <AnimatedLetters
-              text="ecosistemas que transforman industrias."
+              text="Creamos ecosistemas que transforman industrias."
               isInView={isInView}
-              delayOffset={1.35}
+              delayOffset={1.1}
               className="text-transparent"
             />
             <motion.span
               aria-hidden
-              className="pointer-events-none absolute inset-0 rounded-full opacity-30 blur-3xl mix-blend-screen"
+              className="pointer-events-none absolute inset-0 rounded-full opacity-25 blur-3xl mix-blend-screen"
               style={{
                 background:
-                  "radial-gradient(circle at center, rgba(56,189,248,0.55), transparent 68%)"
+                  "radial-gradient(circle at center, rgba(56,189,248,0.5), transparent 70%)"
               }}
               animate={
                 isInView
-                  ? { opacity: [0.15, 0.45, 0.2], scale: [0.92, 1.04, 0.96] }
+                  ? { opacity: [0.18, 0.5, 0.25], scale: [0.9, 1.05, 0.95] }
                   : {}
               }
               transition={{
-                duration: 3.2,
+                duration: 3.5,
                 repeat: Infinity,
                 repeatType: "mirror",
                 ease: "easeInOut",
