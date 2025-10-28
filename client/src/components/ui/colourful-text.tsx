@@ -11,6 +11,12 @@ interface ColourfulTextProps {
 export default function ColourfulText({ text, className }: ColourfulTextProps) {
   return (
     <span className={cn("relative inline-block", className)}>
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 select-none whitespace-pre-wrap text-white/85 blur-sm"
+      >
+        {text}
+      </span>
       <motion.span
         aria-hidden
         className="absolute inset-0 -z-10 rounded-full blur-3xl"
