@@ -148,7 +148,7 @@ export default function UrgencySection() {
           </div>
 
           <div className="mx-auto mt-10 max-w-4xl rounded-[2.5rem] border border-[hsl(210,100%,55%)]/40 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.22),rgba(255,255,255,0.05))] p-8 shadow-[0_35px_120px_rgba(15,76,129,0.35)]">
-            <p className="text-2xl font-serif font-black uppercase tracking-[0.18em] text-white drop-shadow-[0_18px_55px_rgba(8,32,82,0.85)] md:text-4xl" data-testid="text-closing">
+            <p className="text-2xl font-serif font-black uppercase tracking-[0.18em] bg-gradient-to-r from-[hsl(210,100%,68%)] via-[hsl(210,96%,75%)] to-[hsl(210,100%,90%)] bg-clip-text text-transparent drop-shadow-[0_18px_55px_rgba(8,32,82,0.35)] md:text-4xl" data-testid="text-closing">
               "No vendemos herramientas. Creamos ecosistemas que transforman industrias."
             </p>
           </div>
