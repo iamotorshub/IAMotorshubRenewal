@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import ColourfulText from "@/components/ui/colourful-text";
-import { motion } from "framer-motion";
 import { Clock, CheckCircle, AlertTriangle } from "lucide-react";
 import { useState, useEffect } from "react";
 import ScheduleModal from "./ScheduleModal";
@@ -150,24 +149,19 @@ export default function UrgencySection() {
           </div>
 
           <div className="mx-auto mt-10 max-w-4xl">
-            <div className="relative overflow-hidden rounded-[2.5rem] border border-[hsl(210,100%,55%)]/30 bg-black text-white shadow-[0_35px_120px_rgba(15,76,129,0.35)]">
-              <motion.img
-                aria-hidden
-                src="https://assets.aceternity.com/linear-demo.webp"
-                className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-0 [mask-image:radial-gradient(circle,transparent,black_78%)]"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                transition={{ duration: 1.4, ease: "easeOut" }}
-              />
+            <div className="relative overflow-hidden rounded-[2.5rem] border border-[hsl(210,100%,55%)]/35 bg-[#050b1a] text-white shadow-[0_30px_95px_rgba(15,76,129,0.3)]">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.32),transparent_75%)] opacity-90" aria-hidden />
+              <div className="absolute -inset-24 bg-[conic-gradient(from_180deg_at_50%_50%,rgba(56,189,248,0.35),rgba(236,72,153,0.28),rgba(249,115,22,0.32),rgba(16,185,129,0.3),rgba(56,189,248,0.35))] opacity-60 blur-3xl" aria-hidden />
 
               <div className="relative z-10 px-8 py-14 text-center md:px-16">
-                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.45em] text-white/60">Manifiesto</p>
-                <h4 className="text-balance text-2xl font-serif font-black leading-tight text-white md:text-4xl" data-testid="text-closing">
-                  “<ColourfulText text="No vendemos herramientas. Creamos ecosistemas que transforman industrias." className="font-serif" />”
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.45em] text-white/70">Manifiesto</p>
+                <h4 className="text-balance text-2xl font-serif font-black leading-tight text-white/90 md:text-4xl" data-testid="text-closing">
+                  “<ColourfulText
+                    text="No vendemos herramientas. Creamos ecosistemas que transforman industrias."
+                    className="font-serif"
+                  />”
                 </h4>
               </div>
-
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.35),transparent_70%)]" aria-hidden />
             </div>
           </div>
         </div>
