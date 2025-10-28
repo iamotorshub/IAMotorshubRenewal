@@ -41,6 +41,9 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
   const handleFlipToggle = useCallback(() => {
     setIsFlipped((prev) => !prev);
   }, []);
+  const frontToggleVisibility = isFlipped
+    ? "pointer-events-none opacity-0"
+    : "opacity-100";
 
   return (
     <div className="group perspective-1200" data-testid={`card-${cardId}`}>
@@ -59,7 +62,9 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
             />
             <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[rgba(2,10,24,0.85)] via-[rgba(2,10,24,0.45)] to-transparent"></div>
 
-            <div className="pointer-events-auto absolute right-6 top-6 z-30 sm:right-8 sm:top-8">
+            <div
+              className={`pointer-events-auto absolute right-6 top-6 z-30 transition-opacity duration-300 sm:right-8 sm:top-8 ${frontToggleVisibility}`}
+            >
               <Button
                 variant="ghost"
                 size="icon"
