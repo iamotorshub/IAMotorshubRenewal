@@ -84,7 +84,8 @@ export default function TestimonialsSection() {
       company: "",
       before: "25 consultas/mes | Atención manual | Leads perdidos",
       after: "80 consultas/mes | IA 24/7 | +220% conversión",
-      testimonial: "Franco implementó un asistente IA que responde sobre modelos, agenda test drives automáticamente, y hace seguimiento perfecto. Ahorramos 5 horas diarias y triplicamos ventas.",
+      testimonial:
+        "Implementamos un agente de ventas que responde sobre modelos, califica leads fríos y calientes, hace seguimiento perfecto. Ahorramos 5 horas diarias y triplicamos ventas.",
       videoSrc: "/videos/ROBERTO-TESTIMONIO.mp4",
       poster: "/videos/ROBERTO-TESTIMONIO.mp4#t=0.1"
     },
