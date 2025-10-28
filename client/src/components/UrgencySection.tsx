@@ -174,17 +174,22 @@ export default function UrgencySection() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(12,74,110,0.28),transparent_70%)]" aria-hidden />
               <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(4,8,22,0.6),rgba(4,8,22,0.95))]" aria-hidden />
 
-              <div className="relative z-10 px-8 py-16 text-center md:px-20">
-                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.55em] text-white/70">Manifiesto</p>
-                <h4 className="text-balance text-3xl font-serif font-black leading-tight text-white drop-shadow-[0_22px_40px_rgba(10,40,75,0.65)] md:text-5xl" data-testid="text-closing">
-                  <span className="block">No vendemos herramientas.</span>
-                  <span className="mt-5 block">
-                    Creamos <ColourfulText
-                      text="ecosistemas que transforman industrias."
-                      className="font-serif drop-shadow-[0_18px_32px_rgba(56,189,248,0.35)]"
-                    />
-                  </span>
-                </h4>
+              <div className="relative z-10 px-6 py-12 text-center md:px-16 md:py-16">
+                <div className="mx-auto max-w-3xl rounded-[2.75rem] border border-white/15 bg-[rgba(4,8,22,0.72)] px-6 py-10 shadow-[0_28px_75px_rgba(8,24,52,0.58)] backdrop-blur-2xl md:px-12">
+                  <p className="mb-3 text-xs font-semibold uppercase tracking-[0.55em] text-white/80 md:mb-4">Manifiesto</p>
+                  <h4
+                    className="text-balance text-3xl font-serif font-black leading-tight text-white drop-shadow-[0_22px_40px_rgba(10,40,75,0.7)] md:text-5xl"
+                    data-testid="text-closing"
+                  >
+                    <span className="block">No vendemos herramientas.</span>
+                    <span className="mt-5 block">
+                      Creamos <ColourfulText
+                        text="ecosistemas que transforman industrias."
+                        className="font-serif drop-shadow-[0_18px_32px_rgba(56,189,248,0.4)]"
+                      />
+                    </span>
+                  </h4>
+                </div>
               </div>
             </div>
           </div>
