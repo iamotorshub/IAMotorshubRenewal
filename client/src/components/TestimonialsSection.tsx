@@ -4,7 +4,7 @@ import { Star } from "lucide-react";
 interface TestimonialProps {
   name: string;
   position: string;
-  company: string;
+  company?: string;
   before: string;
   after: string;
   testimonial: string;
@@ -24,7 +24,7 @@ function TestimonialCard({ name, position, company, before, after, testimonial, 
                 poster={poster}
                 controls
                 preload="metadata"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover rounded-2xl"
               >
                 Tu navegador no soporta videos HTML5
               </video>
@@ -81,37 +81,37 @@ export default function TestimonialsSection() {
     {
       name: "Roberto Martínez",
       position: "Gerente General Concesionario Oficial Ford",
-      company: "Ford Bahía Blanca",
+      company: "",
       before: "25 consultas/mes | Atención manual | Leads perdidos",
       after: "80 consultas/mes | IA 24/7 | +220% conversión",
       testimonial: "Franco implementó un asistente IA que responde sobre modelos, agenda test drives automáticamente, y hace seguimiento perfecto. Ahorramos 5 horas diarias y triplicamos ventas.",
-      videoSrc: "https://storage.googleapis.com/coverr-main/mp4/coverr-hands-at-work-1572450882259.mp4",
-      poster: "https://images.unsplash.com/photo-1502786129293-79981df4e689?auto=format&fit=crop&w=1200&q=80"
+      videoSrc: "/attached_assets/ROBERTO-TESTIMONIO.mp4",
+      poster: "/attached_assets/ROBERTO-TESTIMONIO.mp4#t=0.1"
     },
     {
       name: "María González",
       position: "Agente Inmobiliaria CABA",
-      company: "Inmobiliaria Centro Bahía Blanca",
+      company: "",
       before: "Leads perdidos de noche | Agenda manual | Consultas básicas",
       after: "IA responde al instante | Visitas automáticas | +300% consultas",
       testimonial: "Antes perdíamos leads por no contestar fuera de horario. Ahora la IA responde inmediatamente, agenda visitas sola, y califica leads perfectamente. Cambió nuestro negocio.",
-      videoSrc: "https://storage.googleapis.com/coverr-main/mp4/coverr-customer-support-9543.mp4",
-      poster: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+      videoSrc: "/attached_assets/MARIA-TESTIMONIO.mp4",
+      poster: "/attached_assets/MARIA-TESTIMONIO.mp4#t=0.1"
     },
     {
       name: "Diego Fernández",
       position: "Director Creativo Storyboard Studio",
-      company: "Productora CABA",
+      company: "",
       before: "$80K y 2 meses por proyecto | Storyboards manuales",
       after: "1 semana automatizado | Personajes consistentes perfectos",
       testimonial: "Storyboard Studio revolucionó nuestra productividad. Personajes perfectos, locaciones realistas, todo automático. Lo que costaba fortunas ahora es instantáneo.",
-      videoSrc: "https://storage.googleapis.com/coverr-main/mp4/coverr-motion-graphic-designer-8266.mp4",
-      poster: "https://images.unsplash.com/photo-1484980859177-5ac1249fda6f?auto=format&fit=crop&w=1200&q=80"
+      videoSrc: "/attached_assets/DIEGO-TESTIMONIO.mp4",
+      poster: "/attached_assets/DIEGO-TESTIMONIO.mp4#t=0.1"
     }
   ];
 
   return (
-    <section className="relative overflow-hidden py-24 bg-gradient-to-b from-[hsl(220,70%,25%)] via-[hsl(220,20%,15%)] to-[hsl(220,70%,22%)]">
+    <section id="testimonios" className="relative overflow-hidden py-24 bg-gradient-to-b from-[hsl(220,70%,25%)] via-[hsl(220,20%,15%)] to-[hsl(220,70%,22%)]">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute -left-24 top-0 h-64 w-64 rounded-full bg-[hsl(210,100%,65%)]/20 blur-3xl animate-[pulse_9s_ease-in-out_infinite]"></div>
         <div className="absolute right-[-18%] top-24 h-80 w-80 rounded-full bg-[hsl(210,85%,55%)]/18 blur-3xl animate-[pulse_11s_ease-in-out_infinite]"></div>
@@ -132,31 +132,15 @@ export default function TestimonialsSection() {
             <div
               key={index}
               className="animate-slide-up"
-              style={{ animationDelay: `${index * 0.15}s` }}
+              style={{
+                animationDelay: `${index * 0.1}s`,
+              }}
             >
               <TestimonialCard {...testimonial} />
             </div>
           ))}
         </div>
       </div>
-      
-      {/* Animation Styles */}
-      <style>{`
-        @keyframes slide-up {
-          from { 
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to { 
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-slide-up {
-          animation: slide-up 0.8s ease-out;
-          animation-fill-mode: both;
-        }
-      `}</style>
     </section>
   );
 }
