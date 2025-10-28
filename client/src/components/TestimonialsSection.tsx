@@ -85,8 +85,8 @@ export default function TestimonialsSection() {
       before: "25 consultas/mes | Atención manual | Leads perdidos",
       after: "80 consultas/mes | IA 24/7 | +220% conversión",
       testimonial: "Franco implementó un asistente IA que responde sobre modelos, agenda test drives automáticamente, y hace seguimiento perfecto. Ahorramos 5 horas diarias y triplicamos ventas.",
-      videoSrc: "/attached_assets/ROBERTO-TESTIMONIO.mp4",
-      poster: "/attached_assets/ROBERTO-TESTIMONIO.mp4#t=0.1"
+      videoSrc: "/videos/ROBERTO-TESTIMONIO.mp4",
+      poster: "/videos/ROBERTO-TESTIMONIO.mp4#t=0.1"
     },
     {
       name: "María González",
@@ -95,8 +95,8 @@ export default function TestimonialsSection() {
       before: "Leads perdidos de noche | Agenda manual | Consultas básicas",
       after: "IA responde al instante | Visitas automáticas | +300% consultas",
       testimonial: "Antes perdíamos leads por no contestar fuera de horario. Ahora la IA responde inmediatamente, agenda visitas sola, y califica leads perfectamente. Cambió nuestro negocio.",
-      videoSrc: "/attached_assets/MARIA-TESTIMONIO.mp4",
-      poster: "/attached_assets/MARIA-TESTIMONIO.mp4#t=0.1"
+      videoSrc: "/videos/MARIA-TESTIMONIO.mp4",
+      poster: "/videos/MARIA-TESTIMONIO.mp4#t=0.1"
     },
     {
       name: "Diego Fernández",
@@ -105,8 +105,8 @@ export default function TestimonialsSection() {
       before: "$80K y 2 meses por proyecto | Storyboards manuales",
       after: "1 semana automatizado | Personajes consistentes perfectos",
       testimonial: "Storyboard Studio revolucionó nuestra productividad. Personajes perfectos, locaciones realistas, todo automático. Lo que costaba fortunas ahora es instantáneo.",
-      videoSrc: "/attached_assets/DIEGO-TESTIMONIO.mp4",
-      poster: "/attached_assets/DIEGO-TESTIMONIO.mp4#t=0.1"
+      videoSrc: "/videos/DIEGO-TESTIMONIO.mp4",
+      poster: "/videos/DIEGO-TESTIMONIO.mp4#t=0.1"
     }
   ];
 
