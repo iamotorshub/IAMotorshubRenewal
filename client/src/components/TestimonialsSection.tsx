@@ -1,7 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { GlareCard } from "@/components/ui/glare-card";
-import { Play, Star } from "lucide-react";
-import { useState } from "react";
+import { Star } from "lucide-react";
 
 interface TestimonialProps {
   name: string;
@@ -10,25 +8,26 @@ interface TestimonialProps {
   before: string;
   after: string;
   testimonial: string;
-  videoThumbnail?: string;
+  videoSrc?: string;
+  poster?: string;
 }
 
-function TestimonialCard({ name, position, company, before, after, testimonial, videoThumbnail }: TestimonialProps) {
-  const [isPlaying, setIsPlaying] = useState(false);
-
+function TestimonialCard({ name, position, company, before, after, testimonial, videoSrc, poster }: TestimonialProps) {
   return (
     <GlareCard className="h-full">
       <div className="flex h-full flex-col gap-6 text-left text-white">
         <div className="relative">
           <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-[hsl(210,100%,55%)]/30 bg-[hsl(220,20%,15%)]/80 shadow-[0_15px_45px_rgba(11,30,61,0.35)]">
-            {videoThumbnail ? (
-              <img
-                src={videoThumbnail}
-                alt={`${name} testimonial`}
-                loading="lazy"
-                decoding="async"
+            {videoSrc ? (
+              <video
+                src={videoSrc}
+                poster={poster}
+                controls
+                preload="metadata"
                 className="h-full w-full object-cover"
-              />
+              >
+                Tu navegador no soporta videos HTML5
+              </video>
             ) : (
               <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[hsl(210,100%,55%)]/20 to-[hsl(210,100%,70%)]/20">
                 <div className="text-center">
@@ -39,18 +38,6 @@ function TestimonialCard({ name, position, company, before, after, testimonial, 
                 </div>
               </div>
             )}
-
-            <Button
-              size="icon"
-              className="absolute inset-0 m-auto flex h-16 w-16 items-center justify-center rounded-full bg-[hsl(210,100%,55%)]/90 text-white shadow-[0_15px_45px_rgba(59,130,246,0.45)] transition-transform duration-300 hover:scale-110"
-              onClick={() => {
-                setIsPlaying(!isPlaying);
-                console.log(`Playing testimonial video for ${name}`);
-              }}
-              data-testid={`button-play-${name.toLowerCase().replace(/\s+/g, '-')}`}
-            >
-              <Play className="h-6 w-6" />
-            </Button>
           </div>
         </div>
 
@@ -76,9 +63,13 @@ function TestimonialCard({ name, position, company, before, after, testimonial, 
         </blockquote>
 
         <div className="mt-auto text-[hsl(220,15%,92%)]">
-          <p className="text-lg font-bold text-white">{name}</p>
-          <p className="text-sm font-medium text-[hsl(210,100%,65%)]">{position}</p>
-          <p className="text-xs uppercase tracking-[0.12em] text-[hsl(220,10%,65%)]">{company}</p>
+          <p className="text-lg font-bold text-white">
+            {name}
+            <span className="block text-sm font-medium text-[hsl(210,100%,65%)] sm:inline"> - {position}</span>
+          </p>
+          {company && (
+            <p className="text-xs uppercase tracking-[0.12em] text-[hsl(220,10%,65%)]">{company}</p>
+          )}
         </div>
       </div>
     </GlareCard>
@@ -89,27 +80,33 @@ export default function TestimonialsSection() {
   const testimonials = [
     {
       name: "Roberto Martínez",
-      position: "Gerente General",
+      position: "Gerente General Concesionario Oficial Ford",
       company: "Ford Bahía Blanca",
       before: "25 consultas/mes | Atención manual | Leads perdidos",
       after: "80 consultas/mes | IA 24/7 | +220% conversión",
-      testimonial: "Franco implementó un asistente IA que responde sobre modelos, agenda test drives automáticamente, y hace seguimiento perfecto. Ahorramos 5 horas diarias y triplicamos ventas."
+      testimonial: "Franco implementó un asistente IA que responde sobre modelos, agenda test drives automáticamente, y hace seguimiento perfecto. Ahorramos 5 horas diarias y triplicamos ventas.",
+      videoSrc: "https://storage.googleapis.com/coverr-main/mp4/coverr-hands-at-work-1572450882259.mp4",
+      poster: "https://images.unsplash.com/photo-1502786129293-79981df4e689?auto=format&fit=crop&w=1200&q=80"
     },
     {
       name: "María González",
-      position: "Directora Comercial",
+      position: "Agente Inmobiliaria CABA",
       company: "Inmobiliaria Centro Bahía Blanca",
       before: "Leads perdidos de noche | Agenda manual | Consultas básicas",
       after: "IA responde al instante | Visitas automáticas | +300% consultas",
-      testimonial: "Antes perdíamos leads por no contestar fuera de horario. Ahora la IA responde inmediatamente, agenda visitas sola, y califica leads perfectamente. Cambió nuestro negocio."
+      testimonial: "Antes perdíamos leads por no contestar fuera de horario. Ahora la IA responde inmediatamente, agenda visitas sola, y califica leads perfectamente. Cambió nuestro negocio.",
+      videoSrc: "https://storage.googleapis.com/coverr-main/mp4/coverr-customer-support-9543.mp4",
+      poster: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
     },
     {
       name: "Diego Fernández",
-      position: "Director Creativo",
+      position: "Director Creativo Storyboard Studio",
       company: "Productora CABA",
       before: "$80K y 2 meses por proyecto | Storyboards manuales",
       after: "1 semana automatizado | Personajes consistentes perfectos",
-      testimonial: "Storyboard Studio revolucionó nuestra productividad. Personajes perfectos, locaciones realistas, todo automático. Lo que costaba fortunas ahora es instantáneo."
+      testimonial: "Storyboard Studio revolucionó nuestra productividad. Personajes perfectos, locaciones realistas, todo automático. Lo que costaba fortunas ahora es instantáneo.",
+      videoSrc: "https://storage.googleapis.com/coverr-main/mp4/coverr-motion-graphic-designer-8266.mp4",
+      poster: "https://images.unsplash.com/photo-1484980859177-5ac1249fda6f?auto=format&fit=crop&w=1200&q=80"
     }
   ];
 
