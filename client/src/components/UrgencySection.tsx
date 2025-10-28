@@ -5,39 +5,6 @@ import { motion, useInView } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import ScheduleModal from "./ScheduleModal";
 
-interface AnimatedLettersProps {
-  text: string;
-  isInView: boolean;
-  delayOffset?: number;
-  className?: string;
-}
-
-function AnimatedLetters({ text, isInView, delayOffset = 0, className = "" }: AnimatedLettersProps) {
-  return (
-    <span className="inline-block">
-      {Array.from(text).map((char, index) => (
-        <motion.span
-          key={`${text}-${index}`}
-          className={`inline-block ${className}`.trim()}
-          initial={{ opacity: 0, y: "0.6em" }}
-          animate={
-            isInView
-              ? { opacity: 1, y: 0 }
-              : { opacity: 0, y: "0.6em" }
-          }
-          transition={{
-            delay: delayOffset + index * 0.045,
-            duration: 0.55,
-            ease: [0.22, 1, 0.36, 1]
-          }}
-        >
-          {char === " " ? "\u00a0" : char}
-        </motion.span>
-      ))}
-    </span>
-  );
-}
-
 function ManifestoStatement() {
   const manifestoRef = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(manifestoRef, {
@@ -59,65 +26,39 @@ function ManifestoStatement() {
         Manifiesto
       </motion.p>
 
-      <motion.div
-        className="text-center text-4xl font-serif font-black leading-tight text-white drop-shadow-[0_22px_48px_rgba(10,40,75,0.7)] sm:text-5xl lg:text-6xl xl:text-7xl"
+      <motion.p
+        className="text-center text-2xl font-serif font-black uppercase tracking-[0.18em] bg-gradient-to-r from-[hsl(210,100%,68%)] via-[hsl(210,96%,75%)] to-[hsl(210,100%,90%)] bg-clip-text text-transparent drop-shadow-[0_18px_55px_rgba(8,32,82,0.35)] md:text-4xl"
         data-testid="text-closing"
-        initial={{ opacity: 0, y: 24 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-      >
-        <div className="block">
-          <AnimatedLetters
-            text="No vendemos herramientas."
-            isInView={isInView}
-            delayOffset={0.25}
-            className="text-white"
-          />
-        </div>
-        <div className="mt-10 block">
-          <motion.span
-            className="relative inline-block bg-clip-text text-transparent drop-shadow-[0_24px_40px_rgba(56,189,248,0.45)]"
-            style={{
-              backgroundImage:
-                "linear-gradient(120deg, rgba(56,189,248,0.95), rgba(59,130,246,0.95), rgba(129,140,248,0.95), rgba(56,189,248,0.95))",
-              backgroundSize: "200% 100%"
-            }}
-            animate={
-              isInView
-                ? { backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }
-                : {}
-            }
-            transition={{ duration: 8, ease: "linear", repeat: Infinity }}
-          >
-            <AnimatedLetters
-              text="Creamos ecosistemas que transforman industrias."
-              isInView={isInView}
-              delayOffset={1.1}
-              className="text-transparent"
-            />
-            <motion.span
-              aria-hidden
-              className="pointer-events-none absolute inset-0 rounded-full opacity-25 blur-3xl mix-blend-screen"
-              style={{
-                background:
-                  "radial-gradient(circle at center, rgba(56,189,248,0.5), transparent 70%)"
-              }}
-              animate={
-                isInView
-                  ? { opacity: [0.18, 0.5, 0.25], scale: [0.9, 1.05, 0.95] }
-                  : {}
+        style={{ backgroundSize: "200% 100%" }}
+        initial={{ opacity: 0, y: 24, backgroundPosition: "0% 50%" }}
+        animate={
+          isInView
+            ? {
+                opacity: 1,
+                y: 0,
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
               }
-              transition={{
-                duration: 3.5,
-                repeat: Infinity,
-                repeatType: "mirror",
-                ease: "easeInOut",
-                delay: 0.8
-              }}
-            />
-          </motion.span>
-        </div>
-      </motion.div>
+            : { opacity: 0, y: 24, backgroundPosition: "0% 50%" }
+        }
+        transition={{
+          duration: 0.8,
+          ease: [0.22, 1, 0.36, 1],
+          delay: 0.2,
+          backgroundPosition: {
+            duration: 8,
+            ease: "linear",
+            repeat: Infinity
+          }
+        }}
+      >
+        No vendemos herramientas.
+        <br />
+        Creamos ecosistemas
+        <br />
+        que transforman
+        <br />
+        industrias.
+      </motion.p>
     </div>
   );
 }

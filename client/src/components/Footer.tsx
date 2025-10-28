@@ -7,9 +7,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* COLUMNA 1 - MARCA */}
           <div>
-            <img 
-              src="/attached_assets/IA MOTORSHUB LOGO.png" 
-              alt="IA MotorsHub" 
+            <img
+              src="/attached_assets/IA MOTORSHUB LOGO.png"
+              alt="IA MotorsHub"
               className="h-24 w-auto mb-4 brightness-0 invert"
             />
             <p className="text-sm text-gray-300 mb-2">
@@ -22,7 +22,7 @@ export default function Footer() {
 
           {/* COLUMNA 2 - NAVEGACIÓN */}
           <div>
-            <h3 className="text-lg font-bold mb-4">Navegación</h3>
+            <h3 className="text-lg font-bold mb-4">Navegación rápida</h3>
             <div className="flex flex-col gap-2">
               <a href="#servicios" className="text-gray-300 hover:text-[hsl(210,100%,55%)] transition-colors">
                 Servicios
@@ -43,22 +43,22 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">Contacto</h3>
             <div className="flex flex-col gap-3">
-              <a 
-                href="mailto:contacto@iamotorshub.com" 
+              <a
+                href="mailto:contacto@iamotorshub.com"
                 className="flex items-center gap-2 text-gray-300 hover:text-[hsl(210,100%,55%)] transition-colors"
               >
                 <Mail className="h-5 w-5" />
                 contacto@iamotorshub.com
               </a>
-              <a 
-                href="tel:+5492915206692" 
+              <a
+                href="tel:+5492915206692"
                 className="flex items-center gap-2 text-gray-300 hover:text-[hsl(210,100%,55%)] transition-colors"
               >
                 <Phone className="h-5 w-5" />
                 +54 9 291 520-6692
               </a>
-              <a 
-                href="https://wa.me/5492915206692" 
+              <a
+                href="https://wa.me/5492915206692"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-300 hover:text-[hsl(210,100%,55%)] transition-colors"
@@ -69,23 +69,25 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* COLUMNA 4 - REDES SOCIALES (SOLO INSTAGRAM Y LINKEDIN) */}
+          {/* COLUMNA 4 - REDES SOCIALES - SOLO INSTAGRAM Y LINKEDIN */}
           <div>
             <h3 className="text-lg font-bold mb-4">Síguenos</h3>
             <div className="flex gap-4">
-              <a 
-                href="https://instagram.com/iamotorshub" 
+              <a
+                href="https://instagram.com/iamotorshub"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-[hsl(210,100%,55%)] transition-all hover:scale-110"
+                aria-label="Instagram IA MotorsHub"
+                className="text-gray-300 transition-all hover:scale-110 hover:text-[hsl(210,100%,55%)] hover:drop-shadow-[0_0_14px_rgba(59,130,246,0.6)]"
               >
                 <Instagram className="h-6 w-6" />
               </a>
-              <a 
-                href="https://linkedin.com/company/iamotorshub" 
+              <a
+                href="https://linkedin.com/company/iamotorshub"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-[hsl(210,100%,55%)] transition-all hover:scale-110"
+                aria-label="LinkedIn IA MotorsHub"
+                className="text-gray-300 transition-all hover:scale-110 hover:text-[hsl(210,100%,55%)] hover:drop-shadow-[0_0_14px_rgba(59,130,246,0.6)]"
               >
                 <Linkedin className="h-6 w-6" />
               </a>
