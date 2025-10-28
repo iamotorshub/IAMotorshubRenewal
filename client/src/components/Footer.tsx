@@ -10,7 +10,7 @@ export default function Footer() {
             <img
               src="/attached_assets/IA MOTORSHUB LOGO.png"
               alt="IA MotorsHub"
-              className="h-24 w-auto mb-4 brightness-0 invert"
+              className="mb-4 h-24 w-auto object-contain"
             />
             <p className="text-sm text-gray-300 mb-2">
               Transformamos empresas tradicionales en líderes digitales con IA

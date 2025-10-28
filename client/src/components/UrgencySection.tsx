@@ -12,6 +12,33 @@ function ManifestoStatement() {
     margin: "-10% 0px"
   });
 
+  const typedLines = ["Creamos ecosistemas", "que transforman", "industrias."];
+
+  const lineVariants = {
+    hidden: { opacity: 0 },
+    visible: (index: number) => ({
+      opacity: 1,
+      transition: {
+        opacity: { duration: 0.2 },
+        delayChildren: 0.4 + index * 0.6,
+        staggerChildren: 0.06
+      }
+    })
+  };
+
+  const letterVariants = {
+    hidden: { opacity: 0, y: "0.45em", filter: "blur(10px)" },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.32,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    }
+  };
+
   return (
     <div
       ref={manifestoRef}
@@ -27,38 +54,37 @@ function ManifestoStatement() {
       </motion.p>
 
       <motion.p
-        className="text-center text-2xl font-serif font-black uppercase tracking-[0.18em] bg-gradient-to-r from-[hsl(210,100%,68%)] via-[hsl(210,96%,75%)] to-[hsl(210,100%,90%)] bg-clip-text text-transparent drop-shadow-[0_18px_55px_rgba(8,32,82,0.35)] md:text-4xl"
+        className="text-center text-2xl font-serif font-black uppercase tracking-[0.18em] text-white md:text-4xl"
         data-testid="text-closing"
-        style={{ backgroundSize: "200% 100%" }}
-        initial={{ opacity: 0, y: 24, backgroundPosition: "0% 50%" }}
-        animate={
-          isInView
-            ? {
-                opacity: 1,
-                y: 0,
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
-              }
-            : { opacity: 0, y: 24, backgroundPosition: "0% 50%" }
-        }
-        transition={{
-          duration: 0.8,
-          ease: [0.22, 1, 0.36, 1],
-          delay: 0.2,
-          backgroundPosition: {
-            duration: 8,
-            ease: "linear",
-            repeat: Infinity
-          }
-        }}
+        initial={{ opacity: 0, y: 18 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
       >
         No vendemos herramientas.
-        <br />
-        Creamos ecosistemas
-        <br />
-        que transforman
-        <br />
-        industrias.
       </motion.p>
+
+      <div className="mt-4 text-center text-2xl font-serif font-black uppercase tracking-[0.18em] md:text-4xl">
+        {typedLines.map((line, lineIndex) => (
+          <motion.span
+            key={line}
+            className="block bg-gradient-to-r from-[hsl(210,100%,68%)] via-[hsl(210,96%,75%)] to-[hsl(210,100%,90%)] bg-clip-text text-transparent drop-shadow-[0_18px_55px_rgba(8,32,82,0.35)]"
+            variants={lineVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            custom={lineIndex}
+          >
+            {line.split("").map((char, charIndex) => (
+              <motion.span
+                key={`${lineIndex}-${charIndex}`}
+                className="inline-block"
+                variants={letterVariants}
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+          </motion.span>
+        ))}
+      </div>
     </div>
   );
 }
