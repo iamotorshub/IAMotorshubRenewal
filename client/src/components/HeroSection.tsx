@@ -74,19 +74,19 @@ export default function HeroSection() {
       </div>
 
       {/* Logo y navegación */}
-      <header className="pointer-events-none absolute inset-x-0 top-0 z-[60] px-4 pt-2 sm:px-12 md:px-16">
-        <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-          <div className="logo pointer-events-auto -translate-y-[3.5rem] -translate-x-1 sm:-translate-x-3 sm:-translate-y-[4.75rem] md:-translate-y-[5.25rem] lg:-translate-y-[5.5rem]">
+      <header className="pointer-events-none absolute inset-x-0 top-0 z-[70] px-4 pt-4 sm:px-12 md:px-16">
+        <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+          <div className="logo pointer-events-auto -translate-y-8 sm:-translate-x-3 sm:-translate-y-[4.75rem] md:-translate-y-[5.25rem] lg:-translate-y-[5.5rem]">
             <img
               src={logoPath}
               alt="IA MOTORSHUB"
-              className="h-[16rem] w-auto brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)] sm:h-[20rem] md:h-[22rem] lg:h-[24rem]"
+              className="h-[12rem] w-auto brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)] sm:h-[18rem] md:h-[22rem] lg:h-[24rem]"
               style={{ filter: "brightness(0) invert(1)" }}
             />
           </div>
 
           <nav
-            className={`pointer-events-auto relative mt-2 flex w-full max-w-[480px] flex-wrap items-center justify-center gap-3 px-2 transition-all duration-700 sm:ml-auto sm:mt-0 sm:max-w-none sm:flex-nowrap sm:justify-end sm:-translate-y-[4.5rem] md:-translate-y-[5rem] lg:-translate-y-[5.5rem] ${
+            className={`pointer-events-auto relative mt-2 flex w-full max-w-[500px] flex-wrap items-center justify-center gap-2 -translate-y-6 rounded-full bg-[rgba(4,10,24,0.35)] px-3 py-2 transition-all duration-700 backdrop-blur-md sm:ml-auto sm:mt-0 sm:max-w-none sm:flex-nowrap sm:justify-end sm:gap-3 sm:bg-transparent sm:px-2 sm:py-0 sm:-translate-y-[4.5rem] md:-translate-y-[5rem] lg:-translate-y-[5.5rem] ${
               showButtons ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           >
@@ -99,7 +99,7 @@ export default function HeroSection() {
               <MovingButton
                 key={label}
                 borderRadius="1.5rem"
-                className="px-5 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-slate-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:px-6 sm:py-2 sm:text-sm"
+                className="px-4 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-slate-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:px-6 sm:py-2 sm:text-xs md:text-sm"
                 innerBackground="rgba(10, 28, 60, 0.38)"
                 onClick={() =>
                   document.getElementById(target)?.scrollIntoView({
@@ -116,9 +116,9 @@ export default function HeroSection() {
       </header>
 
       {/* Contenido principal */}
-      <div className="relative z-20 container mx-auto px-4 pb-24 pt-[16rem] text-center sm:px-6 sm:pt-[17rem] md:pt-[18rem] lg:pt-[19rem]">
-        <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-8 px-4 sm:gap-10 sm:px-10">
-          <h1 className="relative text-4xl font-serif font-black uppercase leading-tight text-white drop-shadow-[0_18px_40px_rgba(3,10,26,0.95)] animate-slide-up sm:text-5xl md:text-6xl lg:text-7xl">
+      <div className="relative z-20 container mx-auto px-4 pb-20 pt-[12rem] text-center sm:px-6 sm:pb-24 sm:pt-[16rem] md:pt-[18rem] lg:pt-[19rem]">
+        <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-8 px-2 sm:gap-10 sm:px-10">
+          <h1 className="relative text-3xl font-serif font-black uppercase leading-tight text-white drop-shadow-[0_18px_40px_rgba(3,10,26,0.95)] animate-slide-up sm:text-5xl md:text-6xl lg:text-7xl">
             SOLUCIONES DE IA
             <br />
             PARA{" "}
@@ -134,7 +134,7 @@ export default function HeroSection() {
           </h1>
 
           <p
-            className="relative max-w-3xl text-base leading-relaxed text-slate-100 drop-shadow-[0_22px_46px_rgba(2,8,22,0.75)] animate-slide-up sm:text-lg md:text-xl"
+            className="relative max-w-3xl text-sm leading-relaxed text-slate-100 drop-shadow-[0_22px_46px_rgba(2,8,22,0.75)] animate-slide-up sm:text-lg md:text-xl"
             style={{
               animationDelay: "0.2s",
             }}
@@ -161,7 +161,7 @@ export default function HeroSection() {
           >
             <MovingButton
               borderRadius="2.9rem"
-              className="group px-10 py-5 text-sm font-bold tracking-[0.14em] text-sky-50 transition-all duration-300 hover:scale-[1.06] sm:px-14 sm:py-6 sm:text-base"
+              className="group px-8 py-4 text-xs font-bold tracking-[0.14em] text-sky-50 transition-all duration-300 hover:scale-[1.06] sm:px-12 sm:py-5 sm:text-sm md:px-14 md:py-6 md:text-base"
               innerBackground="rgba(12, 30, 68, 0.38)"
               borderColors={["#38bdf8", "#60a5fa", "#38bdf8"]}
               onClick={() => {
