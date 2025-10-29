@@ -6,13 +6,13 @@ export default function Footer() {
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-4 md:text-left lg:gap-10">
           {/* COLUMNA 1 - MARCA */}
-          <div className="text-center md:text-left">
+          <div className="flex flex-col items-center gap-2 text-center md:items-center md:text-center">
             <img
               src="/logo-footer.png"
               alt="IA MotorsHub"
-              className="mb-4 h-20 w-auto object-contain md:h-24"
+              className="mb-2 h-20 w-auto object-contain md:h-24"
             />
-            <p className="mb-2 text-sm text-gray-300">
+            <p className="text-sm text-gray-300">
               Transformamos empresas tradicionales en líderes digitales con IA
             </p>
             <p className="text-xs text-gray-400">
