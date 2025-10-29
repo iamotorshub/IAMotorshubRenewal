@@ -5,6 +5,8 @@ import { motion, useInView } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import ScheduleModal from "./ScheduleModal";
 
+const MANIFESTO_LINES = ["Creamos ecosistemas", "que transforman", "industrias."] as const;
+
 function ManifestoStatement() {
   const manifestoRef = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(manifestoRef, {
@@ -12,32 +14,38 @@ function ManifestoStatement() {
     margin: "-10% 0px"
   });
 
-  const typedLines = ["Creamos ecosistemas", "que transforman", "industrias."];
+  const [typedContent, setTypedContent] = useState("");
+  const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hasStartedTypingRef = useRef(false);
 
-  const lineVariants = {
-    hidden: { opacity: 0 },
-    visible: (index: number) => ({
-      opacity: 1,
-      transition: {
-        opacity: { duration: 0.2 },
-        delayChildren: 0.4 + index * 0.6,
-        staggerChildren: 0.06
-      }
-    })
-  };
-
-  const letterVariants = {
-    hidden: { opacity: 0, y: "0.45em", filter: "blur(10px)" },
-    visible: {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: {
-        duration: 0.32,
-        ease: [0.16, 1, 0.3, 1]
-      }
+  useEffect(() => {
+    if (!isInView || hasStartedTypingRef.current) {
+      return;
     }
-  };
+
+    hasStartedTypingRef.current = true;
+    const fullText = MANIFESTO_LINES.join("\n");
+    let index = 0;
+
+    const typeNextCharacter = () => {
+      setTypedContent(fullText.slice(0, index + 1));
+      index += 1;
+
+      if (index < fullText.length) {
+        typingTimeoutRef.current = setTimeout(typeNextCharacter, 60);
+      }
+    };
+
+    typingTimeoutRef.current = setTimeout(typeNextCharacter, 120);
+
+    return () => {
+      if (typingTimeoutRef.current) {
+        clearTimeout(typingTimeoutRef.current);
+      }
+    };
+  }, [isInView]);
+
+  const typedSegments = typedContent.split("\n");
 
   return (
     <div
@@ -63,28 +71,26 @@ function ManifestoStatement() {
         No vendemos herramientas.
       </motion.p>
 
-      <div className="mt-4 text-center text-2xl font-serif font-black uppercase tracking-[0.18em] md:text-4xl">
-        {typedLines.map((line, lineIndex) => (
-          <motion.span
-            key={line}
-            className="block bg-gradient-to-r from-[hsl(210,100%,68%)] via-[hsl(210,96%,75%)] to-[hsl(210,100%,90%)] bg-clip-text text-transparent drop-shadow-[0_18px_55px_rgba(8,32,82,0.35)]"
-            variants={lineVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            custom={lineIndex}
-          >
-            {line.split("").map((char, charIndex) => (
-              <motion.span
-                key={`${lineIndex}-${charIndex}`}
-                className="inline-block"
-                variants={letterVariants}
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
-          </motion.span>
-        ))}
-      </div>
+      <motion.div
+        className="mt-4 text-center text-2xl font-serif font-black uppercase tracking-[0.18em] md:text-4xl"
+        initial={{ opacity: 0, y: 24 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+        aria-live="polite"
+      >
+        {MANIFESTO_LINES.map((line, lineIndex) => {
+          const lineText = typedSegments[lineIndex] ?? "";
+
+          return (
+            <span
+              key={line}
+              className="block min-h-[1.4em] bg-gradient-to-r from-[hsl(210,100%,68%)] via-[hsl(210,96%,75%)] to-[hsl(210,100%,90%)] bg-clip-text text-transparent drop-shadow-[0_18px_55px_rgba(8,32,82,0.35)]"
+            >
+              {lineText}
+            </span>
+          );
+        })}
+      </motion.div>
     </div>
   );
 }

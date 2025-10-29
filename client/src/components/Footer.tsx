@@ -8,9 +8,9 @@ export default function Footer() {
           {/* COLUMNA 1 - MARCA */}
           <div>
             <img
-              src="/attached_assets/IA MOTORSHUB LOGO.png"
+              src="/favicon-32x32.png"
               alt="IA MotorsHub"
-              className="mb-4 h-24 w-auto object-contain"
+              className="mb-4 h-20 w-auto object-contain"
             />
             <p className="text-sm text-gray-300 mb-2">
               Transformamos empresas tradicionales en líderes digitales con IA
