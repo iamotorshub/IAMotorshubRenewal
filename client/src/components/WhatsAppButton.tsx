@@ -17,10 +17,10 @@ export default function WhatsAppButton() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-16 right-4 z-50 sm:bottom-16 sm:right-6 md:bottom-6">
       <Button
         size="lg"
-        className="bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-2xl animate-pulse hover:animate-none transition-all duration-300"
+        className="animate-pulse rounded-full bg-green-500 px-4 py-3 text-sm text-white shadow-2xl backdrop-blur-sm transition-all duration-300 hover:bg-green-600 hover:animate-none sm:px-5 sm:py-3.5 sm:text-base md:px-5 md:py-4"
         onClick={handleWhatsAppClick}
         data-testid="button-whatsapp-float"
       >

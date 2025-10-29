@@ -48,14 +48,14 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
   return (
     <div className="group perspective-1200" data-testid={`card-${cardId}`}>
       <div
-        className={`relative h-[600px] w-full transition-transform duration-700 [transform-style:preserve-3d] sm:h-[760px] lg:h-[880px] ${
+        className={`relative h-[600px] w-full transform-style-3d transition-transform duration-700 [transform-style:preserve-3d] sm:h-[760px] lg:h-[880px] ${
           isFlipped ? '[transform:rotateY(180deg)]' : ''
         }`}
         style={{ transformStyle: "preserve-3d" }}
       >
         {/* Front */}
         <div
-          className={`absolute inset-0 h-full w-full [backface-visibility:hidden] ${
+          className={`absolute inset-0 h-full w-full backface-hidden [backface-visibility:hidden] ${
             isFlipped ? "pointer-events-none" : "pointer-events-auto"
           }`}
           style={{
@@ -136,7 +136,7 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
 
         {/* Back */}
         <div
-          className={`absolute inset-0 h-full w-full [backface-visibility:hidden] [transform:rotateY(180deg)] ${
+          className={`absolute inset-0 h-full w-full backface-hidden rotate-y-180 [backface-visibility:hidden] [transform:rotateY(180deg)] ${
             isFlipped ? "pointer-events-auto" : "pointer-events-none"
           }`}
           style={{
