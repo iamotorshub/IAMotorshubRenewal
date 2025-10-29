@@ -48,7 +48,7 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
   return (
     <div className="group perspective-1200" data-testid={`card-${cardId}`}>
       <div
-        className={`relative h-[760px] w-full transition-transform duration-700 [transform-style:preserve-3d] sm:h-[820px] lg:h-[880px] ${
+        className={`relative h-[600px] w-full transition-transform duration-700 [transform-style:preserve-3d] sm:h-[760px] lg:h-[880px] ${
           isFlipped ? '[transform:rotateY(180deg)]' : ''
         }`}
       >
@@ -67,7 +67,7 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
             <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[rgba(2,10,24,0.85)] via-[rgba(2,10,24,0.45)] to-transparent"></div>
 
             <div
-              className={`pointer-events-auto absolute right-6 top-6 z-30 transition-opacity duration-300 sm:right-8 sm:top-8 ${frontToggleVisibility}`}
+              className={`pointer-events-auto absolute right-4 top-4 z-30 transition-opacity duration-300 sm:right-8 sm:top-8 ${frontToggleVisibility}`}
             >
               <Button
                 variant="ghost"
@@ -83,30 +83,30 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
               </Button>
             </div>
 
-            <div className="relative z-10 flex flex-1 flex-col justify-between px-8 pb-8 pt-16 sm:px-10 sm:pb-10 sm:pt-20">
+            <div className="relative z-10 flex flex-1 flex-col justify-between px-6 pb-8 pt-14 sm:px-10 sm:pb-10 sm:pt-20">
               <div className="flex items-start gap-4 text-white">
-                <div className="flex h-16 w-16 items-center justify-center rounded-[1.75rem] border border-white/30 bg-white/15 backdrop-blur-md shadow-[0_18px_45px_rgba(0,0,0,0.35)]">
-                  <Icon className="h-8 w-8" />
+                <div className="flex h-14 w-14 items-center justify-center rounded-[1.75rem] border border-white/30 bg-white/15 backdrop-blur-md shadow-[0_18px_45px_rgba(0,0,0,0.35)] sm:h-16 sm:w-16">
+                  <Icon className="h-7 w-7 sm:h-8 sm:w-8" />
                 </div>
                 <div>
-                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.38em] text-slate-200/85 sm:text-xs">
+                  <p className="text-[0.6rem] font-semibold uppercase tracking-[0.38em] text-slate-200/85 sm:text-xs">
                     {subtitle}
                   </p>
-                  <h3 className="mt-2 text-2xl font-serif font-bold leading-tight drop-shadow-[0_12px_30px_rgba(2,8,20,0.75)] sm:text-3xl">
+                  <h3 className="mt-2 text-xl font-serif font-bold leading-tight drop-shadow-[0_12px_30px_rgba(2,8,20,0.75)] sm:text-3xl">
                     {title}
                   </h3>
                 </div>
               </div>
 
               <div className="mt-auto space-y-5">
-                <div className="rounded-3xl border border-[rgba(255,255,255,0.25)] bg-[rgba(0,0,0,0.35)] p-6 text-white shadow-[0_22px_55px_rgba(2,8,22,0.6)] backdrop-blur-md">
+                <div className="rounded-3xl border border-[rgba(255,255,255,0.25)] bg-[rgba(0,0,0,0.35)] p-5 text-white shadow-[0_22px_55px_rgba(2,8,22,0.6)] backdrop-blur-md sm:p-6">
                   <h4 className="text-[0.65rem] font-semibold uppercase tracking-[0.32em] text-sky-200/90">Problema</h4>
-                  <p className="mt-3 text-base font-medium leading-relaxed text-slate-100 sm:text-lg">“{problem}”</p>
+                  <p className="mt-3 text-sm font-medium leading-relaxed text-slate-100 sm:text-base md:text-lg">“{problem}”</p>
                 </div>
 
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <Button
-                    className="flex-1 rounded-full bg-white/15 px-6 py-3 text-xs font-bold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:bg-white/25 sm:text-sm"
+                    className="flex-1 rounded-full bg-white/15 px-4 py-2.5 text-[0.65rem] font-bold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:bg-white/25 sm:px-6 sm:py-3 sm:text-xs md:text-sm"
                     onClick={() => setIsFlipped(true)}
                     type="button"
                     data-testid={`button-ver-solucion-${cardId}`}
@@ -115,7 +115,7 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                   <Button
-                    className="rounded-full border border-[rgba(255,255,255,0.35)] bg-[rgba(255,255,255,0.18)] px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:border-white/60 hover:bg-[rgba(255,255,255,0.28)] sm:text-sm"
+                    className="rounded-full border border-[rgba(255,255,255,0.35)] bg-[rgba(255,255,255,0.18)] px-4 py-2.5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:border-white/60 hover:bg-[rgba(255,255,255,0.28)] sm:px-6 sm:py-3 sm:text-xs md:text-sm"
                     onClick={onCtaClick}
                     type="button"
                     data-testid={`button-${ctaId}`}
@@ -136,10 +136,10 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
           }`}
         >
           <div className="flex h-full flex-col overflow-hidden rounded-[2.25rem] border border-sky-400/25 bg-gradient-to-br from-[hsl(220,70%,20%)] via-[hsl(220,62%,16%)] to-[hsl(220,68%,12%)] text-white shadow-[0_36px_105px_rgba(4,16,40,0.68)]">
-            <div className="flex items-start justify-between gap-4 px-8 pt-8 sm:px-10 sm:pt-10">
+            <div className="flex items-start justify-between gap-4 px-6 pt-8 sm:px-10 sm:pt-10">
               <div>
-                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.34em] text-sky-200/80 sm:text-xs">{subtitle}</p>
-                <h3 className="mt-2 text-3xl font-serif font-bold leading-tight drop-shadow-[0_16px_45px_rgba(2,10,28,0.65)] sm:text-4xl">
+                <p className="text-[0.6rem] font-semibold uppercase tracking-[0.34em] text-sky-200/80 sm:text-xs">{subtitle}</p>
+                <h3 className="mt-2 text-2xl font-serif font-bold leading-tight drop-shadow-[0_16px_45px_rgba(2,10,28,0.65)] sm:text-4xl">
                   {title}
                 </h3>
               </div>
@@ -157,11 +157,11 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
               </Button>
             </div>
 
-            <div className="hide-scrollbar flex-1 overflow-y-auto px-8 pb-24 pt-5 sm:px-10 sm:pb-28 sm:pt-7">
+            <div className="hide-scrollbar flex-1 overflow-y-auto px-6 pb-20 pt-5 sm:px-10 sm:pb-28 sm:pt-7">
               <div className="space-y-6 pr-1">
-                <div className="rounded-3xl border border-sky-300/30 bg-sky-300/15 p-6 text-slate-100">
+                <div className="rounded-3xl border border-sky-300/30 bg-sky-300/15 p-5 text-slate-100 sm:p-6">
                   <h4 className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-sky-100/85">Solución</h4>
-                  <p className="mt-3 text-base font-semibold leading-relaxed text-white/95 sm:text-[1.05rem]">“{solution}”</p>
+                  <p className="mt-3 text-sm font-semibold leading-relaxed text-white/95 sm:text-base md:text-[1.05rem]">“{solution}”</p>
                 </div>
 
                 <div>
@@ -170,7 +170,7 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
                     {features.map((feature, index) => (
                       <li
                         key={index}
-                        className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-3 text-[0.85rem] leading-relaxed text-slate-100/95 sm:text-sm"
+                        className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-3 text-sm leading-relaxed text-slate-100/95 sm:text-[0.95rem]"
                       >
                         <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-sky-200" />
                         <span>{feature}</span>
@@ -185,15 +185,15 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
                     <p className="mt-3 text-sm font-bold text-white sm:text-base">{result}</p>
                   </div>
                   <div className="rounded-3xl border border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.12)] p-5 backdrop-blur-md">
-                    <p className="text-[0.85rem] italic text-white/90 sm:text-sm">“{testimonial}”</p>
+                    <p className="text-sm italic text-white/90 sm:text-base">“{testimonial}”</p>
                     <p className="mt-3 text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-sky-100/85 sm:text-[0.65rem]">{author}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="px-8 pb-10 sm:px-10 sm:pb-12">
+            <div className="px-6 pb-8 sm:px-10 sm:pb-12">
               <Button
-                className="w-full rounded-full bg-[rgba(255,255,255,0.22)] py-4 text-xs font-bold uppercase tracking-[0.24em] text-white transition-all duration-300 hover:bg-[rgba(255,255,255,0.32)] sm:text-sm"
+                className="w-full rounded-full bg-[rgba(255,255,255,0.22)] py-3 text-[0.7rem] font-bold uppercase tracking-[0.24em] text-white transition-all duration-300 hover:bg-[rgba(255,255,255,0.32)] sm:py-4 sm:text-xs md:text-sm"
                 onClick={onCtaClick}
                 type="button"
               >
@@ -364,11 +364,11 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-[hsl(220,15%,97%)] via-white to-[hsl(220,15%,97%)] py-24">
-      <div className="container mx-auto px-6">
-        <div className="animate-slide-up mb-16 text-center">
+    <section className="bg-gradient-to-b from-[hsl(220,15%,97%)] via-white to-[hsl(220,15%,97%)] py-16 sm:py-20 lg:py-24">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="animate-slide-up mb-12 text-center sm:mb-16">
           <h2
-            className="text-4xl font-serif font-black text-[hsl(220,70%,25%)] md:text-6xl"
+            className="text-3xl font-serif font-black text-[hsl(220,70%,25%)] sm:text-4xl md:text-6xl"
             data-testid="text-services-title"
           >
             SERVICIOS
@@ -376,12 +376,12 @@ export default function ServicesSection() {
               {" "}PRINCIPALES
             </span>
           </h2>
-          <p className="mx-auto max-w-3xl text-xl text-[hsl(220,10%,45%)]">
+          <p className="mx-auto max-w-3xl text-base text-[hsl(220,10%,45%)] sm:text-lg md:text-xl">
             Ecosistema completo de automatización con IA que transforma industrias
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2">
           {services.map((service, index) => (
             <div
               key={index}

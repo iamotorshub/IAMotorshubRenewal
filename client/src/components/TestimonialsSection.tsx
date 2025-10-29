@@ -15,7 +15,7 @@ interface TestimonialProps {
 function TestimonialCard({ name, position, company, before, after, testimonial, videoSrc, poster }: TestimonialProps) {
   return (
     <GlareCard className="h-full">
-      <div className="flex h-full flex-col gap-6 text-left text-white">
+      <div className="flex h-full flex-col gap-5 text-left text-white sm:gap-6">
         <div className="relative">
           <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-[hsl(210,100%,55%)]/30 bg-[hsl(220,20%,15%)]/80 shadow-[0_15px_45px_rgba(11,30,61,0.35)]">
             {videoSrc ? (
@@ -43,29 +43,29 @@ function TestimonialCard({ name, position, company, before, after, testimonial, 
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="rounded-2xl border border-red-400/30 bg-white/5 p-4 text-center shadow-inner shadow-red-400/10">
-            <p className="mb-1 text-xs font-semibold uppercase tracking-[0.08em] text-red-300">Antes</p>
-            <p className="text-sm font-semibold text-white/90 leading-relaxed">{before}</p>
+            <p className="mb-1 text-[0.65rem] font-semibold uppercase tracking-[0.08em] text-red-300">Antes</p>
+            <p className="text-sm font-semibold leading-relaxed text-white/90 sm:text-base">{before}</p>
           </div>
           <div className="rounded-2xl border border-green-400/40 bg-white/5 p-4 text-center shadow-inner shadow-green-400/10">
-            <p className="mb-1 text-xs font-semibold uppercase tracking-[0.08em] text-emerald-300">Después</p>
-            <p className="text-sm font-bold text-[hsl(210,100%,65%)] leading-relaxed">{after}</p>
+            <p className="mb-1 text-[0.65rem] font-semibold uppercase tracking-[0.08em] text-emerald-300">Después</p>
+            <p className="text-sm font-bold leading-relaxed text-[hsl(210,100%,65%)] sm:text-base">{after}</p>
           </div>
         </div>
 
         <div className="flex justify-start gap-1 text-[hsl(210,100%,65%)]">
           {[...Array(5)].map((_, i) => (
-            <Star key={i} className="h-5 w-5 fill-current" />
+            <Star key={i} className="h-4 w-4 fill-current sm:h-5 sm:w-5" />
           ))}
         </div>
 
-        <blockquote className="text-base italic leading-relaxed text-[hsl(220,15%,92%)]/90 text-balance">
+        <blockquote className="text-sm italic leading-relaxed text-[hsl(220,15%,92%)]/90 text-balance sm:text-base">
           "{testimonial}"
         </blockquote>
 
         <div className="mt-auto text-[hsl(220,15%,92%)]">
-          <p className="text-lg font-bold text-white">
+          <p className="text-base font-bold text-white sm:text-lg">
             {name}
-            <span className="block text-sm font-medium text-[hsl(210,100%,65%)] sm:inline"> - {position}</span>
+            <span className="block text-xs font-medium text-[hsl(210,100%,65%)] sm:inline sm:text-sm"> - {position}</span>
           </p>
           {company && (
             <p className="text-xs uppercase tracking-[0.12em] text-[hsl(220,10%,65%)]">{company}</p>
@@ -112,23 +112,23 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section id="testimonios" className="relative overflow-hidden py-24 bg-gradient-to-b from-[hsl(220,70%,25%)] via-[hsl(220,20%,15%)] to-[hsl(220,70%,22%)]">
+    <section id="testimonios" className="relative overflow-hidden py-16 bg-gradient-to-b from-[hsl(220,70%,25%)] via-[hsl(220,20%,15%)] to-[hsl(220,70%,22%)] sm:py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute -left-24 top-0 h-64 w-64 rounded-full bg-[hsl(210,100%,65%)]/20 blur-3xl animate-[pulse_9s_ease-in-out_infinite]"></div>
         <div className="absolute right-[-18%] top-24 h-80 w-80 rounded-full bg-[hsl(210,85%,55%)]/18 blur-3xl animate-[pulse_11s_ease-in-out_infinite]"></div>
         <div className="absolute bottom-[-20%] left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-[hsl(220,90%,60%)]/16 blur-3xl animate-[pulse_10s_ease-in-out_infinite]"></div>
       </div>
-      <div className="container relative z-10 mx-auto px-6">
-        <div className="text-center mb-16 animate-slide-up">
-          <h2 className="text-4xl md:text-6xl font-serif font-black text-white mb-6" data-testid="text-testimonials-title">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6">
+        <div className="mb-12 text-center animate-slide-up sm:mb-16">
+          <h2 className="mb-6 text-3xl font-serif font-black text-white sm:text-4xl md:text-6xl" data-testid="text-testimonials-title">
             CASOS DE ÉXITO <span className="text-[hsl(210,100%,55%)]">COMPLETOS</span>
           </h2>
-          <p className="text-xl text-[hsl(220,15%,92%)] max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-base text-[hsl(220,15%,92%)] sm:text-lg">
             Resultados reales y verificables de empresas que ya transformaron su negocio
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3 max-w-7xl mx-auto">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 xl:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}

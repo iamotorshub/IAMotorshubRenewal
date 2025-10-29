@@ -50,10 +50,10 @@ function ManifestoStatement() {
   return (
     <div
       ref={manifestoRef}
-      className="mx-auto max-w-4xl rounded-[2.75rem] border border-white/15 bg-[rgba(4,8,22,0.72)] px-8 py-14 shadow-[0_28px_95px_rgba(8,24,52,0.58)] backdrop-blur-2xl md:px-16"
+      className="mx-auto max-w-4xl rounded-[2.25rem] border border-white/15 bg-[rgba(4,8,22,0.72)] px-6 py-12 shadow-[0_28px_95px_rgba(8,24,52,0.58)] backdrop-blur-2xl sm:rounded-[2.75rem] sm:px-12 md:px-16"
     >
       <motion.p
-        className="mb-3 text-xs font-semibold uppercase tracking-[0.55em] text-white/80 md:mb-4"
+        className="mb-3 text-[0.65rem] font-semibold uppercase tracking-[0.55em] text-white/80 md:mb-4 md:text-xs"
         initial={{ opacity: 0, y: 12 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
@@ -62,7 +62,7 @@ function ManifestoStatement() {
       </motion.p>
 
       <motion.p
-        className="text-center text-2xl font-serif font-black uppercase tracking-[0.18em] text-white md:text-4xl"
+        className="text-center text-xl font-serif font-black uppercase tracking-[0.18em] text-white sm:text-2xl md:text-4xl"
         data-testid="text-closing"
         initial={{ opacity: 0, y: 18 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
@@ -72,7 +72,7 @@ function ManifestoStatement() {
       </motion.p>
 
       <motion.div
-        className="mt-4 text-center text-2xl font-serif font-black uppercase tracking-[0.18em] md:text-4xl"
+        className="mt-4 text-center text-xl font-serif font-black uppercase tracking-[0.18em] sm:text-2xl md:text-4xl"
         initial={{ opacity: 0, y: 24 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
@@ -123,22 +123,22 @@ function CountdownTimer() {
   }, []);
 
   return (
-    <div className="grid grid-cols-4 gap-4 max-w-md mx-auto">
-      <div className="bg-[hsl(210,100%,55%)]/20 border-2 border-[hsl(210,100%,55%)]/30 rounded-lg p-3 text-center">
-        <div className="text-2xl font-bold text-[hsl(210,100%,55%)]" data-testid="countdown-days">{timeLeft.days}</div>
-        <div className="text-xs text-[hsl(220,10%,45%)]">DÍAS</div>
+    <div className="mx-auto grid max-w-md grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+      <div className="rounded-lg border-2 border-[hsl(210,100%,55%)]/30 bg-[hsl(210,100%,55%)]/20 p-3 text-center">
+        <div className="text-xl font-bold text-[hsl(210,100%,55%)] sm:text-2xl" data-testid="countdown-days">{timeLeft.days}</div>
+        <div className="text-[0.65rem] text-[hsl(220,10%,45%)] sm:text-xs">DÍAS</div>
       </div>
-      <div className="bg-[hsl(210,100%,55%)]/20 border-2 border-[hsl(210,100%,55%)]/30 rounded-lg p-3 text-center">
-        <div className="text-2xl font-bold text-[hsl(210,100%,55%)]" data-testid="countdown-hours">{timeLeft.hours}</div>
-        <div className="text-xs text-[hsl(220,10%,45%)]">HORAS</div>
+      <div className="rounded-lg border-2 border-[hsl(210,100%,55%)]/30 bg-[hsl(210,100%,55%)]/20 p-3 text-center">
+        <div className="text-xl font-bold text-[hsl(210,100%,55%)] sm:text-2xl" data-testid="countdown-hours">{timeLeft.hours}</div>
+        <div className="text-[0.65rem] text-[hsl(220,10%,45%)] sm:text-xs">HORAS</div>
       </div>
-      <div className="bg-[hsl(210,100%,55%)]/20 border-2 border-[hsl(210,100%,55%)]/30 rounded-lg p-3 text-center">
-        <div className="text-2xl font-bold text-[hsl(210,100%,55%)]" data-testid="countdown-minutes">{timeLeft.minutes}</div>
-        <div className="text-xs text-[hsl(220,10%,45%)]">MIN</div>
+      <div className="rounded-lg border-2 border-[hsl(210,100%,55%)]/30 bg-[hsl(210,100%,55%)]/20 p-3 text-center">
+        <div className="text-xl font-bold text-[hsl(210,100%,55%)] sm:text-2xl" data-testid="countdown-minutes">{timeLeft.minutes}</div>
+        <div className="text-[0.65rem] text-[hsl(220,10%,45%)] sm:text-xs">MIN</div>
       </div>
-      <div className="bg-[hsl(210,100%,55%)]/20 border-2 border-[hsl(210,100%,55%)]/30 rounded-lg p-3 text-center">
-        <div className="text-2xl font-bold text-[hsl(210,100%,55%)]" data-testid="countdown-seconds">{timeLeft.seconds}</div>
-        <div className="text-xs text-[hsl(220,10%,45%)]">SEG</div>
+      <div className="rounded-lg border-2 border-[hsl(210,100%,55%)]/30 bg-[hsl(210,100%,55%)]/20 p-3 text-center">
+        <div className="text-xl font-bold text-[hsl(210,100%,55%)] sm:text-2xl" data-testid="countdown-seconds">{timeLeft.seconds}</div>
+        <div className="text-[0.65rem] text-[hsl(220,10%,45%)] sm:text-xs">SEG</div>
       </div>
     </div>
   );
@@ -159,44 +159,44 @@ export default function UrgencySection() {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-[hsl(220,15%,97%)] via-white to-[hsl(220,15%,97%)]">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-slide-up">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <AlertTriangle className="h-8 w-8 text-red-500" />
-            <h2 className="text-4xl md:text-6xl font-serif font-black text-[hsl(220,70%,25%)]" data-testid="text-urgency-title">
+    <section className="bg-gradient-to-b from-[hsl(220,15%,97%)] via-white to-[hsl(220,15%,97%)] py-16 sm:py-20 lg:py-24">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="mb-12 text-center animate-slide-up sm:mb-16">
+          <div className="mb-4 flex items-center justify-center gap-2">
+            <AlertTriangle className="h-7 w-7 text-red-500 sm:h-8 sm:w-8" />
+            <h2 className="text-3xl font-serif font-black text-[hsl(220,70%,25%)] sm:text-4xl md:text-6xl" data-testid="text-urgency-title">
               URGENCIA Y <span className="text-red-500">ESCASEZ</span>
             </h2>
-            <AlertTriangle className="h-8 w-8 text-red-500" />
+            <AlertTriangle className="h-7 w-7 text-red-500 sm:h-8 sm:w-8" />
           </div>
-          <p className="text-xl text-[hsl(220,10%,45%)] max-w-3xl mx-auto">
+          <p className="mx-auto max-w-3xl text-base text-[hsl(220,10%,45%)] sm:text-lg">
             Solo trabajamos con 2/3 empresas por sector en cada ciudad para garantizar ventaja competitiva total
           </p>
         </div>
 
         {/* Limited Time Offer */}
-        <div className="bg-gradient-to-r from-[hsl(210,100%,55%)]/10 via-[hsl(210,100%,55%)]/5 to-[hsl(210,100%,55%)]/10 rounded-2xl border-2 border-[hsl(210,100%,55%)]/50 p-8 mb-12 shadow-xl animate-slide-up" style={{ animationDelay: '0.2s' }}>
-          <div className="text-center mb-8">
-            <div className="flex items-center justify-center gap-2 mb-4">
+        <div className="mb-12 rounded-2xl border-2 border-[hsl(210,100%,55%)]/50 bg-gradient-to-r from-[hsl(210,100%,55%)]/10 via-[hsl(210,100%,55%)]/5 to-[hsl(210,100%,55%)]/10 p-6 shadow-xl animate-slide-up sm:p-8" style={{ animationDelay: '0.2s' }}>
+          <div className="mb-8 text-center">
+            <div className="mb-4 flex items-center justify-center gap-2">
               <Clock className="h-6 w-6 text-[hsl(210,100%,55%)]" />
-              <h3 className="text-3xl font-serif font-bold text-[hsl(220,70%,25%)]">
+              <h3 className="text-2xl font-serif font-bold text-[hsl(220,70%,25%)] sm:text-3xl">
                 OFERTA IRRESISTIBLE
               </h3>
             </div>
-            <p className="text-xl text-[hsl(210,100%,55%)] font-bold mb-6">
+            <p className="mb-6 text-base font-bold text-[hsl(210,100%,55%)] sm:text-xl">
               LAS 3 PRIMERAS EMPRESAS DURANTE EL MES DE NOVIEMBRE
             </p>
 
             <CountdownTimer />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
             {offers.map((offer, index) => (
               <div key={index} className="flex items-center gap-4 bg-white/70 rounded-lg p-4 border border-[hsl(210,100%,55%)]/20">
                 <offer.icon className="h-6 w-6 text-green-500 flex-shrink-0" />
                 <div className="flex-1">
-                  <p className="text-[hsl(220,70%,25%)] font-medium">{offer.text}</p>
-                  <p className="text-[hsl(220,10%,45%)] text-sm">(valor {offer.value})</p>
+                  <p className="text-sm font-medium text-[hsl(220,70%,25%)] sm:text-base">{offer.text}</p>
+                  <p className="text-xs text-[hsl(220,10%,45%)] sm:text-sm">(valor {offer.value})</p>
                 </div>
                 <Badge className="bg-green-500 text-white font-bold">
                   {offer.status}
@@ -208,29 +208,29 @@ export default function UrgencySection() {
 
         {/* Final CTA */}
         <div className="text-center animate-slide-up" style={{ animationDelay: '0.6s' }}>
-          <h3 className="text-3xl md:text-5xl font-serif font-black text-[hsl(220,70%,25%)] mb-6" data-testid="text-final-question">
+          <h3 className="mb-6 text-2xl font-serif font-black text-[hsl(220,70%,25%)] sm:text-3xl md:text-5xl" data-testid="text-final-question">
             ¿LISTO PARA SER LA EMPRESA LÍDER<br />
             <span className="bg-gradient-to-r from-[hsl(210,100%,55%)] to-[hsl(210,100%,70%)] bg-clip-text text-transparent">DE TU SECTOR EN ARGENTINA?</span>
           </h3>
 
-          <p className="text-xl text-[hsl(220,10%,45%)] mb-8 max-w-4xl mx-auto">
-            Ya automatizamos +50 empresas exitosamente. Tu competencia ya está preguntando 
+          <p className="mx-auto mb-8 max-w-4xl text-base text-[hsl(220,10%,45%)] sm:text-lg">
+            Ya automatizamos +50 empresas exitosamente. Tu competencia ya está preguntando
             cómo implementar IA. <span className="text-[hsl(210,100%,55%)] font-bold">La diferencia entre líder y seguidor se decide HOY.</span>
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button 
-              size="lg" 
-              className="bg-[hsl(210,100%,55%)] hover:bg-[hsl(210,100%,50%)] text-white font-bold px-8 py-6 text-lg transition-all duration-300 hover:shadow-xl hover:shadow-[hsl(210,100%,55%)]/40 hover:scale-105"
+          <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button
+              size="lg"
+              className="bg-[hsl(210,100%,55%)] px-6 py-4 text-base font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-[hsl(210,100%,50%)] hover:shadow-xl hover:shadow-[hsl(210,100%,55%)]/40 sm:px-8 sm:py-6 sm:text-lg"
               data-testid="button-schedule"
               onClick={handleScheduleClick}
             >
               AGENDAR CONSULTA ESTRATÉGICA AHORA
             </Button>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               variant="outline"
-              className="border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white font-bold px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
+              className="border-2 border-green-500 px-6 py-4 text-base font-bold text-green-600 transition-all duration-300 hover:scale-105 hover:bg-green-500 hover:text-white sm:px-8 sm:py-6 sm:text-lg"
               data-testid="button-whatsapp"
               onClick={() => window.open('https://wa.me/5492915206692', '_blank')}
             >
@@ -238,8 +238,8 @@ export default function UrgencySection() {
             </Button>
           </div>
 
-          <div className="mx-auto mt-12 max-w-5xl">
-            <div className="relative overflow-hidden rounded-[3rem] border border-white/15 bg-[#040816] text-white shadow-[0_35px_110px_rgba(12,50,100,0.45)]">
+          <div className="mx-auto mt-12 max-w-5xl px-2 sm:px-4">
+            <div className="relative overflow-hidden rounded-[2.5rem] border border-white/15 bg-[#040816] text-white shadow-[0_35px_110px_rgba(12,50,100,0.45)] sm:rounded-[3rem]">
               <motion.img
                 src="https://assets.aceternity.com/linear-demo.webp"
                 alt="Patrón iridiscente"
@@ -263,7 +263,7 @@ export default function UrgencySection() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(12,74,110,0.28),transparent_70%)]" aria-hidden />
               <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(4,8,22,0.6),rgba(4,8,22,0.95))]" aria-hidden />
 
-              <div className="relative z-10 px-6 py-12 text-center md:px-16 md:py-16">
+              <div className="relative z-10 px-4 py-10 text-center sm:px-10 sm:py-12 md:px-16 md:py-16">
                 <ManifestoStatement />
               </div>
             </div>
