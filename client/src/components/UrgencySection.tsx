@@ -1,10 +1,99 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import ColourfulText from "@/components/ui/colourful-text";
 import { Clock, CheckCircle, AlertTriangle } from "lucide-react";
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import ScheduleModal from "./ScheduleModal";
+
+const MANIFESTO_LINES = ["Creamos ecosistemas", "que transforman", "industrias."] as const;
+
+function ManifestoStatement() {
+  const manifestoRef = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(manifestoRef, {
+    once: true,
+    margin: "-10% 0px"
+  });
+
+  const [typedContent, setTypedContent] = useState("");
+  const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hasStartedTypingRef = useRef(false);
+
+  useEffect(() => {
+    if (!isInView || hasStartedTypingRef.current) {
+      return;
+    }
+
+    hasStartedTypingRef.current = true;
+    const fullText = MANIFESTO_LINES.join("\n");
+    let index = 0;
+
+    const typeNextCharacter = () => {
+      setTypedContent(fullText.slice(0, index + 1));
+      index += 1;
+
+      if (index < fullText.length) {
+        typingTimeoutRef.current = setTimeout(typeNextCharacter, 60);
+      }
+    };
+
+    typingTimeoutRef.current = setTimeout(typeNextCharacter, 120);
+
+    return () => {
+      if (typingTimeoutRef.current) {
+        clearTimeout(typingTimeoutRef.current);
+      }
+    };
+  }, [isInView]);
+
+  const typedSegments = typedContent.split("\n");
+
+  return (
+    <div
+      ref={manifestoRef}
+      className="mx-auto max-w-4xl rounded-[2.75rem] border border-white/15 bg-[rgba(4,8,22,0.72)] px-8 py-14 shadow-[0_28px_95px_rgba(8,24,52,0.58)] backdrop-blur-2xl md:px-16"
+    >
+      <motion.p
+        className="mb-3 text-xs font-semibold uppercase tracking-[0.55em] text-white/80 md:mb-4"
+        initial={{ opacity: 0, y: 12 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+      >
+        Manifiesto
+      </motion.p>
+
+      <motion.p
+        className="text-center text-2xl font-serif font-black uppercase tracking-[0.18em] text-white md:text-4xl"
+        data-testid="text-closing"
+        initial={{ opacity: 0, y: 18 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
+      >
+        No vendemos herramientas.
+      </motion.p>
+
+      <motion.div
+        className="mt-4 text-center text-2xl font-serif font-black uppercase tracking-[0.18em] md:text-4xl"
+        initial={{ opacity: 0, y: 24 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+        aria-live="polite"
+      >
+        {MANIFESTO_LINES.map((line, lineIndex) => {
+          const lineText = typedSegments[lineIndex] ?? "";
+
+          return (
+            <span
+              key={line}
+              className="block min-h-[1.4em] bg-gradient-to-r from-[hsl(210,100%,68%)] via-[hsl(210,96%,75%)] to-[hsl(210,100%,90%)] bg-clip-text text-transparent drop-shadow-[0_18px_55px_rgba(8,32,82,0.35)]"
+            >
+              {lineText}
+            </span>
+          );
+        })}
+      </motion.div>
+    </div>
+  );
+}
 
 function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({
@@ -81,7 +170,7 @@ export default function UrgencySection() {
             <AlertTriangle className="h-8 w-8 text-red-500" />
           </div>
           <p className="text-xl text-[hsl(220,10%,45%)] max-w-3xl mx-auto">
-            Solo trabajamos con 1 empresa por sector en cada ciudad para garantizar ventaja competitiva total
+            Solo trabajamos con 2/3 empresas por sector en cada ciudad para garantizar ventaja competitiva total
           </p>
         </div>
 
@@ -174,17 +263,8 @@ export default function UrgencySection() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(12,74,110,0.28),transparent_70%)]" aria-hidden />
               <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(4,8,22,0.6),rgba(4,8,22,0.95))]" aria-hidden />
 
-              <div className="relative z-10 px-8 py-16 text-center md:px-20">
-                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.55em] text-white/70">Manifiesto</p>
-                <h4 className="text-balance text-3xl font-serif font-black leading-tight text-white drop-shadow-[0_22px_40px_rgba(10,40,75,0.65)] md:text-5xl" data-testid="text-closing">
-                  <span className="block">No vendemos herramientas.</span>
-                  <span className="mt-5 block">
-                    Creamos <ColourfulText
-                      text="ecosistemas que transforman industrias."
-                      className="font-serif drop-shadow-[0_18px_32px_rgba(56,189,248,0.35)]"
-                    />
-                  </span>
-                </h4>
+              <div className="relative z-10 px-6 py-12 text-center md:px-16 md:py-16">
+                <ManifestoStatement />
               </div>
             </div>
           </div>
