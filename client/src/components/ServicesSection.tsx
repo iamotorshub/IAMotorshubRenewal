@@ -56,11 +56,13 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
         {/* Front */}
         <div
           className={`absolute inset-0 h-full w-full backface-hidden [backface-visibility:hidden] ${
-            isFlipped ? "pointer-events-none" : "pointer-events-auto"
+            isFlipped ? "pointer-events-none opacity-0 invisible" : "pointer-events-auto opacity-100 visible"
           }`}
           style={{
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
+            transform: "translate3d(0,0,0)",
+            WebkitTransform: "translate3d(0,0,0)",
           }}
         >
           <div className="group/front relative flex h-full w-full flex-col overflow-hidden rounded-[2.25rem] border border-[rgba(255,255,255,0.12)] bg-slate-950/40 shadow-[0_32px_90px_rgba(6,16,38,0.58)]">
@@ -137,12 +139,13 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
         {/* Back */}
         <div
           className={`absolute inset-0 h-full w-full backface-hidden rotate-y-180 [backface-visibility:hidden] [transform:rotateY(180deg)] ${
-            isFlipped ? "pointer-events-auto" : "pointer-events-none"
+            isFlipped ? "pointer-events-auto opacity-100 visible" : "pointer-events-none opacity-0 invisible"
           }`}
           style={{
             backfaceVisibility: "hidden",
             WebkitBackfaceVisibility: "hidden",
-            transform: "rotateY(180deg)",
+            transform: "rotateY(180deg) translate3d(0,0,0)",
+            WebkitTransform: "rotateY(180deg) translate3d(0,0,0)",
           }}
         >
           <div className="flex h-full flex-col overflow-hidden rounded-[2.25rem] border border-sky-400/25 bg-gradient-to-br from-[hsl(220,70%,20%)] via-[hsl(220,62%,16%)] to-[hsl(220,68%,12%)] text-white shadow-[0_36px_105px_rgba(4,16,40,0.68)]">
@@ -222,21 +225,35 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
         .transform-style-3d,
         .group [transform-style\:preserve-3d] {
           transform-style: preserve-3d;
+          -webkit-transform-style: preserve-3d;
         }
         .backface-hidden,
         .group [backface-visibility\:hidden] {
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
+          -moz-backface-visibility: hidden;
         }
         .rotate-y-180,
         .group [transform\:rotateY(180deg)] {
           transform: rotateY(180deg);
+          -webkit-transform: rotateY(180deg);
         }
         .hide-scrollbar {
           scrollbar-width: none;
         }
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
+        }
+
+        /* Forzar aceleración por hardware en mobile para evitar transparencia */
+        @media (max-width: 1024px) {
+          .perspective-1200 > div {
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+          }
+          .backface-hidden {
+            -webkit-font-smoothing: antialiased;
+          }
         }
       `}</style>
     </div>
