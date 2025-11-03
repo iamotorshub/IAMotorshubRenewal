@@ -245,14 +245,19 @@ function ServiceCard({ icon: Icon, image, title, subtitle, problem, solution, fe
           display: none;
         }
 
-        /* Forzar aceleración por hardware en mobile para evitar transparencia */
+        /* Forzar aceleración por hardware en mobile/tablet para mejor rendimiento del flip */
         @media (max-width: 1024px) {
+          .perspective-1200 {
+            perspective: 1500px;
+          }
           .perspective-1200 > div {
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
           }
           .backface-hidden {
             -webkit-font-smoothing: antialiased;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
           }
         }
       `}</style>
