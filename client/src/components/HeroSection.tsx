@@ -86,7 +86,7 @@ export default function HeroSection() {
           </div>
 
           <nav
-            className={`pointer-events-auto relative mt-2 flex w-full max-w-[500px] flex-wrap items-center justify-center gap-2 -translate-y-6 rounded-full bg-[rgba(4,10,24,0.35)] px-3 py-2 transition-all duration-700 backdrop-blur-md sm:ml-auto sm:mt-0 sm:max-w-none sm:flex-nowrap sm:justify-end sm:gap-3 sm:bg-transparent sm:px-2 sm:py-0 sm:-translate-y-[4.5rem] md:-translate-y-[5rem] lg:-translate-y-[5.5rem] ${
+            className={`pointer-events-auto absolute right-4 top-4 mt-0 flex max-w-max flex-wrap items-center justify-end gap-2 rounded-full bg-[rgba(4,10,24,0.55)] px-3 py-2 transition-all duration-700 backdrop-blur-md sm:relative sm:right-auto sm:top-auto sm:ml-auto sm:max-w-none sm:flex-nowrap sm:gap-3 sm:bg-transparent sm:px-2 sm:py-0 sm:-translate-y-[4.5rem] md:-translate-y-[5rem] lg:-translate-y-[5.5rem] ${
               showButtons ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           >
