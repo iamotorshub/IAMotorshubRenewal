@@ -77,7 +77,7 @@ export default function HeroSection() {
       <header className="pointer-events-none absolute inset-x-0 top-0 z-[70] px-0 pt-0 sm:px-12 sm:pt-4 md:px-16">
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
           {/* Logo con animación Aceternity */}
-          <div className="logo-container pointer-events-auto absolute left-[-10px] top-[-8rem] z-10 sm:relative sm:left-auto sm:top-auto sm:z-auto sm:-translate-x-3 sm:-translate-y-[4.75rem] md:-translate-y-[5.25rem] lg:-translate-y-[5.5rem]">
+          <div className="logo-container pointer-events-auto absolute left-[-50px] top-[-7.7rem] z-10 sm:relative sm:left-auto sm:top-auto sm:z-auto sm:-translate-x-3 sm:-translate-y-[4.75rem] md:-translate-y-[5.25rem] lg:-translate-y-[5.5rem]">
             <div className="logo-glow-wrapper">
               <img
                 src={logoPath}
