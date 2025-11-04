@@ -101,7 +101,7 @@ export default function HeroSection() {
               <MovingButton
                 key={label}
                 borderRadius="1rem"
-                className="tech-fade-in px-1.5 py-0.5 text-[0.38rem] font-semibold uppercase tracking-[0.06em] text-slate-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:px-9 sm:py-3 sm:text-base md:text-lg"
+                className="tech-fade-in px-1.5 py-0.5 text-[0.38rem] font-semibold uppercase tracking-[0.06em] text-slate-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:px-6 sm:py-2 sm:text-sm md:text-base"
                 innerBackground="rgba(10, 28, 60, 0.38)"
                 onClick={() =>
                   document.getElementById(target)?.scrollIntoView({
