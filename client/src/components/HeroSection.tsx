@@ -76,17 +76,21 @@ export default function HeroSection() {
       {/* Logo y navegación */}
       <header className="pointer-events-none absolute inset-x-0 top-0 z-[70] px-4 pt-4 sm:px-12 md:px-16">
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-          <div className="logo pointer-events-auto absolute left-4 top-2 sm:relative sm:left-auto sm:top-auto sm:-translate-x-3 sm:-translate-y-[4.75rem] md:-translate-y-[5.25rem] lg:-translate-y-[5.5rem]">
-            <img
-              src={logoPath}
-              alt="IA MOTORSHUB"
-              className="h-[14rem] w-auto brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)] sm:h-[18rem] md:h-[22rem] lg:h-[24rem]"
-              style={{ filter: "brightness(0) invert(1)" }}
-            />
+          {/* Logo con animación Aceternity */}
+          <div className="logo-container pointer-events-auto absolute left-4 top-2 sm:relative sm:left-auto sm:top-auto sm:-translate-x-3 sm:-translate-y-[4.75rem] md:-translate-y-[5.25rem] lg:-translate-y-[5.5rem]">
+            <div className="logo-glow-wrapper">
+              <img
+                src={logoPath}
+                alt="IA MOTORSHUB"
+                className="h-[16rem] w-auto brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)] sm:h-[18rem] md:h-[22rem] lg:h-[24rem]"
+                style={{ filter: "brightness(0) invert(1)" }}
+              />
+            </div>
           </div>
 
+          {/* Navegación en fila horizontal centrada */}
           <nav
-            className={`pointer-events-auto absolute right-4 top-4 grid grid-cols-2 gap-2 rounded-2xl bg-[rgba(4,10,24,0.65)] p-2 transition-all duration-700 backdrop-blur-md sm:relative sm:right-auto sm:top-auto sm:ml-auto sm:flex sm:flex-nowrap sm:gap-3 sm:rounded-full sm:bg-transparent sm:p-0 sm:-translate-y-[4.5rem] md:-translate-y-[5rem] lg:-translate-y-[5.5rem] ${
+            className={`pointer-events-auto fixed left-1/2 top-[18rem] flex -translate-x-1/2 gap-2 rounded-full bg-[rgba(4,10,24,0.7)] px-3 py-2 backdrop-blur-md transition-all duration-700 sm:absolute sm:left-auto sm:right-0 sm:top-auto sm:ml-auto sm:translate-x-0 sm:gap-3 sm:bg-transparent sm:px-2 sm:py-0 sm:-translate-y-[4.5rem] md:-translate-y-[5rem] lg:-translate-y-[5.5rem] ${
               showButtons ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           >
@@ -95,11 +99,11 @@ export default function HeroSection() {
               ["Diferenciadores", "diferenciadores"],
               ["Testimonios", "testimonios"],
               ["Contacto", "asistente"],
-            ].map(([label, target]) => (
+            ].map(([label, target], index) => (
               <MovingButton
                 key={label}
                 borderRadius="1.5rem"
-                className="px-2.5 py-1.5 text-[0.5rem] font-semibold uppercase tracking-[0.14em] text-slate-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:px-6 sm:py-2 sm:text-xs md:text-sm"
+                className="tech-fade-in px-3 py-1.5 text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-slate-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:px-6 sm:py-2 sm:text-xs md:text-sm"
                 innerBackground="rgba(10, 28, 60, 0.38)"
                 onClick={() =>
                   document.getElementById(target)?.scrollIntoView({
@@ -107,6 +111,7 @@ export default function HeroSection() {
                     block: "start",
                   })
                 }
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {label}
               </MovingButton>
@@ -220,6 +225,73 @@ export default function HeroSection() {
         @keyframes capsuleGlow {
           0%, 100% { opacity: 0.75; transform: scale(1); }
           50% { opacity: 0.45; transform: scale(1.02); }
+        }
+
+        /* Animación Aceternity para el logo */
+        @keyframes logo-glow {
+          0%, 100% {
+            filter: brightness(0) invert(1) drop-shadow(0 0 20px rgba(56, 189, 248, 0.4)) drop-shadow(0 0 40px rgba(56, 189, 248, 0.2));
+          }
+          50% {
+            filter: brightness(0) invert(1) drop-shadow(0 0 30px rgba(56, 189, 248, 0.6)) drop-shadow(0 0 60px rgba(56, 189, 248, 0.3)) drop-shadow(0 0 80px rgba(56, 189, 248, 0.1));
+          }
+        }
+
+        @keyframes logo-pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.02); }
+        }
+
+        .logo-glow-wrapper {
+          position: relative;
+        }
+
+        .logo-glow-wrapper::before {
+          content: '';
+          position: absolute;
+          inset: -20px;
+          background: radial-gradient(circle at center, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+          animation: logo-pulse 4s ease-in-out infinite;
+          pointer-events: none;
+          z-index: -1;
+        }
+
+        .logo-glow-wrapper img {
+          animation: logo-glow 4s ease-in-out infinite;
+        }
+
+        /* Animación tech fade-in para botones */
+        @keyframes tech-fade-in {
+          0% {
+            opacity: 0;
+            transform: translateY(-10px) scale(0.95);
+            filter: blur(4px);
+          }
+          50% {
+            filter: blur(2px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+          }
+        }
+
+        @keyframes tech-glitch {
+          0%, 100% {
+            text-shadow: 0 0 4px rgba(56, 189, 248, 0.5);
+          }
+          50% {
+            text-shadow: 0 0 8px rgba(56, 189, 248, 0.8), 0 0 12px rgba(96, 165, 250, 0.4);
+          }
+        }
+
+        .tech-fade-in {
+          animation: tech-fade-in 0.8s ease-out both;
+        }
+
+        .tech-fade-in:hover {
+          animation: tech-glitch 0.3s ease-in-out;
         }
       `}</style>
     </section>
