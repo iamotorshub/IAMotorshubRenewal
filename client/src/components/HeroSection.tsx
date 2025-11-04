@@ -76,17 +76,17 @@ export default function HeroSection() {
       {/* Logo y navegación */}
       <header className="pointer-events-none absolute inset-x-0 top-0 z-[70] px-4 pt-4 sm:px-12 md:px-16">
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-          <div className="logo pointer-events-auto -translate-y-8 sm:-translate-x-3 sm:-translate-y-[4.75rem] md:-translate-y-[5.25rem] lg:-translate-y-[5.5rem]">
+          <div className="logo pointer-events-auto absolute left-4 top-2 sm:relative sm:left-auto sm:top-auto sm:-translate-x-3 sm:-translate-y-[4.75rem] md:-translate-y-[5.25rem] lg:-translate-y-[5.5rem]">
             <img
               src={logoPath}
               alt="IA MOTORSHUB"
-              className="h-[12rem] w-auto brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)] sm:h-[18rem] md:h-[22rem] lg:h-[24rem]"
+              className="h-[14rem] w-auto brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)] sm:h-[18rem] md:h-[22rem] lg:h-[24rem]"
               style={{ filter: "brightness(0) invert(1)" }}
             />
           </div>
 
           <nav
-            className={`pointer-events-auto absolute right-4 top-4 mt-0 flex max-w-max flex-wrap items-center justify-end gap-2 rounded-full bg-[rgba(4,10,24,0.55)] px-3 py-2 transition-all duration-700 backdrop-blur-md sm:relative sm:right-auto sm:top-auto sm:ml-auto sm:max-w-none sm:flex-nowrap sm:gap-3 sm:bg-transparent sm:px-2 sm:py-0 sm:-translate-y-[4.5rem] md:-translate-y-[5rem] lg:-translate-y-[5.5rem] ${
+            className={`pointer-events-auto absolute right-4 top-4 grid grid-cols-2 gap-2 rounded-2xl bg-[rgba(4,10,24,0.65)] p-2 transition-all duration-700 backdrop-blur-md sm:relative sm:right-auto sm:top-auto sm:ml-auto sm:flex sm:flex-nowrap sm:gap-3 sm:rounded-full sm:bg-transparent sm:p-0 sm:-translate-y-[4.5rem] md:-translate-y-[5rem] lg:-translate-y-[5.5rem] ${
               showButtons ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           >
@@ -99,7 +99,7 @@ export default function HeroSection() {
               <MovingButton
                 key={label}
                 borderRadius="1.5rem"
-                className="px-4 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-slate-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:px-6 sm:py-2 sm:text-xs md:text-sm"
+                className="px-2.5 py-1.5 text-[0.5rem] font-semibold uppercase tracking-[0.14em] text-slate-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:px-6 sm:py-2 sm:text-xs md:text-sm"
                 innerBackground="rgba(10, 28, 60, 0.38)"
                 onClick={() =>
                   document.getElementById(target)?.scrollIntoView({
