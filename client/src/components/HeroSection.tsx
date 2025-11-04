@@ -77,12 +77,12 @@ export default function HeroSection() {
       <header className="pointer-events-none absolute inset-x-0 top-0 z-[70] px-0 pt-0 sm:px-12 sm:pt-4 md:px-16">
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
           {/* Logo con animación Aceternity */}
-          <div className="logo-container pointer-events-auto absolute left-2 top-2 sm:relative sm:left-auto sm:top-auto sm:-translate-x-3 sm:-translate-y-[4.75rem] md:-translate-y-[5.25rem] lg:-translate-y-[5.5rem]">
+          <div className="logo-container pointer-events-auto absolute left-2 top-[-3px] sm:relative sm:left-auto sm:top-auto sm:-translate-x-3 sm:-translate-y-[4.75rem] md:-translate-y-[5.25rem] lg:-translate-y-[5.5rem]">
             <div className="logo-glow-wrapper">
               <img
                 src={logoPath}
                 alt="IA MOTORSHUB"
-                className="h-[11rem] w-auto brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)] sm:h-[18rem] md:h-[22rem] lg:h-[24rem]"
+                className="h-[22rem] w-auto brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)] sm:h-[18rem] md:h-[22rem] lg:h-[24rem]"
                 style={{ filter: "brightness(0) invert(1)" }}
               />
             </div>
