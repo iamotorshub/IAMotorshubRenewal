@@ -77,12 +77,12 @@ export default function HeroSection() {
       <header className="pointer-events-none absolute inset-x-0 top-0 z-[70] px-0 pt-0 sm:px-12 sm:pt-4 md:px-16">
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
           {/* Logo con animación Aceternity */}
-          <div className="logo-container pointer-events-auto absolute left-[-65px] top-[-7.4rem] z-10 sm:relative sm:left-auto sm:top-auto sm:z-auto sm:-translate-x-6 sm:-translate-y-[10rem] md:-translate-x-8 md:-translate-y-[13rem] lg:-translate-x-10 lg:-translate-y-[15rem]">
+          <div className="logo-container pointer-events-auto absolute left-[-65px] top-[-7.4rem] z-10 sm:relative sm:left-auto sm:top-auto sm:z-auto sm:-translate-x-12 sm:-translate-y-[10rem] md:-translate-x-16 md:-translate-y-[13rem] lg:-translate-x-20 lg:-translate-y-[15rem]">
             <div className="logo-glow-wrapper">
               <img
                 src={logoPath}
                 alt="IA MOTORSHUB"
-                className="h-[22rem] w-auto brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)] sm:h-[28rem] md:h-[35rem] lg:h-[40rem]"
+                className="h-[22rem] w-auto brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)] sm:h-[22.4rem] md:h-[28rem] lg:h-[32rem]"
                 style={{ filter: "brightness(0) invert(1)", imageRendering: "crisp-edges" }}
               />
             </div>
@@ -90,7 +90,7 @@ export default function HeroSection() {
 
           {/* Navegación en fila horizontal centrada - SIEMPRE VISIBLE */}
           <nav
-            className="pointer-events-auto absolute left-1/2 top-[8.3rem] z-[80] flex -translate-x-1/2 gap-0.5 rounded-full bg-[rgba(4,10,24,0.8)] px-1 py-0.5 opacity-100 backdrop-blur-md sm:absolute sm:left-auto sm:right-12 sm:top-auto sm:ml-auto sm:translate-x-0 sm:gap-3 sm:bg-transparent sm:px-2 sm:py-0 sm:-translate-y-[10rem] md:-translate-y-[13rem] lg:-translate-y-[15rem]"
+            className="pointer-events-auto absolute left-1/2 top-[8.3rem] z-[80] flex -translate-x-1/2 gap-0.5 rounded-full bg-[rgba(4,10,24,0.8)] px-1 py-0.5 opacity-100 backdrop-blur-md sm:absolute sm:left-auto sm:right-20 sm:top-auto sm:ml-auto sm:translate-x-0 sm:gap-4 sm:bg-transparent sm:px-3 sm:py-1 sm:-translate-y-[10rem] md:-translate-y-[13rem] lg:-translate-y-[15rem]"
           >
             {[
               ["Servicios", "servicios"],
@@ -101,7 +101,7 @@ export default function HeroSection() {
               <MovingButton
                 key={label}
                 borderRadius="1rem"
-                className="tech-fade-in px-1.5 py-0.5 text-[0.38rem] font-semibold uppercase tracking-[0.06em] text-slate-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:px-6 sm:py-2 sm:text-xs md:text-sm"
+                className="tech-fade-in px-1.5 py-0.5 text-[0.38rem] font-semibold uppercase tracking-[0.06em] text-slate-100 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:px-9 sm:py-3 sm:text-base md:text-lg"
                 innerBackground="rgba(10, 28, 60, 0.38)"
                 onClick={() =>
                   document.getElementById(target)?.scrollIntoView({
