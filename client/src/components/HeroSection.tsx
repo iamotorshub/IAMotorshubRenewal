@@ -77,20 +77,20 @@ export default function HeroSection() {
       <header className="pointer-events-none absolute inset-x-0 top-0 z-[70] px-0 pt-0 sm:px-12 sm:pt-4 md:px-16">
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
           {/* Logo con animación Aceternity */}
-          <div className="logo-container pointer-events-auto absolute left-[-65px] top-[-7.4rem] z-10 sm:relative sm:left-auto sm:top-auto sm:z-auto sm:-translate-x-3 sm:-translate-y-[8rem] md:-translate-y-[10rem] lg:-translate-y-[11rem]">
+          <div className="logo-container pointer-events-auto absolute left-[-65px] top-[-7.4rem] z-10 sm:relative sm:left-auto sm:top-auto sm:z-auto sm:-translate-x-6 sm:-translate-y-[10rem] md:-translate-x-8 md:-translate-y-[13rem] lg:-translate-x-10 lg:-translate-y-[15rem]">
             <div className="logo-glow-wrapper">
               <img
                 src={logoPath}
                 alt="IA MOTORSHUB"
                 className="h-[22rem] w-auto brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)] sm:h-[28rem] md:h-[35rem] lg:h-[40rem]"
-                style={{ filter: "brightness(0) invert(1)" }}
+                style={{ filter: "brightness(0) invert(1)", imageRendering: "crisp-edges" }}
               />
             </div>
           </div>
 
           {/* Navegación en fila horizontal centrada - SIEMPRE VISIBLE */}
           <nav
-            className="pointer-events-auto absolute left-1/2 top-[8.3rem] z-[80] flex -translate-x-1/2 gap-0.5 rounded-full bg-[rgba(4,10,24,0.8)] px-1 py-0.5 opacity-100 backdrop-blur-md sm:absolute sm:left-auto sm:right-12 sm:top-auto sm:ml-auto sm:translate-x-0 sm:gap-3 sm:bg-transparent sm:px-2 sm:py-0 sm:-translate-y-[8rem] md:-translate-y-[10rem] lg:-translate-y-[11rem]"
+            className="pointer-events-auto absolute left-1/2 top-[8.3rem] z-[80] flex -translate-x-1/2 gap-0.5 rounded-full bg-[rgba(4,10,24,0.8)] px-1 py-0.5 opacity-100 backdrop-blur-md sm:absolute sm:left-auto sm:right-12 sm:top-auto sm:ml-auto sm:translate-x-0 sm:gap-3 sm:bg-transparent sm:px-2 sm:py-0 sm:-translate-y-[10rem] md:-translate-y-[13rem] lg:-translate-y-[15rem]"
           >
             {[
               ["Servicios", "servicios"],
