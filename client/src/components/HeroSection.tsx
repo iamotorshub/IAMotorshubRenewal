@@ -82,7 +82,7 @@ export default function HeroSection() {
               <img
                 src={logoPath}
                 alt="IA MOTORSHUB"
-                className="h-[22rem] w-auto brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)] sm:h-[18rem] md:h-[22rem] lg:h-[24rem]"
+                className="h-[22rem] w-auto brightness-0 invert drop-shadow-[0_18px_50px_rgba(12,34,78,0.65)] sm:h-[22.5rem] md:h-[27.5rem] lg:h-[30rem]"
                 style={{ filter: "brightness(0) invert(1)" }}
               />
             </div>
@@ -90,7 +90,7 @@ export default function HeroSection() {
 
           {/* Navegación en fila horizontal centrada - SIEMPRE VISIBLE */}
           <nav
-            className="pointer-events-auto absolute left-1/2 top-[8.3rem] z-[80] flex -translate-x-1/2 gap-0.5 rounded-full bg-[rgba(4,10,24,0.8)] px-1 py-0.5 opacity-100 backdrop-blur-md sm:absolute sm:left-auto sm:right-0 sm:top-auto sm:ml-auto sm:translate-x-0 sm:gap-3 sm:bg-transparent sm:px-2 sm:py-0 sm:-translate-y-[4.5rem] md:-translate-y-[5rem] lg:-translate-y-[5.5rem]"
+            className="pointer-events-auto absolute left-1/2 top-[8.3rem] z-[80] flex -translate-x-1/2 gap-0.5 rounded-full bg-[rgba(4,10,24,0.8)] px-1 py-0.5 opacity-100 backdrop-blur-md sm:absolute sm:left-auto sm:right-12 sm:top-auto sm:ml-auto sm:translate-x-0 sm:gap-3 sm:bg-transparent sm:px-2 sm:py-0 sm:-translate-y-[4.5rem] md:-translate-y-[5rem] lg:-translate-y-[5.5rem]"
           >
             {[
               ["Servicios", "servicios"],
