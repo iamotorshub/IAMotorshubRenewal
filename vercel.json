@@ -1,21 +1,21 @@
 {
   "version": 2,
   "functions": {
-    "server/index.js": {
+    "dist/index.js": {
       "runtime": "nodejs18.x"
     }
   },
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/server/index.js"
+      "dest": "/dist/index.js"
     },
     {
       "handle": "filesystem"
     },
     {
       "src": "/(.*)",
-      "dest": "/server/index.js"
+      "dest": "/dist/index.js"
     }
   ]
 }
