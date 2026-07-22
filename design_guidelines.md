@@ -1,144 +1,152 @@
-# Design Guidelines - IA MOTORSHUB Landing Page
+# IA MOTORSHUB OS — Visual Brand Kit
 
-## Design Approach
-**Reference-Based Approach** - Combining cinematographic aesthetics with high-conversion landing page patterns, drawing inspiration from premium tech companies like Apple, Tesla, and high-end production studios.
+> **North star:** tecnología premium, humana y accionable. IA MOTORSHUB es el ecosistema; **Argento Hub** es su producto insignia.
 
-## Core Design Elements
+![Argento Hub Pro — product universe](docs/brand/assets/argento-hub-product-hero.jpg)
 
-### A. Color Palette
-**Primary Colors:**
-- Deep Blue: 220 70% 25% (primary brand color, CTAs)
-- Electric Blue: 210 100% 55% (accents, highlights, interactive elements)
-- Platinum Gray: 220 15% 92% (light backgrounds, text on dark)
+## 1. Arquitectura de marca
 
-**Supporting Colors:**
-- Dark Slate: 220 20% 15% (primary dark background)
-- Medium Gray: 220 10% 45% (secondary text, borders)
-- Light Gray: 220 5% 65% (tertiary text)
+| Nivel | Marca | Función | Firma visual |
+|---|---|---|---|
+| **Masterbrand** | IA MOTORSHUB | Empresa, ecosistema y sello institucional | Azul profundo, cian, platino; sobria y ejecutiva |
+| **Producto principal** | Argento Hub | Plataforma de agentes conversacionales | Negro tinta, azul eléctrico, violeta; llama con visor |
+| **Productos del ecosistema** | PromptHub y futuros hubs | Módulos especializados conectados al OS | Heredan el sistema cromático y suman un símbolo propio |
 
-**Gradients:**
-- Hero section: Linear gradient from Deep Blue to Dark Slate for modern tech aesthetic
-- Service cards: Platinum Gray to white gradients with subtle blue tints
-- CTA buttons: Electric Blue gradient (210 100% 60% to 210 100% 50%) for modern appeal
-- Card overlays: Dark Slate with opacity for depth
+La masterbrand respalda; el producto protagoniza. En una pieza comercial de Argento Hub, la llama puede ocupar el centro y **IA MOTORSHUB** funciona como firma: “An IA MOTORSHUB company/product”. No deben competir al mismo tamaño.
 
-### B. Typography
-**Fonts via Google Fonts:**
-- Primary: Montserrat (Black 900 for headlines, Bold 700 for subheadings)
-- Secondary: Inter (Regular 400, Medium 500 for body text)
+## 2. Identidad maestra
 
-**Hierarchy:**
-- H1: Montserrat Black, large scale for hero impact
-- H2/H3: Montserrat Bold for section headers
-- Body: Inter Regular for readability
-- CTAs: Montserrat Bold for action orientation
+![IA MOTORSHUB — masterbrand](docs/brand/assets/iamotorshub-masterbrand.png)
 
-### C. Layout System
-**Tailwind Spacing Primitives:**
-- Primary units: 4, 8, 16 (p-4, m-8, h-16)
-- Section spacing: py-16, py-24 for generous breathing room
-- Component spacing: gap-8, space-y-4 for consistent rhythm
+### Uso
 
-### D. Component Library
+- Presentaciones corporativas, documentos legales, propuestas B2B e institucionales.
+- Preferir fondos blancos, platinum o azul noche uniforme.
+- Mantener un área libre mínima equivalente a la altura de la letra **I** alrededor del conjunto.
+- Nunca sumar glow violeta al logo corporativo: el glow pertenece al universo de producto.
 
-**Navigation:**
-- Fixed header with blur background
-- Montserrat Bold typography
-- Gold accent for active states
+## 3. Argento Hub — identidad de producto
 
-**Hero Section:**
-- Full-viewport height with cinematic video background
-- Overlay gradient for text readability
-- Large typography with gold accents
-- Dual CTA buttons (primary gold, secondary outline)
+![Argento Hub Pro — mascot lockup](docs/brand/assets/argento-hub-mascot-lockup.jpg)
 
-**Service Cards:**
-- Dark gradient backgrounds
-- Hover effects with subtle scale and glow
-- Gold accent borders on interaction
-- Problem/Solution structure with clear hierarchy
+### Activos reconocibles
 
-**Forms & CTAs:**
-- Gold primary buttons with subtle gradients
-- White outline buttons for secondary actions
-- Generous padding for touch targets
-- Rounded corners for modern feel
+1. **La llama:** inteligencia con personalidad, cercanía y ADN argentino.
+2. **El visor:** capa tecnológica; cian y magenta son luz, no decoración gratuita.
+3. **El gradiente:** comunica conexión entre voz, datos, automatización y acción.
+4. **El negro tinta:** sostiene el contraste y evita una estética infantil.
 
-**Testimonials:**
-- Video testimonials with play overlay
-- Company logos for credibility
-- Rotating carousel functionality
+### Tono visual
 
-**Counters:**
-- Real-time updating numbers
-- Gold accent color for metrics
-- Clean typography with generous spacing
+- Premium, cinematográfico, preciso y con energía comercial.
+- Realista o 3D pulido para campañas; lineal/minimalista para iconos de interfaz.
+- Nunca cyberpunk caótico, gamer genérico, caricatura infantil ni “robot azul de banco”.
+- El personaje acompaña la función: vende, atiende, agenda o analiza. No aparece porque sí.
 
-### Images Section
-**Hero Video:**
-- Large cinematic video of Franco Larrarte (full viewport width/height)
-- Professional filming with shallow depth of field
-- Dark overlay for text contrast
+## 4. Paleta oficial
 
-**Service Icons:**
-- Modern, minimalist icons from Heroicons
-- Gold color treatment for consistency
-- 64px size for optimal visibility
+| Token | HEX | Uso principal |
+|---|---:|---|
+| **Ink 950** | `#040712` | Fondo premium y superficies hero |
+| **Navy 900** | `#081228` | Sidebars, cards oscuras, overlays |
+| **Argento Blue** | `#246BFD` | Acciones, navegación, datos |
+| **Electric Cyan** | `#00B7FF` | Foco, voz, conexión, highlights |
+| **Violet** | `#7C3AED` | Agentes, automatización, profundidad |
+| **Neon Magenta** | `#E000FF` | Acento excepcional y energía de campaña |
+| **Platinum** | `#E8ECF4` | Fondos claros y superficies secundarias |
+| **White** | `#FFFFFF` | Texto principal sobre oscuro |
+| **Success** | `#22C55E` | Estados activos y resultados positivos |
 
-**Testimonial Photos:**
-- Professional headshots of clients
-- Circular crop with subtle border
-- High contrast for dark theme compatibility
+**Gradiente insignia:** `linear-gradient(110deg, #00B7FF 0%, #246BFD 42%, #7C3AED 72%, #E000FF 100%)`.
 
-**Company Logos:**
-- Client company logos in white/light gray
-- Consistent sizing and spacing
-- Subtle hover effects
+El magenta se usa como remate, no como pintura de pared. El verde queda reservado a estados y métricas. **No usar dorado:** pertenecía a una dirección visual anterior y rompe la consistencia actual.
 
-**Background Elements:**
-- Subtle film strip patterns as decorative elements
-- Grid overlays for technical aesthetic
-- Minimal use to maintain focus on content
+## 5. Tipografía
 
-### E. Animations & Interactivity
-**Card Animations:**
-- Hover: Lift effect with subtle shadow increase and blue glow
-- Scale: Slight scale (1.02) on hover for depth
-- Border: Animated electric blue border on interaction
-- Content reveal: Smooth opacity transitions for additional content
+| Rol | Familia | Peso | Regla |
+|---|---|---:|---|
+| Display / Hero | **Montserrat** | 800–900 | Mayúsculas selectivas, tracking compacto |
+| Títulos UI | **Inter** | 600–700 | Claridad antes que espectáculo |
+| Cuerpo / labels | **Inter** | 400–500 | Lectura rápida, contraste AA |
+| Métricas | **Inter** | 700–800 | Números grandes y tabulares cuando sea posible |
 
-**Scroll Animations:**
-- Fade-in with slide-up for sections entering viewport
-- Stagger animations for card grids (delay cascade)
-- Counter animations for real-time metrics
-- Progress bars with smooth fill animations
+La cursiva puede enfatizar una palabra de campaña, nunca un párrafo entero. Evitar más de dos familias tipográficas en una misma experiencia.
 
-**Micro-interactions:**
-- Button ripple effects on click
-- Icon rotation/bounce on hover
-- Image zoom on hover within containers
-- Smooth color transitions (200ms ease)
+## 6. Sistema de interfaz
 
-**Avoid:**
-- Complex parallax effects
-- Distracting motion graphics
-- Auto-playing content beyond hero
+### Dark mode — experiencia insignia
 
-### F. Interactive Cards Design
-**Structure:**
-- Glass-morphism effect with backdrop blur
-- Platinum gray background with subtle blue tint
-- Electric blue accent line on left/top border
-- Icon or image at top with overlay hover effect
+![Argento Hub — dark mobile system](docs/brand/assets/argento-hub-mobile-dark.jpg)
 
-**States:**
-- Default: Platinum gray with subtle shadow
-- Hover: Elevated with electric blue glow, scale 1.02
-- Active: Pressed state with deeper blue accent
+- Es el modo principal para marketing, demos de alto impacto y dashboards ejecutivos.
+- Cards Navy 900 sobre Ink 950, bordes blancos al 8–12% y glow sólo en foco activo.
+- Radio recomendado: 12–16 px en cards; botones pill sólo para CTAs o estados.
 
-**Content Pattern:**
-- Visual (icon/image) → Title → Description → CTA
-- Progressive disclosure: Show more details on hover/click
-- Flip cards for before/after or problem/solution views
+### Light mode — operación y legibilidad
 
-This design system creates a modern, tech-forward experience with platinum grays and electric blues, emphasizing interactivity and visual polish while maintaining high conversion focus.
+![Argento Hub — light mobile system](docs/brand/assets/argento-hub-mobile-light.jpg)
+
+- Ideal para carga de conocimiento, formularios, tablas extensas y tareas diarias.
+- Fondo blanco/platinum, tinta azul noche y gradiente reservado a CTAs y banners.
+- No convertir el modo claro en una copia desaturada del oscuro: debe respirar.
+
+### Desktop — densidad con jerarquía
+
+![Argento Hub — desktop dashboard](docs/brand/assets/argento-hub-dashboard-desktop.jpg)
+
+- Orden de lectura: contexto → KPIs → actividad → acciones → detalle.
+- Una sola acción primaria por viewport.
+- Las visualizaciones usan azul/violeta como serie principal; verde sólo para mejora real.
+- Reducir el glow dentro de zonas de alta densidad: si todo brilla, nada importa.
+
+## 7. Fotografía, 3D y mockups
+
+- Para portada: composición 16:9 o 21:9 con personaje, producto y prueba funcional.
+- Para portfolio: un hero potente + una vista desktop + una secuencia mobile clara/oscura.
+- Los dispositivos deben mostrar pantallas coherentes entre sí, con métricas, nombres y navegación consistentes.
+- No deformar iPhone/MacBook, mezclar marcos de distintas generaciones ni usar UI ilegible sólo para llenar.
+- Mantener respiración alrededor de logos; el mockup vende la experiencia, no tapa la marca.
+
+## 8. Ecosistema de productos
+
+![PromptHub — connected product signature](docs/brand/assets/prompt-hub-signature.jpg)
+
+Los productos satélite heredan **Ink + Cyan + Violet**, la tipografía y el lenguaje de conexión. Cada uno puede sumar una metáfora visual propia —por ejemplo, cerebro/cableado para PromptHub— sin inventar una paleta completamente nueva.
+
+## 9. Movimiento
+
+- Entrada de marca: 500–700 ms, `cubic-bezier(0.22, 1, 0.36, 1)`.
+- Hover de cards: elevación de 2–4 px y borde eléctrico; sin saltos bruscos.
+- Métricas: conteo corto, máximo 1.2 s.
+- Llama: microgestos humanos, mirada y respiración; nada de correr por pasillos como dibujito.
+- Fondos: ondas, grillas o partículas muy sutiles. El movimiento guía, no distrae.
+
+## 10. Voz de marca
+
+**Clara, argentina, segura y orientada a resultados.** Hablamos como expertos que entienden el negocio, no como un laboratorio enamorado de sus siglas.
+
+### Sí
+
+- “IA con ADN argentino que vende, conecta y escala.”
+- “Tus agentes trabajando 24/7.”
+- “Conversaciones humanas. Resultados medibles.”
+
+### No
+
+- Promesas absolutas sin evidencia.
+- Jerga técnica como titular principal.
+- Exceso de lunfardo o humor en contextos corporativos.
+
+## 11. Checklist de aprobación
+
+- [ ] ¿Se entiende en tres segundos qué marca habla y qué producto se muestra?
+- [ ] ¿La llama cumple una función dentro de la pieza?
+- [ ] ¿El gradiente está concentrado en foco, CTA o identidad?
+- [ ] ¿Los textos mantienen contraste y legibilidad real?
+- [ ] ¿Las métricas y pantallas son coherentes entre dispositivos?
+- [ ] ¿IA MOTORSHUB respalda sin competir con Argento Hub?
+- [ ] ¿La pieza se siente premium antes que “tecnológica porque sí”?
+
+---
+
+**Decisión visual vigente:** azul eléctrico + violeta sobre negro tinta, con platinum para operación clara. La llama es el activo distintivo de Argento Hub; IA MOTORSHUB conserva el rol institucional del ecosistema.
